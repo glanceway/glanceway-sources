@@ -49,11 +49,14 @@ function scanSources(filterSource?: string): SourceInfo[] {
       const entryStat = fs.statSync(entryPath);
 
       if (entryStat.isDirectory()) {
-        // JS source - look for manifest.yaml and index.ts
+        // JS source - look for manifest.yaml and index.ts or index.js
         const manifestPath = path.join(entryPath, "manifest.yaml");
         const indexTsPath = path.join(entryPath, "index.ts");
+        const indexJsPath = path.join(entryPath, "index.js");
+        const indexPath = fs.existsSync(indexTsPath) ? indexTsPath :
+                          fs.existsSync(indexJsPath) ? indexJsPath : null;
 
-        if (fs.existsSync(manifestPath) && fs.existsSync(indexTsPath)) {
+        if (fs.existsSync(manifestPath) && indexPath) {
           const sourceId = `${namespace}/${entry}`;
 
           // Skip if filtering and doesn't match
@@ -68,7 +71,7 @@ function scanSources(filterSource?: string): SourceInfo[] {
               sourceName: entry,
               sourcePath: entryPath,
               manifestPath,
-              indexPath: indexTsPath,
+              indexPath,
               version: manifest.version || "1.0.0",
               type: "js",
             });
@@ -180,8 +183,10 @@ async function buildJsSource(source: SourceInfo): Promise<boolean> {
     `  📦 Building ${source.author}/${source.sourceName}@${source.version}`,
   );
 
-  // Compile TypeScript
-  const compiledJs = await compileTypeScript(source.indexPath);
+  // Compile TS sources with esbuild; read JS sources as-is
+  const compiledJs = source.indexPath.endsWith(".ts")
+    ? await compileTypeScript(source.indexPath)
+    : fs.readFileSync(source.indexPath, "utf-8");
 
   // Read manifest
   const manifestContent = fs.readFileSync(source.manifestPath, "utf-8");

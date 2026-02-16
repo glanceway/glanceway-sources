@@ -104,8 +104,14 @@ function scanSources(filterSource?: string): SourceInfo[] {
       if (entryStat.isDirectory()) {
         const manifestPath = path.join(entryPath, "manifest.yaml");
         const indexTsPath = path.join(entryPath, "index.ts");
+        const indexJsPath = path.join(entryPath, "index.js");
+        const indexPath = fs.existsSync(indexTsPath)
+          ? indexTsPath
+          : fs.existsSync(indexJsPath)
+            ? indexJsPath
+            : null;
 
-        if (fs.existsSync(manifestPath) && fs.existsSync(indexTsPath)) {
+        if (fs.existsSync(manifestPath) && indexPath) {
           const sourceId = `${namespace}/${entry}`;
           if (filterSource && sourceId !== filterSource) continue;
 
@@ -117,7 +123,7 @@ function scanSources(filterSource?: string): SourceInfo[] {
               sourceName: entry,
               sourcePath: entryPath,
               manifestPath,
-              indexPath: indexTsPath,
+              indexPath,
               version: manifest.version || "1.0.0",
               type: "js",
             });
@@ -287,9 +293,7 @@ function validateItems(
         !item.url.startsWith("https://")
       ) {
         if (warningCount < MAX_MESSAGES) {
-          warnings.push(
-            `${prefix}: "url" does not start with http(s)://`,
-          );
+          warnings.push(`${prefix}: "url" does not start with http(s)://`);
         }
         warningCount++;
       }
@@ -446,20 +450,24 @@ async function testTsSource(
 
   const { resolved: config, warnings } = configResult;
 
-  // Compile TypeScript with esbuild
+  // Compile TS sources with esbuild; read JS sources as-is
   let compiledJs: string;
   try {
-    const result = await esbuild.build({
-      entryPoints: [source.indexPath],
-      bundle: true,
-      platform: "neutral",
-      format: "iife",
-      globalName: "_source",
-      write: false,
-      external: ["node:*"],
-      footer: { js: "module.exports = _source.default;" },
-    });
-    compiledJs = result.outputFiles[0].text;
+    if (source.indexPath.endsWith(".ts")) {
+      const result = await esbuild.build({
+        entryPoints: [source.indexPath],
+        bundle: true,
+        platform: "neutral",
+        format: "iife",
+        globalName: "_source",
+        write: false,
+        external: ["node:*"],
+        footer: { js: "module.exports = _source.default;" },
+      });
+      compiledJs = result.outputFiles[0].text;
+    } else {
+      compiledJs = fs.readFileSync(source.indexPath, "utf-8");
+    }
   } catch (err: any) {
     return {
       sourceId,
@@ -498,7 +506,10 @@ async function testTsSource(
     sourceMethods = await Promise.race([
       factory(api),
       new Promise((_, reject) =>
-        setTimeout(() => reject(new Error("Start phase timed out (30s)")), 30000),
+        setTimeout(
+          () => reject(new Error("Start phase timed out (30s)")),
+          30000,
+        ),
       ),
     ]);
   } catch (err: any) {
@@ -720,11 +731,12 @@ async function testYamlSource(
   if (parseDef.filter && Array.isArray(parseDef.filter)) {
     for (const rule of parseDef.filter) {
       if (!rule.field) continue;
-      rawItems = rawItems.filter((item: unknown) => {
+      rawItems = (rawItems as unknown[]).filter((item) => {
         const val = resolvePath(item, rule.field);
         if (rule.equals !== undefined) return val === rule.equals;
         if (rule.notEquals !== undefined) return val !== rule.notEquals;
-        if (rule.exists !== undefined) return rule.exists ? val !== undefined : val === undefined;
+        if (rule.exists !== undefined)
+          return rule.exists ? val !== undefined : val === undefined;
         return true;
       });
     }
@@ -733,14 +745,19 @@ async function testYamlSource(
   // Map items
   const mapping = parseDef.mapping;
   const baseUrl = parseDef.baseUrl || "";
-  const items: EmittedItem[] = rawItems.map((raw: unknown) => {
+  const items: EmittedItem[] = (rawItems as unknown[]).map((raw) => {
     const item: EmittedItem = {} as EmittedItem;
 
     for (const [field, jsonPath] of Object.entries(mapping)) {
       let val = resolvePath(raw, jsonPath as string);
       if (val !== undefined) {
         // Apply baseUrl for url fields with relative paths
-        if (field === "url" && typeof val === "string" && baseUrl && !val.startsWith("http")) {
+        if (
+          field === "url" &&
+          typeof val === "string" &&
+          baseUrl &&
+          !val.startsWith("http")
+        ) {
           val = baseUrl.replace(/\/$/, "") + "/" + val.replace(/^\//, "");
         }
         item[field] = val;
@@ -826,12 +843,16 @@ async function main() {
         console.log(`    ${color.yellow("warning")}: ${w}`);
       }
     } else if (r.status === "skip") {
-      console.log(`  ${color.yellow("SKIP")} ${r.sourceId} ${typeTag} ${duration}`);
+      console.log(
+        `  ${color.yellow("SKIP")} ${r.sourceId} ${typeTag} ${duration}`,
+      );
       for (const w of r.warnings) {
         console.log(`    ${color.yellow("warning")}: ${w}`);
       }
     } else {
-      console.log(`  ${color.red("FAIL")} ${r.sourceId} ${typeTag} ${duration}`);
+      console.log(
+        `  ${color.red("FAIL")} ${r.sourceId} ${typeTag} ${duration}`,
+      );
       for (const e of r.errors) {
         console.log(`    ${color.red("error")}: ${e}`);
       }
