@@ -1,0 +1,17 @@
+version: 1.0.0
+name: V2EX
+description: V2EX 热门话题
+author: codytseng
+author_url: https://github.com/codytseng
+category: Developer
+tags:
+  - v2ex
+  - chinese
+  - tech
+
+config:
+  - key: NODE_NAME
+    name: 节点名称
+    type: list
+    required: false
+    description: 按节点筛选（如 python, apple, create）。留空则显示热门话题。

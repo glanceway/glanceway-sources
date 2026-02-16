@@ -1,0 +1,31 @@
+version: 1.0.0
+name: AI Prompt
+description: Send a prompt to an AI model and display the response
+author: codytseng
+author_url: https://github.com/codytseng
+category: Productivity
+tags:
+  - ai
+  - llm
+
+config:
+  - key: API_URL
+    name: API URL
+    type: string
+    required: true
+    description: Full URL for the OpenAI-compatible chat completions endpoint (e.g. https://api.openai.com/v1/chat/completions)
+  - key: API_KEY
+    name: API Key
+    type: secret
+    required: true
+    description: API key for authentication
+  - key: MODEL
+    name: Model
+    type: string
+    required: true
+    description: Model name (e.g. gpt-4o, deepseek-chat)
+  - key: PROMPT
+    name: Prompt
+    type: string
+    required: true
+    description: Prompt to send to the AI model

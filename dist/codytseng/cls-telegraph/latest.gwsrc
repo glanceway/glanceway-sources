@@ -1,0 +1,29 @@
+version: 1.0.0
+name: 财联社电报
+description: 财联社电报快讯
+author: codytseng
+author_url: https://github.com/codytseng
+category: Finance
+tags:
+  - finance
+  - news
+  - chinese
+  - market
+
+source:
+  url: https://www.cls.cn/nodeapi/telegraphList?app=CailianpressWeb&os=web&refresh_type=1&rn=200&sv=8.4.6
+  method: GET
+  headers:
+    Referer: https://www.cls.cn/
+
+parse:
+  root: $.data.roll_data
+  filter:
+    - field: $.title
+      exists: true
+  mapping:
+    id: $.id
+    title: $.title
+    subtitle: $.brief
+    url: $.shareurl
+    timestamp: $.ctime

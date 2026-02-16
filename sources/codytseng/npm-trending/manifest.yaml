@@ -1,0 +1,18 @@
+version: 1.0.0
+name: npm Trending
+description: Popular and trending packages on npm
+author: codytseng
+author_url: https://github.com/codytseng
+category: Developer
+tags:
+  - npm
+  - packages
+  - javascript
+
+config:
+  - key: KEYWORD
+    name: Keyword
+    type: string
+    required: false
+    default: typescript
+    description: "Search keyword, e.g. typescript, react, cli, ai"

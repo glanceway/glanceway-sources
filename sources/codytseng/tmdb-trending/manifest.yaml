@@ -1,0 +1,37 @@
+version: 1.0.0
+name: TMDb Trending
+description: Trending movies and TV shows from The Movie Database
+author: codytseng
+author_url: https://github.com/codytseng
+category: Entertainment
+tags:
+  - movies
+  - tv
+  - trending
+  - entertainment
+
+config:
+  - key: TMDB_API_KEY
+    name: API Key
+    type: secret
+    required: true
+    description: "Free API key from themoviedb.org"
+  - key: MEDIA_TYPE
+    name: Media Type
+    type: select
+    required: false
+    default: all
+    description: Type of media to show
+    options:
+      - all
+      - movie
+      - tv
+  - key: TIME_WINDOW
+    name: Time Window
+    type: select
+    required: false
+    default: week
+    description: Trending time window
+    options:
+      - day
+      - week

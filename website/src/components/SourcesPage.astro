@@ -1,0 +1,131 @@
+---
+import SourceCard from "./SourceCard.astro";
+import { getSources } from "../lib/sources";
+import { useTranslations } from "../i18n/index";
+
+interface Props {
+  locale: string;
+}
+
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+const sources = getSources();
+const categories = [
+  "All",
+  "Developer",
+  "News",
+  "Social",
+  "Finance",
+  "Entertainment",
+  "Productivity",
+  "Other",
+];
+---
+
+<div class="bg-gray-50 dark:bg-gray-950">
+  <div class="mx-auto max-w-6xl px-6 py-12">
+    <div class="mb-8 flex items-end justify-between gap-4">
+      <div>
+        <h1
+          class="mb-2 text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl dark:text-white"
+        >
+          {t("sources.pageTitle")}
+        </h1>
+        <p class="text-gray-500 dark:text-gray-400">
+          {t("sources.pageSubtitle")}
+        </p>
+        <p class="mt-1 text-sm text-gray-400 dark:text-gray-500">
+          {t("sources.rssNote")}
+          <a
+            href="https://rsshub.netlify.app/routes"
+            class="text-gray-500 underline hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300"
+            target="_blank">RSSHub</a
+          >.
+        </p>
+      </div>
+      <a
+        href="https://github.com/glanceway/glanceway-sources/blob/master/docs/README.md"
+        class="shrink-0 rounded-lg border border-gray-300 px-4 py-2 text-sm font-medium text-gray-700 no-underline hover:bg-gray-100 dark:border-gray-700 dark:text-gray-300 dark:hover:bg-gray-800"
+        target="_blank">{t("sources.buildSource")}</a
+      >
+    </div>
+
+    <div class="mb-6 flex flex-wrap gap-2">
+      {
+        categories.map((cat) => (
+          <button
+            class="category-tab rounded-full px-3.5 py-1.5 text-sm font-medium transition-colors"
+            data-category={cat}
+          >
+            {t(`category.${cat}` as any)}
+          </button>
+        ))
+      }
+    </div>
+
+    <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3" id="grid">
+      {
+        sources.map((s) => (
+          <SourceCard
+            id={s.id}
+            name={s.name}
+            description={s.description}
+            category={s.category}
+            tags={s.tags}
+            author={s.author}
+            type={s.type}
+            locale={locale}
+          />
+        ))
+      }
+    </div>
+    <div id="empty-state" class="hidden py-16 text-center">
+      <p class="text-lg text-gray-400 dark:text-gray-500">
+        {t("sources.emptyTitle")}
+      </p>
+      <p class="mt-2 text-sm text-gray-400 dark:text-gray-500">
+        {t("sources.emptySubtitle")}
+      </p>
+      <a
+        href="https://github.com/glanceway/glanceway-sources/blob/master/docs/README.md"
+        class="mt-4 inline-block rounded-lg bg-gray-900 px-5 py-2.5 text-sm font-semibold text-white no-underline hover:bg-gray-800 dark:bg-white dark:text-gray-900 dark:hover:bg-gray-200"
+        target="_blank">{t("sources.buildSource")}</a
+      >
+    </div>
+  </div>
+</div>
+
+<script>
+  const tabs = document.querySelectorAll<HTMLButtonElement>(".category-tab");
+  const cards = document.querySelectorAll<HTMLAnchorElement>("#grid > a");
+  const emptyState = document.getElementById("empty-state")!;
+
+  function setActive(tab: HTMLButtonElement) {
+    tabs.forEach((t) => t.classList.remove("active"));
+    tab.classList.add("active");
+  }
+
+  function filter(category: string) {
+    let visible = 0;
+    cards.forEach((card) => {
+      if (category === "All" || card.dataset.category === category) {
+        card.style.display = "";
+        visible++;
+      } else {
+        card.style.display = "none";
+      }
+    });
+    emptyState.classList.toggle("hidden", visible > 0);
+  }
+
+  tabs.forEach((tab) => {
+    tab.addEventListener("click", () => {
+      const cat = tab.dataset.category!;
+      setActive(tab);
+      filter(cat);
+    });
+  });
+
+  // Default to "All"
+  setActive(tabs[0]);
+</script>

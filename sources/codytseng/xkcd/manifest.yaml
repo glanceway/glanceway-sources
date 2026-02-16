@@ -1,0 +1,10 @@
+version: 1.0.0
+name: xkcd Comics
+description: Latest comics from xkcd
+author: codytseng
+author_url: https://github.com/codytseng
+category: Entertainment
+tags:
+  - comics
+  - humor
+  - science

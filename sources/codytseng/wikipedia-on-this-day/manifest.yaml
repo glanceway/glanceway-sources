@@ -1,0 +1,25 @@
+version: 1.0.0
+name: Wikipedia On This Day
+description: Historical events that happened on today's date from Wikipedia
+author: codytseng
+author_url: https://github.com/codytseng
+category: Other
+tags:
+  - wikipedia
+  - history
+  - today
+
+config:
+  - key: LANGUAGE
+    name: Language
+    type: select
+    required: false
+    default: en
+    description: Wikipedia language edition
+    options:
+      - en
+      - zh
+      - ja
+      - de
+      - fr
+      - es

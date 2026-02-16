@@ -1,0 +1,11 @@
+version: 1.0.0
+name: 金十数据
+description: 金十数据快讯
+author: codytseng
+author_url: https://github.com/codytseng
+category: Finance
+tags:
+  - finance
+  - news
+  - chinese
+  - market

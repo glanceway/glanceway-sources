@@ -1,0 +1,23 @@
+version: 1.0.0
+name: Spaceflight News
+description: Latest space and spaceflight news articles from SNAPI
+author: codytseng
+author_url: https://github.com/codytseng
+category: News
+tags:
+  - space
+  - science
+  - spaceflight
+
+source:
+  url: https://api.spaceflightnewsapi.net/v4/articles/?limit=100
+  method: GET
+
+parse:
+  root: $.results
+  mapping:
+    id: $.id
+    title: $.title
+    subtitle: $.summary
+    url: $.url
+    timestamp: $.published_at

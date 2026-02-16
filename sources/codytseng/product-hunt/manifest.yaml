@@ -1,0 +1,17 @@
+version: 1.0.0
+name: Product Hunt
+description: Today's top products from Product Hunt
+author: codytseng
+author_url: https://github.com/codytseng
+category: News
+tags:
+  - producthunt
+  - products
+  - startups
+
+config:
+  - key: API_TOKEN
+    name: API Token
+    type: secret
+    required: true
+    description: Product Hunt Developer Token (get one at https://api.producthunt.com/v2/oauth/applications)

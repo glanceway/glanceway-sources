@@ -1,0 +1,42 @@
+version: 1.0.0
+name: Finnhub Market News
+description: Financial news aggregated from major sources like Yahoo, Reuters, and CNBC via Finnhub
+author: codytseng
+author_url: https://github.com/codytseng
+category: Finance
+tags:
+  - finance
+  - news
+  - market
+  - stocks
+
+config:
+  - key: FINNHUB_TOKEN
+    name: API Token
+    type: secret
+    required: true
+    description: Free API key from finnhub.io
+  - key: CATEGORY
+    name: News Category
+    type: select
+    required: false
+    default: general
+    description: Category of financial news
+    options:
+      - general
+      - forex
+      - crypto
+      - merger
+
+source:
+  url: https://finnhub.io/api/v1/news?category=${CATEGORY}&token=${FINNHUB_TOKEN}
+  method: GET
+
+parse:
+  root: $
+  mapping:
+    id: $.id
+    title: $.headline
+    subtitle: $.summary
+    url: $.url
+    timestamp: $.datetime

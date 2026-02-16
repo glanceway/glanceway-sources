@@ -1,0 +1,39 @@
+version: 1.0.0
+name: 华尔街见闻
+description: 华尔街见闻 7x24 快讯
+author: codytseng
+author_url: https://github.com/codytseng
+category: Finance
+tags:
+  - finance
+  - news
+  - chinese
+  - market
+
+config:
+  - key: CHANNEL
+    name: 频道
+    type: select
+    required: false
+    default: global-channel
+    description: 关注的新闻频道
+    options:
+      - global-channel
+      - a-stock-channel
+      - us-stock-channel
+      - forex-channel
+      - commodity-channel
+      - hk-stock-channel
+
+source:
+  url: https://api-one.wallstcn.com/apiv1/content/lives?channel=${CHANNEL}&limit=200
+  method: GET
+
+parse:
+  root: $.data.items
+  mapping:
+    id: $.id
+    title: $.title
+    subtitle: $.content_text
+    url: $.uri
+    timestamp: $.display_time

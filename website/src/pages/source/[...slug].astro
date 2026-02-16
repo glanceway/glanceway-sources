@@ -1,0 +1,20 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import SourceDetailPage from "../../components/SourceDetailPage.astro";
+import { getSources, getSourceDetail } from "../../lib/sources";
+
+export function getStaticPaths() {
+  const sources = getSources();
+  return sources.map((s) => ({
+    params: { slug: s.id },
+    props: { id: s.id },
+  }));
+}
+
+const { id } = Astro.props as { id: string };
+const source = getSourceDetail(id)!;
+---
+
+<Layout title={`${source.name} — Glanceway`}>
+  <SourceDetailPage id={id} locale="en" />
+</Layout>

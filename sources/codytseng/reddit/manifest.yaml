@@ -1,0 +1,27 @@
+version: 1.0.0
+name: Reddit
+description: Hot posts from a subreddit
+author: codytseng
+author_url: https://github.com/codytseng
+category: Social
+tags:
+  - reddit
+  - social
+
+config:
+  - key: SUBREDDIT
+    name: Subreddit
+    type: list
+    required: true
+    description: Subreddit name without r/ (e.g. programming, javascript)
+  - key: SORT
+    name: Sort
+    type: select
+    required: false
+    default: hot
+    description: Sort order for posts
+    options:
+      - hot
+      - new
+      - top
+      - rising

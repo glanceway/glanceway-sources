@@ -1,0 +1,25 @@
+version: 1.0.0
+name: Stock Price Monitor
+description: |
+  Monitor global stock prices in your menu bar.
+  Displays real-time price, change amount, and change percentage.
+  Powered by Finnhub (free API key required).
+author: codytseng
+author_url: https://github.com/codytseng
+category: Finance
+tags:
+  - stock
+  - finance
+  - market
+
+config:
+  - key: FINNHUB_TOKEN
+    name: Finnhub API Token
+    type: secret
+    required: true
+    description: "Free API token from https://finnhub.io"
+  - key: SYMBOLS
+    name: Stock Symbols
+    type: list
+    required: true
+    description: "Stock symbols (e.g. AAPL, TSLA, MSFT)"

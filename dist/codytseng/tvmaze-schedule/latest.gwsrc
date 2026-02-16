@@ -1,0 +1,36 @@
+version: 1.0.0
+name: TVMaze Schedule
+description: Today's TV episode schedule by country
+author: codytseng
+author_url: https://github.com/codytseng
+category: Entertainment
+tags:
+  - tv
+  - schedule
+  - entertainment
+
+config:
+  - key: COUNTRY
+    name: Country
+    type: select
+    required: false
+    default: US
+    description: Country for TV schedule
+    options:
+      - US
+      - GB
+      - CA
+      - AU
+
+source:
+  url: https://api.tvmaze.com/schedule?country=${COUNTRY}
+  method: GET
+
+parse:
+  root: $
+  mapping:
+    id: $.id
+    title: $.show.name
+    subtitle: $.name
+    url: $.show.url
+    timestamp: $.airstamp

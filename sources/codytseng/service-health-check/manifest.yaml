@@ -1,0 +1,16 @@
+version: 1.0.0
+name: Service Health Check
+description: Monitor service endpoints and get notified when they go down
+author: codytseng
+author_url: https://github.com/codytseng
+category: Developer
+tags:
+  - monitoring
+  - health-check
+
+config:
+  - key: URLS
+    name: Service URLs
+    type: list
+    required: true
+    description: URLs to monitor (e.g. https://example.com)

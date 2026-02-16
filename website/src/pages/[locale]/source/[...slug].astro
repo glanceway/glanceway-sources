@@ -1,0 +1,23 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import SourceDetailPage from "../../../components/SourceDetailPage.astro";
+import { getSources, getSourceDetail } from "../../../lib/sources";
+import { nonDefaultLocales } from "../../../i18n/index";
+
+export function getStaticPaths() {
+  const sources = getSources();
+  return nonDefaultLocales.flatMap((locale) =>
+    sources.map((s) => ({
+      params: { locale, slug: s.id },
+      props: { locale, id: s.id },
+    }))
+  );
+}
+
+const { locale, id } = Astro.props as { locale: string; id: string };
+const source = getSourceDetail(id)!;
+---
+
+<Layout title={`${source.name} — Glanceway`} locale={locale}>
+  <SourceDetailPage id={id} locale={locale} />
+</Layout>

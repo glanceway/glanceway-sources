@@ -1,0 +1,48 @@
+version: 1.0.0
+name: Earthquake Alerts
+description: Recent significant earthquakes worldwide from USGS
+author: codytseng
+author_url: https://github.com/codytseng
+category: News
+tags:
+  - earthquake
+  - alerts
+  - science
+
+config:
+  - key: MIN_MAGNITUDE
+    name: Min Magnitude
+    type: select
+    required: false
+    default: "4.5"
+    description: Minimum earthquake magnitude to display
+    options:
+      - significant
+      - "4.5"
+      - "2.5"
+      - "1.0"
+      - all
+  - key: TIME_RANGE
+    name: Time Range
+    type: select
+    required: false
+    default: day
+    description: Time range for earthquake data
+    options:
+      - hour
+      - day
+      - week
+      - month
+
+source:
+  url: https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/${MIN_MAGNITUDE}_${TIME_RANGE}.geojson
+  method: GET
+
+parse:
+  root: $.features
+  mapping:
+    id: $.id
+    title: $.properties.title
+    subtitle: $.properties.place
+    url: $.properties.url
+    timestamp: $.properties.time

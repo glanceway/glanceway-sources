@@ -1,0 +1,558 @@
+{
+  "schema_version": 1,
+  "updated_at": "2026-02-16T12:14:32.888Z",
+  "sources": [
+    {
+      "id": "codytseng/cls-telegraph",
+      "name": "财联社电报",
+      "description": "财联社电报快讯",
+      "author": "codytseng",
+      "author_url": "https://github.com/codytseng",
+      "category": "Finance",
+      "tags": [
+        "finance",
+        "news",
+        "chinese",
+        "market"
+      ],
+      "type": "yaml",
+      "latest_version": "1.0.0",
+      "source_url": "https://github.com/glanceway/glanceway-sources/tree/master/sources/codytseng/cls-telegraph.yaml",
+      "versions": [
+        {
+          "version": "1.0.0",
+          "download_url": "https://github.com/glanceway/glanceway-sources/raw/refs/heads/master/dist/codytseng/cls-telegraph/1.0.0.gwsrc"
+        }
+      ]
+    },
+    {
+      "id": "codytseng/wallstreetcn",
+      "name": "华尔街见闻",
+      "description": "华尔街见闻 7x24 快讯",
+      "author": "codytseng",
+      "author_url": "https://github.com/codytseng",
+      "category": "Finance",
+      "tags": [
+        "finance",
+        "news",
+        "chinese",
+        "market"
+      ],
+      "type": "yaml",
+      "latest_version": "1.0.0",
+      "source_url": "https://github.com/glanceway/glanceway-sources/tree/master/sources/codytseng/wallstreetcn.yaml",
+      "versions": [
+        {
+          "version": "1.0.0",
+          "download_url": "https://github.com/glanceway/glanceway-sources/raw/refs/heads/master/dist/codytseng/wallstreetcn/1.0.0.gwsrc"
+        }
+      ]
+    },
+    {
+      "id": "codytseng/jin10",
+      "name": "金十数据",
+      "description": "金十数据快讯",
+      "author": "codytseng",
+      "author_url": "https://github.com/codytseng",
+      "category": "Finance",
+      "tags": [
+        "finance",
+        "news",
+        "chinese",
+        "market"
+      ],
+      "type": "js",
+      "latest_version": "1.0.0",
+      "source_url": "https://github.com/glanceway/glanceway-sources/tree/master/sources/codytseng/jin10",
+      "versions": [
+        {
+          "version": "1.0.0",
+          "download_url": "https://github.com/glanceway/glanceway-sources/raw/refs/heads/master/dist/codytseng/jin10/1.0.0.gwsrc"
+        }
+      ]
+    },
+    {
+      "id": "codytseng/cn-stock-price",
+      "name": "A 股股价监控",
+      "description": "在菜单栏实时监控 A 股股价。\n显示当前价格、涨跌额和涨跌幅。\n",
+      "author": "codytseng",
+      "author_url": "https://github.com/codytseng",
+      "category": "Finance",
+      "tags": [
+        "stock",
+        "finance",
+        "china",
+        "a-share"
+      ],
+      "type": "js",
+      "latest_version": "1.0.0",
+      "source_url": "https://github.com/glanceway/glanceway-sources/tree/master/sources/codytseng/cn-stock-price",
+      "versions": [
+        {
+          "version": "1.0.0",
+          "download_url": "https://github.com/glanceway/glanceway-sources/raw/refs/heads/master/dist/codytseng/cn-stock-price/1.0.0.gwsrc"
+        }
+      ]
+    },
+    {
+      "id": "codytseng/ai-prompt",
+      "name": "AI Prompt",
+      "description": "Send a prompt to an AI model and display the response",
+      "author": "codytseng",
+      "author_url": "https://github.com/codytseng",
+      "category": "Productivity",
+      "tags": [
+        "ai",
+        "llm"
+      ],
+      "type": "js",
+      "latest_version": "1.0.0",
+      "source_url": "https://github.com/glanceway/glanceway-sources/tree/master/sources/codytseng/ai-prompt",
+      "versions": [
+        {
+          "version": "1.0.0",
+          "download_url": "https://github.com/glanceway/glanceway-sources/raw/refs/heads/master/dist/codytseng/ai-prompt/1.0.0.gwsrc"
+        }
+      ]
+    },
+    {
+      "id": "codytseng/coingecko-crypto",
+      "name": "CoinGecko Crypto Markets",
+      "description": "Top cryptocurrencies by market cap from CoinGecko",
+      "author": "codytseng",
+      "author_url": "https://github.com/codytseng",
+      "category": "Finance",
+      "tags": [
+        "crypto",
+        "finance",
+        "markets"
+      ],
+      "type": "js",
+      "latest_version": "1.0.0",
+      "source_url": "https://github.com/glanceway/glanceway-sources/tree/master/sources/codytseng/coingecko-crypto",
+      "versions": [
+        {
+          "version": "1.0.0",
+          "download_url": "https://github.com/glanceway/glanceway-sources/raw/refs/heads/master/dist/codytseng/coingecko-crypto/1.0.0.gwsrc"
+        }
+      ]
+    },
+    {
+      "id": "codytseng/dev-to",
+      "name": "Dev.to",
+      "description": "Top articles from Dev.to developer community",
+      "author": "codytseng",
+      "author_url": "https://github.com/codytseng",
+      "category": "Developer",
+      "tags": [
+        "dev",
+        "articles",
+        "programming"
+      ],
+      "type": "js",
+      "latest_version": "1.0.0",
+      "source_url": "https://github.com/glanceway/glanceway-sources/tree/master/sources/codytseng/dev-to",
+      "versions": [
+        {
+          "version": "1.0.0",
+          "download_url": "https://github.com/glanceway/glanceway-sources/raw/refs/heads/master/dist/codytseng/dev-to/1.0.0.gwsrc"
+        }
+      ]
+    },
+    {
+      "id": "codytseng/earthquake-usgs",
+      "name": "Earthquake Alerts",
+      "description": "Recent significant earthquakes worldwide from USGS",
+      "author": "codytseng",
+      "author_url": "https://github.com/codytseng",
+      "category": "News",
+      "tags": [
+        "earthquake",
+        "alerts",
+        "science"
+      ],
+      "type": "yaml",
+      "latest_version": "1.0.0",
+      "source_url": "https://github.com/glanceway/glanceway-sources/tree/master/sources/codytseng/earthquake-usgs.yaml",
+      "versions": [
+        {
+          "version": "1.0.0",
+          "download_url": "https://github.com/glanceway/glanceway-sources/raw/refs/heads/master/dist/codytseng/earthquake-usgs/1.0.0.gwsrc"
+        }
+      ]
+    },
+    {
+      "id": "codytseng/finnhub-news",
+      "name": "Finnhub Market News",
+      "description": "Financial news aggregated from major sources like Yahoo, Reuters, and CNBC via Finnhub",
+      "author": "codytseng",
+      "author_url": "https://github.com/codytseng",
+      "category": "Finance",
+      "tags": [
+        "finance",
+        "news",
+        "market",
+        "stocks"
+      ],
+      "type": "yaml",
+      "latest_version": "1.0.0",
+      "source_url": "https://github.com/glanceway/glanceway-sources/tree/master/sources/codytseng/finnhub-news.yaml",
+      "versions": [
+        {
+          "version": "1.0.0",
+          "download_url": "https://github.com/glanceway/glanceway-sources/raw/refs/heads/master/dist/codytseng/finnhub-news/1.0.0.gwsrc"
+        }
+      ]
+    },
+    {
+      "id": "codytseng/github-notifications",
+      "name": "GitHub Notifications",
+      "description": "Get GitHub notifications in your menu bar.\nSupports filtering by repository.\n",
+      "author": "codytseng",
+      "author_url": "https://github.com/codytseng",
+      "category": "Developer",
+      "tags": [
+        "github",
+        "notifications",
+        "developer"
+      ],
+      "type": "js",
+      "latest_version": "1.0.0",
+      "source_url": "https://github.com/glanceway/glanceway-sources/tree/master/sources/codytseng/github-notifications",
+      "versions": [
+        {
+          "version": "1.0.0",
+          "download_url": "https://github.com/glanceway/glanceway-sources/raw/refs/heads/master/dist/codytseng/github-notifications/1.0.0.gwsrc"
+        }
+      ]
+    },
+    {
+      "id": "codytseng/github-trending",
+      "name": "GitHub Trending",
+      "description": "Trending repositories on GitHub",
+      "author": "codytseng",
+      "author_url": "https://github.com/codytseng",
+      "category": "Developer",
+      "tags": [
+        "github",
+        "trending",
+        "programming"
+      ],
+      "type": "js",
+      "latest_version": "1.0.0",
+      "source_url": "https://github.com/glanceway/glanceway-sources/tree/master/sources/codytseng/github-trending",
+      "versions": [
+        {
+          "version": "1.0.0",
+          "download_url": "https://github.com/glanceway/glanceway-sources/raw/refs/heads/master/dist/codytseng/github-trending/1.0.0.gwsrc"
+        }
+      ]
+    },
+    {
+      "id": "codytseng/hacker-news",
+      "name": "Hacker News",
+      "description": "Top stories from Hacker News",
+      "author": "codytseng",
+      "category": "News",
+      "tags": [
+        "news",
+        "tech",
+        "programming"
+      ],
+      "type": "js",
+      "latest_version": "1.0.0",
+      "source_url": "https://github.com/glanceway/glanceway-sources/tree/master/sources/codytseng/hacker-news",
+      "versions": [
+        {
+          "version": "1.0.0",
+          "download_url": "https://github.com/glanceway/glanceway-sources/raw/refs/heads/master/dist/codytseng/hacker-news/1.0.0.gwsrc"
+        }
+      ]
+    },
+    {
+      "id": "codytseng/lobsters",
+      "name": "Lobsters",
+      "description": "Hottest stories from Lobsters",
+      "author": "codytseng",
+      "author_url": "https://github.com/codytseng",
+      "category": "Developer",
+      "tags": [
+        "news",
+        "tech",
+        "programming"
+      ],
+      "type": "js",
+      "latest_version": "1.0.0",
+      "source_url": "https://github.com/glanceway/glanceway-sources/tree/master/sources/codytseng/lobsters",
+      "versions": [
+        {
+          "version": "1.0.0",
+          "download_url": "https://github.com/glanceway/glanceway-sources/raw/refs/heads/master/dist/codytseng/lobsters/1.0.0.gwsrc"
+        }
+      ]
+    },
+    {
+      "id": "codytseng/npm-trending",
+      "name": "npm Trending",
+      "description": "Popular and trending packages on npm",
+      "author": "codytseng",
+      "author_url": "https://github.com/codytseng",
+      "category": "Developer",
+      "tags": [
+        "npm",
+        "packages",
+        "javascript"
+      ],
+      "type": "js",
+      "latest_version": "1.0.0",
+      "source_url": "https://github.com/glanceway/glanceway-sources/tree/master/sources/codytseng/npm-trending",
+      "versions": [
+        {
+          "version": "1.0.0",
+          "download_url": "https://github.com/glanceway/glanceway-sources/raw/refs/heads/master/dist/codytseng/npm-trending/1.0.0.gwsrc"
+        }
+      ]
+    },
+    {
+      "id": "codytseng/product-hunt",
+      "name": "Product Hunt",
+      "description": "Today's top products from Product Hunt",
+      "author": "codytseng",
+      "author_url": "https://github.com/codytseng",
+      "category": "News",
+      "tags": [
+        "producthunt",
+        "products",
+        "startups"
+      ],
+      "type": "js",
+      "latest_version": "1.0.0",
+      "source_url": "https://github.com/glanceway/glanceway-sources/tree/master/sources/codytseng/product-hunt",
+      "versions": [
+        {
+          "version": "1.0.0",
+          "download_url": "https://github.com/glanceway/glanceway-sources/raw/refs/heads/master/dist/codytseng/product-hunt/1.0.0.gwsrc"
+        }
+      ]
+    },
+    {
+      "id": "codytseng/reddit",
+      "name": "Reddit",
+      "description": "Hot posts from a subreddit",
+      "author": "codytseng",
+      "author_url": "https://github.com/codytseng",
+      "category": "Social",
+      "tags": [
+        "reddit",
+        "social"
+      ],
+      "type": "js",
+      "latest_version": "1.0.0",
+      "source_url": "https://github.com/glanceway/glanceway-sources/tree/master/sources/codytseng/reddit",
+      "versions": [
+        {
+          "version": "1.0.0",
+          "download_url": "https://github.com/glanceway/glanceway-sources/raw/refs/heads/master/dist/codytseng/reddit/1.0.0.gwsrc"
+        }
+      ]
+    },
+    {
+      "id": "codytseng/service-health-check",
+      "name": "Service Health Check",
+      "description": "Monitor service endpoints and get notified when they go down",
+      "author": "codytseng",
+      "author_url": "https://github.com/codytseng",
+      "category": "Developer",
+      "tags": [
+        "monitoring",
+        "health-check"
+      ],
+      "type": "js",
+      "latest_version": "1.0.0",
+      "source_url": "https://github.com/glanceway/glanceway-sources/tree/master/sources/codytseng/service-health-check",
+      "versions": [
+        {
+          "version": "1.0.0",
+          "download_url": "https://github.com/glanceway/glanceway-sources/raw/refs/heads/master/dist/codytseng/service-health-check/1.0.0.gwsrc"
+        }
+      ]
+    },
+    {
+      "id": "codytseng/spaceflight-news",
+      "name": "Spaceflight News",
+      "description": "Latest space and spaceflight news articles from SNAPI",
+      "author": "codytseng",
+      "author_url": "https://github.com/codytseng",
+      "category": "News",
+      "tags": [
+        "space",
+        "science",
+        "spaceflight"
+      ],
+      "type": "yaml",
+      "latest_version": "1.0.0",
+      "source_url": "https://github.com/glanceway/glanceway-sources/tree/master/sources/codytseng/spaceflight-news.yaml",
+      "versions": [
+        {
+          "version": "1.0.0",
+          "download_url": "https://github.com/glanceway/glanceway-sources/raw/refs/heads/master/dist/codytseng/spaceflight-news/1.0.0.gwsrc"
+        }
+      ]
+    },
+    {
+      "id": "codytseng/stackoverflow-hot",
+      "name": "StackOverflow Hot",
+      "description": "Hot questions from StackOverflow",
+      "author": "codytseng",
+      "author_url": "https://github.com/codytseng",
+      "category": "Developer",
+      "tags": [
+        "stackoverflow",
+        "programming",
+        "qa"
+      ],
+      "type": "js",
+      "latest_version": "1.0.0",
+      "source_url": "https://github.com/glanceway/glanceway-sources/tree/master/sources/codytseng/stackoverflow-hot",
+      "versions": [
+        {
+          "version": "1.0.0",
+          "download_url": "https://github.com/glanceway/glanceway-sources/raw/refs/heads/master/dist/codytseng/stackoverflow-hot/1.0.0.gwsrc"
+        }
+      ]
+    },
+    {
+      "id": "codytseng/stock-price",
+      "name": "Stock Price Monitor",
+      "description": "Monitor global stock prices in your menu bar.\nDisplays real-time price, change amount, and change percentage.\nPowered by Finnhub (free API key required).\n",
+      "author": "codytseng",
+      "author_url": "https://github.com/codytseng",
+      "category": "Finance",
+      "tags": [
+        "stock",
+        "finance",
+        "market"
+      ],
+      "type": "js",
+      "latest_version": "1.0.0",
+      "source_url": "https://github.com/glanceway/glanceway-sources/tree/master/sources/codytseng/stock-price",
+      "versions": [
+        {
+          "version": "1.0.0",
+          "download_url": "https://github.com/glanceway/glanceway-sources/raw/refs/heads/master/dist/codytseng/stock-price/1.0.0.gwsrc"
+        }
+      ]
+    },
+    {
+      "id": "codytseng/tmdb-trending",
+      "name": "TMDb Trending",
+      "description": "Trending movies and TV shows from The Movie Database",
+      "author": "codytseng",
+      "author_url": "https://github.com/codytseng",
+      "category": "Entertainment",
+      "tags": [
+        "movies",
+        "tv",
+        "trending",
+        "entertainment"
+      ],
+      "type": "js",
+      "latest_version": "1.0.0",
+      "source_url": "https://github.com/glanceway/glanceway-sources/tree/master/sources/codytseng/tmdb-trending",
+      "versions": [
+        {
+          "version": "1.0.0",
+          "download_url": "https://github.com/glanceway/glanceway-sources/raw/refs/heads/master/dist/codytseng/tmdb-trending/1.0.0.gwsrc"
+        }
+      ]
+    },
+    {
+      "id": "codytseng/tvmaze-schedule",
+      "name": "TVMaze Schedule",
+      "description": "Today's TV episode schedule by country",
+      "author": "codytseng",
+      "author_url": "https://github.com/codytseng",
+      "category": "Entertainment",
+      "tags": [
+        "tv",
+        "schedule",
+        "entertainment"
+      ],
+      "type": "yaml",
+      "latest_version": "1.0.0",
+      "source_url": "https://github.com/glanceway/glanceway-sources/tree/master/sources/codytseng/tvmaze-schedule.yaml",
+      "versions": [
+        {
+          "version": "1.0.0",
+          "download_url": "https://github.com/glanceway/glanceway-sources/raw/refs/heads/master/dist/codytseng/tvmaze-schedule/1.0.0.gwsrc"
+        }
+      ]
+    },
+    {
+      "id": "codytseng/v2ex",
+      "name": "V2EX",
+      "description": "V2EX 热门话题",
+      "author": "codytseng",
+      "author_url": "https://github.com/codytseng",
+      "category": "Developer",
+      "tags": [
+        "v2ex",
+        "chinese",
+        "tech"
+      ],
+      "type": "js",
+      "latest_version": "1.0.0",
+      "source_url": "https://github.com/glanceway/glanceway-sources/tree/master/sources/codytseng/v2ex",
+      "versions": [
+        {
+          "version": "1.0.0",
+          "download_url": "https://github.com/glanceway/glanceway-sources/raw/refs/heads/master/dist/codytseng/v2ex/1.0.0.gwsrc"
+        }
+      ]
+    },
+    {
+      "id": "codytseng/wikipedia-on-this-day",
+      "name": "Wikipedia On This Day",
+      "description": "Historical events that happened on today's date from Wikipedia",
+      "author": "codytseng",
+      "author_url": "https://github.com/codytseng",
+      "category": "Other",
+      "tags": [
+        "wikipedia",
+        "history",
+        "today"
+      ],
+      "type": "js",
+      "latest_version": "1.0.0",
+      "source_url": "https://github.com/glanceway/glanceway-sources/tree/master/sources/codytseng/wikipedia-on-this-day",
+      "versions": [
+        {
+          "version": "1.0.0",
+          "download_url": "https://github.com/glanceway/glanceway-sources/raw/refs/heads/master/dist/codytseng/wikipedia-on-this-day/1.0.0.gwsrc"
+        }
+      ]
+    },
+    {
+      "id": "codytseng/xkcd",
+      "name": "xkcd Comics",
+      "description": "Latest comics from xkcd",
+      "author": "codytseng",
+      "author_url": "https://github.com/codytseng",
+      "category": "Entertainment",
+      "tags": [
+        "comics",
+        "humor",
+        "science"
+      ],
+      "type": "js",
+      "latest_version": "1.0.0",
+      "source_url": "https://github.com/glanceway/glanceway-sources/tree/master/sources/codytseng/xkcd",
+      "versions": [
+        {
+          "version": "1.0.0",
+          "download_url": "https://github.com/glanceway/glanceway-sources/raw/refs/heads/master/dist/codytseng/xkcd/1.0.0.gwsrc"
+        }
+      ]
+    }
+  ]
+}

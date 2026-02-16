@@ -1,0 +1,26 @@
+{
+  "name": "glanceway-sources",
+  "version": "1.0.0",
+  "description": "Community sources for Glanceway",
+  "type": "module",
+  "scripts": {
+    "build-sources": "npx tsx scripts/build-sources.ts",
+    "generate-sources-json": "npx tsx scripts/generate-sources-json.ts",
+    "generate-readme": "npx tsx scripts/generate-readme.ts",
+    "test-source": "npx tsx scripts/test-source.ts",
+    "prepare": "husky"
+  },
+  "devDependencies": {
+    "@types/archiver": "^7.0.0",
+    "archiver": "^7.0.1",
+    "esbuild": "^0.27.2",
+    "husky": "^9.1.7",
+    "tsx": "^4.7.0",
+    "typescript": "^5.3.3",
+    "yaml": "^2.3.4"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "license": "MIT"
+}

@@ -1,0 +1,194 @@
+---
+import { Code } from "astro:components";
+import { getSourceDetail } from "../lib/sources";
+import type { ConfigField, SourceFile } from "../lib/sources";
+import { ArrowLeft, Download, CloudDownload } from "@lucide/astro";
+import { useTranslations, getLocalePath } from "../i18n/index";
+
+interface Props {
+  id: string;
+  locale: string;
+}
+
+const { id, locale } = Astro.props;
+const t = useTranslations(locale);
+const source = getSourceDetail(id)!;
+const latestVersion = source.versions[source.versions.length - 1];
+const installUrl = `glanceway://install?url=${encodeURIComponent(latestVersion.download_url)}`;
+
+const categoryColors: Record<string, string> = {
+  Developer: "bg-blue-50 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300",
+  News: "bg-amber-50 text-amber-700 dark:bg-amber-900/30 dark:text-amber-300",
+  Social: "bg-pink-50 text-pink-700 dark:bg-pink-900/30 dark:text-pink-300",
+  Finance: "bg-emerald-50 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-300",
+  Entertainment: "bg-purple-50 text-purple-700 dark:bg-purple-900/30 dark:text-purple-300",
+  Productivity: "bg-cyan-50 text-cyan-700 dark:bg-cyan-900/30 dark:text-cyan-300",
+  Other: "bg-gray-100 text-gray-600 dark:bg-gray-800 dark:text-gray-400",
+};
+const badgeClass = categoryColors[source.category] ?? categoryColors.Other;
+---
+
+<!-- Detail hero -->
+<div class="bg-white shadow-sm dark:bg-gray-900">
+  <div class="mx-auto max-w-6xl px-6 py-10">
+    <a href={getLocalePath(locale, "/")} class="mb-6 inline-flex items-center gap-1 text-sm text-gray-400 hover:text-gray-600 dark:text-gray-500 dark:hover:text-gray-300">
+      <ArrowLeft class="h-4 w-4" />
+      {t("detail.allSources")}
+    </a>
+
+    <div class="flex flex-wrap items-center gap-3">
+      <h1 class="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{source.name}</h1>
+      <span class={`mt-1 rounded-full px-2.5 py-0.5 text-xs font-medium ${badgeClass}`}>
+        {t(`category.${source.category}` as any)}
+      </span>
+      <span class="mt-1.5 font-mono text-xs text-gray-400 dark:text-gray-500">v{source.latest_version}</span>
+    </div>
+
+    <p class="mt-3 max-w-2xl leading-relaxed text-gray-500 whitespace-pre-line dark:text-gray-400">{source.description.trim()}</p>
+
+    <div class="mt-4 flex flex-wrap items-center gap-4 text-sm">
+      {
+        source.author_url ? (
+          <a href={source.author_url} class="font-medium text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white" target="_blank">
+            @{source.author}
+          </a>
+        ) : (
+          <span class="text-gray-500 dark:text-gray-400">@{source.author}</span>
+        )
+      }
+      {
+        source.tags && source.tags.length > 0 && (
+          <span class="text-xs text-gray-400 dark:text-gray-500">
+            {source.tags.map((t) => `#${t}`).join("\u2003")}
+          </span>
+        )
+      }
+    </div>
+
+    <div class="mt-6 flex flex-wrap items-center gap-3">
+      <a
+        href={installUrl}
+        class="inline-flex items-center gap-2 rounded-lg bg-gray-900 px-5 py-2.5 text-sm font-semibold text-white no-underline hover:bg-gray-800 dark:bg-white dark:text-gray-900 dark:hover:bg-gray-200"
+      >
+        <Download class="h-4 w-4" />
+        {t("detail.install")}
+      </a>
+      <a
+        href={latestVersion.download_url}
+        class="inline-flex items-center gap-2 rounded-lg border border-gray-300 bg-white px-5 py-2.5 text-sm font-semibold text-gray-700 no-underline hover:bg-gray-50 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700"
+        download
+      >
+        <CloudDownload class="h-4 w-4" />
+        {t("detail.download")}
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="mx-auto max-w-6xl px-6 py-8 space-y-10">
+  {
+    source.config.length > 0 && (
+      <section>
+        <h2 class="mb-4 text-lg font-semibold text-gray-900 dark:text-white">{t("detail.configuration")}</h2>
+        <div class="overflow-x-auto rounded-xl bg-white shadow-sm ring-1 ring-gray-200 dark:bg-gray-900 dark:ring-gray-800">
+          <table class="w-full text-left text-sm">
+            <thead>
+              <tr class="border-b border-gray-100 dark:border-gray-800">
+                <th class="px-5 py-3 text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-gray-500">{t("config.name")}</th>
+                <th class="px-5 py-3 text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-gray-500">{t("config.key")}</th>
+                <th class="px-5 py-3 text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-gray-500">{t("config.type")}</th>
+                <th class="px-5 py-3 text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-gray-500">{t("config.required")}</th>
+                <th class="px-5 py-3 text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-gray-500">{t("config.default")}</th>
+                <th class="px-5 py-3 text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-gray-500">{t("config.description")}</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
+              {source.config.map((c: ConfigField) => (
+                <tr>
+                  <td class="px-5 py-3 font-medium text-gray-900 dark:text-white">{c.name}</td>
+                  <td class="px-5 py-3">
+                    <code class="rounded-md bg-gray-100 px-1.5 py-0.5 text-xs text-gray-700 dark:bg-gray-800 dark:text-gray-300">
+                      {c.key}
+                    </code>
+                  </td>
+                  <td class="px-5 py-3 text-gray-500 dark:text-gray-400">{c.type}</td>
+                  <td class="px-5 py-3">
+                    {c.required ? (
+                      <span class="inline-block rounded-full bg-red-50 px-2 py-0.5 text-xs font-medium text-red-600 dark:bg-red-900/30 dark:text-red-400">{t("config.yes")}</span>
+                    ) : (
+                      <span class="text-gray-400 dark:text-gray-500">{t("config.no")}</span>
+                    )}
+                  </td>
+                  <td class="px-5 py-3 text-gray-500 dark:text-gray-400">{c.default ? <code class="rounded bg-gray-100 px-1.5 py-0.5 text-xs dark:bg-gray-800 dark:text-gray-300">{c.default}</code> : <span class="text-gray-300 dark:text-gray-600">—</span>}</td>
+                  <td class="px-5 py-3 text-gray-500 dark:text-gray-400">
+                    {c.description ?? ""}
+                    {c.options && c.options.length > 0 && (
+                      <div class="mt-1.5 flex flex-wrap gap-1">
+                        {c.options.map((opt: string) => (
+                          <code class="rounded bg-gray-100 px-1.5 py-0.5 text-xs text-gray-600 dark:bg-gray-800 dark:text-gray-400">{opt}</code>
+                        ))}
+                      </div>
+                    )}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+    )
+  }
+
+  <section>
+    <h2 class="mb-4 text-lg font-semibold text-gray-900 dark:text-white">{t("detail.sourceCode")}</h2>
+    <div class="overflow-hidden rounded-xl bg-white shadow-sm ring-1 ring-gray-200 dark:bg-gray-900 dark:ring-gray-800" id="code-viewer">
+      <!-- File tabs -->
+      <div class="flex border-b border-gray-200 bg-gray-50 dark:border-gray-700 dark:bg-gray-800">
+        {source.files.map((f: SourceFile, i: number) => (
+          <button
+            class="file-tab relative px-4 py-2.5 font-mono text-sm"
+            data-index={i}
+          >
+            {f.filename}
+          </button>
+        ))}
+      </div>
+      <!-- File panels -->
+      {source.files.map((f: SourceFile, i: number) => (
+        <div class="file-panel" data-index={i}>
+          {f.html ? (
+            <div class="prose prose-sm dark:prose-invert max-w-none p-5"><Fragment set:html={f.html} /></div>
+          ) : (
+            <>
+              <div class="block dark:hidden [&_pre]:!m-0 [&_pre]:!rounded-none [&_pre]:!p-5">
+                <Code code={f.code} lang={f.lang} theme="github-light" />
+              </div>
+              <div class="hidden dark:block [&_pre]:!m-0 [&_pre]:!rounded-none [&_pre]:!p-5 [&_pre]:!bg-transparent">
+                <Code code={f.code} lang={f.lang} theme="github-dark" />
+              </div>
+            </>
+          )}
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <script>
+    const tabs = document.querySelectorAll<HTMLButtonElement>("#code-viewer .file-tab");
+    const panels = document.querySelectorAll<HTMLDivElement>("#code-viewer .file-panel");
+
+    function activateTab(index: number) {
+      tabs.forEach((t) => t.classList.remove("active"));
+      tabs[index].classList.add("active");
+
+      panels.forEach((p) => p.style.display = "none");
+      panels[index].style.display = "";
+    }
+
+    tabs.forEach((tab) => {
+      tab.addEventListener("click", () => activateTab(Number(tab.dataset.index)));
+    });
+
+    activateTab(0);
+  </script>
+</div>

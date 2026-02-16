@@ -1,0 +1,19 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import SourcesPage from "../../components/SourcesPage.astro";
+import { nonDefaultLocales, useTranslations } from "../../i18n/index";
+
+export function getStaticPaths() {
+  return nonDefaultLocales.map((locale) => ({
+    params: { locale },
+    props: { locale },
+  }));
+}
+
+const { locale } = Astro.props as { locale: string };
+const t = useTranslations(locale);
+---
+
+<Layout title={`${t("sources.pageTitle")} — Glanceway`} locale={locale}>
+  <SourcesPage locale={locale} />
+</Layout>

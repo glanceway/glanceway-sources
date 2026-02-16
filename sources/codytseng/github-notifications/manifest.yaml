@@ -1,0 +1,24 @@
+version: 1.0.0
+name: GitHub Notifications
+description: |
+  Get GitHub notifications in your menu bar.
+  Supports filtering by repository.
+author: codytseng
+author_url: https://github.com/codytseng
+category: Developer
+tags:
+  - github
+  - notifications
+  - developer
+
+config:
+  - key: GITHUB_TOKEN
+    name: GitHub Token
+    type: secret
+    required: true
+    description: "Personal access token from GitHub Settings"
+  - key: REPOSITORY
+    name: Repository
+    type: string
+    required: false
+    description: "Optional: Filter by repository (format: owner/repo)"

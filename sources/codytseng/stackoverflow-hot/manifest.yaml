@@ -1,0 +1,30 @@
+version: 1.0.0
+name: StackOverflow Hot
+description: Hot questions from StackOverflow
+author: codytseng
+author_url: https://github.com/codytseng
+category: Developer
+tags:
+  - stackoverflow
+  - programming
+  - qa
+
+config:
+  - key: TAG
+    name: Tag
+    type: list
+    required: false
+    description: Filter by tag (e.g. javascript, python, react). Leave empty for all tags.
+  - key: SORT
+    name: Sort
+    type: select
+    required: false
+    default: hot
+    description: Sort order for questions
+    options:
+      - hot
+      - activity
+      - votes
+      - creation
+      - week
+      - month

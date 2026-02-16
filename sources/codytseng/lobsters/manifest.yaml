@@ -1,0 +1,17 @@
+version: 1.0.0
+name: Lobsters
+description: Hottest stories from Lobsters
+author: codytseng
+author_url: https://github.com/codytseng
+category: Developer
+tags:
+  - news
+  - tech
+  - programming
+
+config:
+  - key: TAG
+    name: Tag
+    type: list
+    required: false
+    description: Filter by tag (e.g. programming, security, linux). Leave empty for all tags.

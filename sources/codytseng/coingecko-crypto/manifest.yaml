@@ -1,0 +1,33 @@
+version: 1.0.0
+name: CoinGecko Crypto Markets
+description: Top cryptocurrencies by market cap from CoinGecko
+author: codytseng
+author_url: https://github.com/codytseng
+category: Finance
+tags:
+  - crypto
+  - finance
+  - markets
+
+config:
+  - key: CURRENCY
+    name: Currency
+    type: select
+    required: false
+    default: usd
+    description: Display currency for prices
+    options:
+      - usd
+      - eur
+      - gbp
+      - jpy
+      - cny
+  - key: ORDER
+    name: Sort Order
+    type: select
+    required: false
+    default: market_cap_desc
+    description: How to sort the coin list
+    options:
+      - market_cap_desc
+      - volume_desc

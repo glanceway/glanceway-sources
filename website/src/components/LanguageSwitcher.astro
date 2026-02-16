@@ -1,0 +1,66 @@
+---
+import { Globe } from "@lucide/astro";
+import { locales, type Locale } from "../i18n/locales";
+import { getLocalePath, defaultLocale } from "../i18n/index";
+
+interface Props {
+  locale: string;
+  currentPath: string;
+}
+
+const { locale, currentPath } = Astro.props;
+
+// Strip the current locale prefix from the path to get the base path
+function getBasePath(path: string, loc: string): string {
+  if (loc === defaultLocale) return path;
+  const prefix = `/${loc}`;
+  if (path === prefix || path === `${prefix}/`) return "/";
+  if (path.startsWith(`${prefix}/`)) return path.slice(prefix.length);
+  return path;
+}
+
+const basePath = getBasePath(currentPath, locale);
+---
+
+<div class="relative" id="lang-switcher">
+  <button
+    id="lang-toggle"
+    class="flex h-8 w-8 items-center justify-center rounded-lg text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-white"
+    aria-label="Switch language"
+  >
+    <Globe class="h-4 w-4" />
+  </button>
+  <div
+    id="lang-dropdown"
+    class="absolute right-0 top-full z-50 mt-2 hidden max-h-80 w-44 overflow-y-auto rounded-lg border border-gray-200 bg-white py-1 shadow-lg dark:border-gray-700 dark:bg-gray-900"
+  >
+    {Object.entries(locales).map(([code, config]) => (
+      <a
+        href={getLocalePath(code, basePath)}
+        class:list={[
+          "block px-4 py-2 text-sm no-underline hover:bg-gray-100 dark:hover:bg-gray-800",
+          code === locale
+            ? "font-medium text-gray-900 dark:text-white"
+            : "text-gray-600 dark:text-gray-400",
+        ]}
+        data-lang={code}
+      >
+        {config.nativeName}
+      </a>
+    ))}
+  </div>
+</div>
+
+<script>
+  const toggle = document.getElementById("lang-toggle")!;
+  const dropdown = document.getElementById("lang-dropdown")!;
+
+  toggle.addEventListener("click", (e) => {
+    e.stopPropagation();
+    dropdown.classList.toggle("hidden");
+  });
+
+  document.addEventListener("click", () => {
+    dropdown.classList.add("hidden");
+  });
+</script>
