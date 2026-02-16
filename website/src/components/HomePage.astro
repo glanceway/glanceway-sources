@@ -1,16 +1,5 @@
 ---
-import {
-  Download,
-  Newspaper,
-  TrendingUp,
-  Code,
-  Radar,
-  Hammer,
-  Rss,
-  ArrowRight,
-  Sparkles,
-  BookOpen,
-} from "@lucide/astro";
+import { Download, ArrowRight } from "@lucide/astro";
 import { useTranslations, getLocalePath } from "../i18n/index";
 
 interface Props {
@@ -22,64 +11,11 @@ const t = useTranslations(locale);
 
 const sourcesPath = getLocalePath(locale, "/sources");
 
-const features = [
-  {
-    icon: Sparkles,
-    titleKey: "ai.createSource.title",
-    descKey: "ai.createSource.description",
-    link: "https://github.com/glanceway/glanceway-sources/blob/master/glanceway-source.md",
-    linkKey: "ai.createSource.link",
-  },
-  {
-    icon: BookOpen,
-    titleKey: "ai.mcp.title",
-    descKey: "ai.mcp.description",
-    link: "https://github.com/glanceway/glanceway-mcp/releases/latest/download/glanceway.mcpb",
-    linkKey: "ai.mcp.link",
-  },
-  {
-    icon: Newspaper,
-    titleKey: "features.stayInformed.title",
-    descKey: "features.stayInformed.description",
-    link: sourcesPath,
-    linkKey: "features.browseSources",
-  },
-  {
-    icon: TrendingUp,
-    titleKey: "features.monitorMarkets.title",
-    descKey: "features.monitorMarkets.description",
-    link: sourcesPath,
-    linkKey: "features.browseSources",
-  },
-  {
-    icon: Code,
-    titleKey: "features.devToolkit.title",
-    descKey: "features.devToolkit.description",
-    link: sourcesPath,
-    linkKey: "features.browseSources",
-  },
-  {
-    icon: Radar,
-    titleKey: "features.trackEverything.title",
-    descKey: "features.trackEverything.description",
-    link: sourcesPath,
-    linkKey: "features.browseSources",
-  },
-  {
-    icon: Hammer,
-    titleKey: "features.buildYourOwn.title",
-    descKey: "features.buildYourOwn.description",
-    link: "https://github.com/glanceway/glanceway-sources/blob/master/docs/README.md",
-    linkKey: "features.buildYourOwn.link",
-  },
-  {
-    icon: Rss,
-    titleKey: "features.rssAndBeyond.title",
-    descKey: "features.rssAndBeyond.description",
-    link: "https://rsshub.netlify.app/routes",
-    linkKey: "features.rssAndBeyond.link",
-  },
-] as const;
+const sourceBadges = [
+  "Hacker News", "Reddit", "GitHub", "Product Hunt",
+  "Stock Quotes", "Crypto", "StackOverflow", "RSS Feeds",
+  "Earthquake Alerts", "Spaceflight", "npm Packages", "TV Schedules",
+];
 ---
 
 <!-- Hero -->
@@ -140,43 +76,160 @@ const features = [
 
 <!-- Features -->
 <div class="bg-white dark:bg-gray-900">
-  <div class="mx-auto max-w-3xl px-6 py-24">
+  <div class="mx-auto max-w-5xl px-6 py-24">
     <h2
       class="text-center text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl dark:text-white"
     >
       {t("features.title")}
     </h2>
     <p
-      class="mx-auto mt-4 mb-16 max-w-xl text-center text-base text-gray-500 dark:text-gray-400"
+      class="mx-auto mt-4 mb-20 max-w-xl text-center text-base text-gray-500 dark:text-gray-400"
     >
       {t("features.subtitle")}
     </p>
-    <div class="grid grid-cols-1 gap-x-12 gap-y-14 sm:grid-cols-2">
-      {
-        features.map(({ icon: Icon, titleKey, descKey, link, linkKey }) => (
-          <div class="flex gap-5">
-            <div class="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-gray-100 shadow-sm dark:bg-gray-800">
-              <Icon class="h-7 w-7 text-gray-600 dark:text-gray-300" />
+
+    <!-- Feature 1: Community Sources (text left, visual right) -->
+    <div class="flex flex-col sm:flex-row gap-8 sm:gap-14 items-center">
+      <div class="flex-1 min-w-0">
+        <h3 class="text-2xl font-bold text-gray-900 dark:text-white">
+          {t("features.communitySources.title")}
+        </h3>
+        <p class="mt-3 text-base leading-relaxed text-gray-500 dark:text-gray-400">
+          {t("features.communitySources.description")}
+        </p>
+        <a
+          href={sourcesPath}
+          class="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-gray-600 no-underline hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
+        >
+          {t("features.browseSources")}
+          <ArrowRight class="h-3.5 w-3.5" />
+        </a>
+      </div>
+      <div class="flex-1 min-w-0">
+        <div class="flex flex-wrap gap-2 justify-center sm:justify-start">
+          {sourceBadges.map((name) => (
+            <span class="inline-flex items-center rounded-full bg-gray-100 px-3.5 py-1.5 text-sm font-medium text-gray-700 dark:bg-gray-800 dark:text-gray-300">
+              {name}
+            </span>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <!-- Feature 2: Create Sources with AI (visual left, text right) -->
+    <div class="flex flex-col sm:flex-row-reverse gap-8 sm:gap-14 items-start mt-24">
+      <div class="flex-1 min-w-0">
+        <h3 class="text-2xl font-bold text-gray-900 dark:text-white">
+          {t("features.aiCreate.title")}
+        </h3>
+        <p class="mt-3 text-base leading-relaxed text-gray-500 dark:text-gray-400">
+          {t("features.aiCreate.description")}
+        </p>
+        <a
+          href="https://github.com/glanceway/glanceway-sources/blob/master/glanceway-source.md"
+          target="_blank"
+          class="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-gray-600 no-underline hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
+        >
+          {t("features.aiCreate.link")}
+          <ArrowRight class="h-3.5 w-3.5" />
+        </a>
+      </div>
+      <div class="flex-1 min-w-0 w-full">
+        <div class="space-y-2.5">
+          {[t("features.aiCreate.prompt1"), t("features.aiCreate.prompt2"), t("features.aiCreate.prompt3")].map((prompt) => (
+            <div class="rounded-xl bg-gray-100 px-4 py-3 text-sm text-gray-700 dark:bg-gray-800 dark:text-gray-300 italic">
+              &ldquo;{prompt}&rdquo;
             </div>
-            <div>
-              <h3 class="mb-1.5 text-lg font-semibold text-gray-900 dark:text-white">
-                {t(titleKey as any)}
-              </h3>
-              <p class="text-sm leading-relaxed text-gray-500 dark:text-gray-400">
-                {t(descKey as any)}
-              </p>
-              <a
-                href={link}
-                class="mt-2 inline-flex items-center gap-1 text-sm font-medium text-gray-500 no-underline hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
-                target={link.startsWith("http") ? "_blank" : undefined}
-              >
-                {t(linkKey as any)}
-                <ArrowRight class="h-3.5 w-3.5" />
-              </a>
+          ))}
+        </div>
+        <ol class="mt-5 space-y-2.5 text-sm text-gray-500 dark:text-gray-400">
+          <li class="flex gap-3 items-start">
+            <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-gray-200 text-xs font-semibold text-gray-600 dark:bg-gray-700 dark:text-gray-300">1</span>
+            <span>
+              <a href="https://github.com/glanceway/glanceway-sources/blob/master/glanceway-source.md" target="_blank" class="font-medium text-gray-700 underline decoration-gray-300 hover:text-gray-900 dark:text-gray-300 dark:decoration-gray-600 dark:hover:text-white">{t("features.aiCreate.step1")}</a>
+            </span>
+          </li>
+          <li class="flex gap-3 items-start">
+            <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-gray-200 text-xs font-semibold text-gray-600 dark:bg-gray-700 dark:text-gray-300">2</span>
+            <span>{t("features.aiCreate.step2")}</span>
+          </li>
+          <li class="flex gap-3 items-start">
+            <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-gray-200 text-xs font-semibold text-gray-600 dark:bg-gray-700 dark:text-gray-300">3</span>
+            <span>{t("features.aiCreate.step3")}</span>
+          </li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- Feature 3: AI Reading & Summarization (text left, visual right) -->
+    <div class="flex flex-col sm:flex-row gap-8 sm:gap-14 items-start mt-24">
+      <div class="flex-1 min-w-0">
+        <h3 class="text-2xl font-bold text-gray-900 dark:text-white">
+          {t("features.aiReading.title")}
+        </h3>
+        <p class="mt-3 text-base leading-relaxed text-gray-500 dark:text-gray-400">
+          {t("features.aiReading.description")}
+        </p>
+        <a
+          href="https://github.com/glanceway/glanceway-mcp/releases/latest/download/glanceway.mcpb"
+          class="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-gray-600 no-underline hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
+        >
+          {t("features.aiReading.link")}
+          <ArrowRight class="h-3.5 w-3.5" />
+        </a>
+      </div>
+      <div class="flex-1 min-w-0 w-full">
+        <div class="space-y-4 text-sm leading-relaxed">
+          <!-- User message -->
+          <div class="flex gap-3 justify-end">
+            <div class="rounded-2xl rounded-tr-sm bg-blue-500 px-4 py-2.5 text-white max-w-[80%]">
+              Summarize my Hacker News feed
             </div>
           </div>
-        ))
-      }
+          <!-- AI response -->
+          <div class="flex gap-3">
+            <div class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-gray-200 dark:bg-gray-700">
+              <span class="text-xs font-bold text-gray-500 dark:text-gray-400">AI</span>
+            </div>
+            <div class="rounded-2xl rounded-tl-sm bg-gray-100 px-4 py-2.5 text-gray-700 dark:bg-gray-700 dark:text-gray-300 max-w-[80%]">
+              <p class="text-xs text-gray-400 dark:text-gray-500 mb-1.5">Reading 3 sources via Glanceway...</p>
+              <p>Today's top stories focus on <span class="font-medium">open-source AI tools</span> and <span class="font-medium">Rust adoption</span>. A Show HN post about a new code editor reached #1 with 342 points.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Feature 4: RSS Support (visual left, text right) -->
+    <div class="flex flex-col sm:flex-row-reverse gap-8 sm:gap-14 items-start mt-24">
+      <div class="flex-1 min-w-0">
+        <h3 class="text-2xl font-bold text-gray-900 dark:text-white">
+          {t("features.rss.title")}
+        </h3>
+        <p class="mt-3 text-base leading-relaxed text-gray-500 dark:text-gray-400">
+          {t("features.rss.description")}
+        </p>
+        <a
+          href="https://rsshub.netlify.app/routes"
+          target="_blank"
+          class="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-gray-600 no-underline hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
+        >
+          {t("features.rss.linkRsshub")}
+          <ArrowRight class="h-3.5 w-3.5" />
+        </a>
+      </div>
+      <div class="flex-1 min-w-0 w-full">
+        <div class="space-y-2.5">
+          {["https://hnrss.org/frontpage", "https://www.reddit.com/r/programming/.rss", "https://feeds.arstechnica.com/arstechnica/technology-lab"].map((url) => (
+            <div class="flex items-center gap-3 rounded-xl bg-gray-100 px-4 py-3 dark:bg-gray-800">
+              <span class="shrink-0 text-orange-500 dark:text-orange-400">
+                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11a9 9 0 0 1 9 9"/><path d="M4 4a16 16 0 0 1 16 16"/><circle cx="5" cy="19" r="1"/></svg>
+              </span>
+              <span class="text-sm text-gray-600 dark:text-gray-300 truncate font-mono">{url}</span>
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   </div>
 </div>
