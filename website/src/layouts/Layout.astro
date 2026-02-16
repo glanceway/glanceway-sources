@@ -13,9 +13,10 @@ import {
 interface Props {
   title: string;
   locale?: string;
+  hideLanguageSwitcher?: boolean;
 }
 
-const { title, locale = defaultLocale } = Astro.props;
+const { title, locale = defaultLocale, hideLanguageSwitcher = false } = Astro.props;
 const t = useTranslations(locale);
 const dir = locales[locale]?.dir ?? "ltr";
 const currentPath = Astro.url.pathname;
@@ -124,7 +125,7 @@ const basePath = getBasePath(currentPath, locale);
             href={getLocalePath(locale, "/sources")}
             class="font-medium text-gray-600 no-underline hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
           >{t("nav.sources")}</a>
-          <LanguageSwitcher locale={locale} currentPath={currentPath} />
+          {!hideLanguageSwitcher && <LanguageSwitcher locale={locale} currentPath={currentPath} />}
           <button
             id="theme-toggle"
             class="flex h-8 w-8 items-center justify-center rounded-lg text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-white"
@@ -160,6 +161,11 @@ const basePath = getBasePath(currentPath, locale);
               href={getLocalePath(locale, "/sources")}
               class="hover:text-gray-600 dark:hover:text-gray-300"
               >{t("nav.sources")}</a
+            >
+            <a
+              href="/privacy"
+              class="hover:text-gray-600 dark:hover:text-gray-300"
+              >Privacy</a
             >
           </div>
         </div>
