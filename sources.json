@@ -1,99 +1,7 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-02-16T12:14:32.888Z",
+  "updated_at": "2026-02-16T12:33:22.637Z",
   "sources": [
-    {
-      "id": "codytseng/cls-telegraph",
-      "name": "财联社电报",
-      "description": "财联社电报快讯",
-      "author": "codytseng",
-      "author_url": "https://github.com/codytseng",
-      "category": "Finance",
-      "tags": [
-        "finance",
-        "news",
-        "chinese",
-        "market"
-      ],
-      "type": "yaml",
-      "latest_version": "1.0.0",
-      "source_url": "https://github.com/glanceway/glanceway-sources/tree/master/sources/codytseng/cls-telegraph.yaml",
-      "versions": [
-        {
-          "version": "1.0.0",
-          "download_url": "https://github.com/glanceway/glanceway-sources/raw/refs/heads/master/dist/codytseng/cls-telegraph/1.0.0.gwsrc"
-        }
-      ]
-    },
-    {
-      "id": "codytseng/wallstreetcn",
-      "name": "华尔街见闻",
-      "description": "华尔街见闻 7x24 快讯",
-      "author": "codytseng",
-      "author_url": "https://github.com/codytseng",
-      "category": "Finance",
-      "tags": [
-        "finance",
-        "news",
-        "chinese",
-        "market"
-      ],
-      "type": "yaml",
-      "latest_version": "1.0.0",
-      "source_url": "https://github.com/glanceway/glanceway-sources/tree/master/sources/codytseng/wallstreetcn.yaml",
-      "versions": [
-        {
-          "version": "1.0.0",
-          "download_url": "https://github.com/glanceway/glanceway-sources/raw/refs/heads/master/dist/codytseng/wallstreetcn/1.0.0.gwsrc"
-        }
-      ]
-    },
-    {
-      "id": "codytseng/jin10",
-      "name": "金十数据",
-      "description": "金十数据快讯",
-      "author": "codytseng",
-      "author_url": "https://github.com/codytseng",
-      "category": "Finance",
-      "tags": [
-        "finance",
-        "news",
-        "chinese",
-        "market"
-      ],
-      "type": "js",
-      "latest_version": "1.0.0",
-      "source_url": "https://github.com/glanceway/glanceway-sources/tree/master/sources/codytseng/jin10",
-      "versions": [
-        {
-          "version": "1.0.0",
-          "download_url": "https://github.com/glanceway/glanceway-sources/raw/refs/heads/master/dist/codytseng/jin10/1.0.0.gwsrc"
-        }
-      ]
-    },
-    {
-      "id": "codytseng/cn-stock-price",
-      "name": "A 股股价监控",
-      "description": "在菜单栏实时监控 A 股股价。\n显示当前价格、涨跌额和涨跌幅。\n",
-      "author": "codytseng",
-      "author_url": "https://github.com/codytseng",
-      "category": "Finance",
-      "tags": [
-        "stock",
-        "finance",
-        "china",
-        "a-share"
-      ],
-      "type": "js",
-      "latest_version": "1.0.0",
-      "source_url": "https://github.com/glanceway/glanceway-sources/tree/master/sources/codytseng/cn-stock-price",
-      "versions": [
-        {
-          "version": "1.0.0",
-          "download_url": "https://github.com/glanceway/glanceway-sources/raw/refs/heads/master/dist/codytseng/cn-stock-price/1.0.0.gwsrc"
-        }
-      ]
-    },
     {
       "id": "codytseng/ai-prompt",
       "name": "AI Prompt",
@@ -551,6 +459,98 @@
         {
           "version": "1.0.0",
           "download_url": "https://github.com/glanceway/glanceway-sources/raw/refs/heads/master/dist/codytseng/xkcd/1.0.0.gwsrc"
+        }
+      ]
+    },
+    {
+      "id": "codytseng/wallstreetcn",
+      "name": "华尔街见闻",
+      "description": "华尔街见闻 7x24 快讯",
+      "author": "codytseng",
+      "author_url": "https://github.com/codytseng",
+      "category": "Finance",
+      "tags": [
+        "finance",
+        "news",
+        "chinese",
+        "market"
+      ],
+      "type": "yaml",
+      "latest_version": "1.0.0",
+      "source_url": "https://github.com/glanceway/glanceway-sources/tree/master/sources/codytseng/wallstreetcn.yaml",
+      "versions": [
+        {
+          "version": "1.0.0",
+          "download_url": "https://github.com/glanceway/glanceway-sources/raw/refs/heads/master/dist/codytseng/wallstreetcn/1.0.0.gwsrc"
+        }
+      ]
+    },
+    {
+      "id": "codytseng/cn-stock-price",
+      "name": "股价监控",
+      "description": "在菜单栏实时监控 A 股股价。\n显示当前价格、涨跌额和涨跌幅。\n",
+      "author": "codytseng",
+      "author_url": "https://github.com/codytseng",
+      "category": "Finance",
+      "tags": [
+        "stock",
+        "finance",
+        "china",
+        "a-share"
+      ],
+      "type": "js",
+      "latest_version": "1.0.0",
+      "source_url": "https://github.com/glanceway/glanceway-sources/tree/master/sources/codytseng/cn-stock-price",
+      "versions": [
+        {
+          "version": "1.0.0",
+          "download_url": "https://github.com/glanceway/glanceway-sources/raw/refs/heads/master/dist/codytseng/cn-stock-price/1.0.0.gwsrc"
+        }
+      ]
+    },
+    {
+      "id": "codytseng/cls-telegraph",
+      "name": "财联社电报",
+      "description": "财联社电报快讯",
+      "author": "codytseng",
+      "author_url": "https://github.com/codytseng",
+      "category": "Finance",
+      "tags": [
+        "finance",
+        "news",
+        "chinese",
+        "market"
+      ],
+      "type": "yaml",
+      "latest_version": "1.0.0",
+      "source_url": "https://github.com/glanceway/glanceway-sources/tree/master/sources/codytseng/cls-telegraph.yaml",
+      "versions": [
+        {
+          "version": "1.0.0",
+          "download_url": "https://github.com/glanceway/glanceway-sources/raw/refs/heads/master/dist/codytseng/cls-telegraph/1.0.0.gwsrc"
+        }
+      ]
+    },
+    {
+      "id": "codytseng/jin10",
+      "name": "金十数据",
+      "description": "金十数据快讯",
+      "author": "codytseng",
+      "author_url": "https://github.com/codytseng",
+      "category": "Finance",
+      "tags": [
+        "finance",
+        "news",
+        "chinese",
+        "market"
+      ],
+      "type": "js",
+      "latest_version": "1.0.0",
+      "source_url": "https://github.com/glanceway/glanceway-sources/tree/master/sources/codytseng/jin10",
+      "versions": [
+        {
+          "version": "1.0.0",
+          "download_url": "https://github.com/glanceway/glanceway-sources/raw/refs/heads/master/dist/codytseng/jin10/1.0.0.gwsrc"
         }
       ]
     }
