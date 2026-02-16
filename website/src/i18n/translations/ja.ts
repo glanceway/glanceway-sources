@@ -10,13 +10,13 @@ const ja: Record<TranslationKey, string> = {
   "hero.browseSources": "ソースを探す",
 
   // App Preview
-  "appPreview.title": "See it in action",
-  "appPreview.subtitle": "Everything you care about, one glance away from your menu bar.",
+  "appPreview.title": "実際に見てみよう",
+  "appPreview.subtitle": "あなたが気になるすべてが、メニューバーから一目で。",
 
   // Features section
-  "features.title": "Your menu bar, infinite possibilities",
-  "features.subtitle": "More than an information aggregator — a programmable awareness layer for your Mac.",
-  "features.browseSources": "Browse Sources",
+  "features.title": "メニューバーに、無限の可能性",
+  "features.subtitle": "単なる情報アグリゲーターではなく、Mac のためのプログラマブルな情報レイヤー。",
+  "features.browseSources": "ソースを探す",
   "features.communitySources.title": "あらゆる情報ソース",
   "features.communitySources.description": "ニュース、金融、開発者ツールなど——ソースストアからワンクリックでインストールできるソースが揃っています。",
   "features.aiCreate.title": "AI でソースを作成",
@@ -31,23 +31,25 @@ const ja: Record<TranslationKey, string> = {
   "features.aiReading.title": "AI 閲覧と要約",
   "features.aiReading.description": "Glanceway MCP サーバーをインストールして、AI アシスタントでソースの閲覧、アイテムの読み取り、要約の生成ができます。",
   "features.aiReading.link": "MCP サーバーをインストール",
+  "features.aiReading.chatUser": "Hacker News のフィードを要約して",
+  "features.aiReading.chatStatus": "Glanceway 経由で 3 つのソースを読み取り中...",
+  "features.aiReading.chatResponse": "今日のトップ記事は<b>オープンソース AI ツール</b>と<b>Rust の採用</b>に集中しています。新しいコードエディタの Show HN 投稿が 342 ポイントで 1 位になりました。",
   "features.rss.title": "RSS サポート",
   "features.rss.description": "ネイティブ RSS/Atom サポート。フィード URL を貼り付けるか、RSSHub で数千のフィードにアクセス。",
   "features.rss.linkRsshub": "RSSHub を探索",
 
   // CTA
-  "cta.title": "Ready to stay in the loop?",
-  "cta.description": "Download Glanceway and turn your menu bar into a personal information hub.",
+  "cta.title": "最新情報を逃さない準備はできましたか？",
+  "cta.description": "Glanceway をダウンロードして、メニューバーをパーソナル情報ハブに。",
 
   // Sources section
   "sources.title": "ソース",
   "sources.subtitle": "コミュニティが作成したソース。ワンクリックでインストール。",
-  "sources.pageTitle": "Sources",
-  "sources.pageSubtitle": "Browse and install community-built sources for Glanceway.",
+  "sources.pageTitle": "ソース",
+  "sources.pageSubtitle": "コミュニティが作成した Glanceway のソースを探してインストール。",
   "sources.rssNote": "RSS フィード URL の直接インポートにも対応しています。以下のプラットフォームで数千のルートを探索できます",
   "sources.submitSource": "ソースを投稿",
-  "sources.buildSource": "Build a Source",
-  "sources.devDocs": "Dev Docs",
+  "sources.buildSource": "ソースを作成",
   "sources.emptyTitle": "このカテゴリにはまだソースがありません",
   "sources.emptySubtitle": "最初の作成者になりましょう！",
 

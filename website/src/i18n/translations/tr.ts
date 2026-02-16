@@ -10,13 +10,13 @@ const tr: Record<TranslationKey, string> = {
   "hero.browseSources": "Kaynakları Keşfet",
 
   // App Preview
-  "appPreview.title": "See it in action",
-  "appPreview.subtitle": "Everything you care about, one glance away from your menu bar.",
+  "appPreview.title": "Çalışırken görün",
+  "appPreview.subtitle": "Önem verdiğiniz her şey, menü çubuğunuzdan bir bakış uzağınızda.",
 
   // Features section
-  "features.title": "Your menu bar, infinite possibilities",
-  "features.subtitle": "More than an information aggregator — a programmable awareness layer for your Mac.",
-  "features.browseSources": "Browse Sources",
+  "features.title": "Menü çubuğunuz, sonsuz olasılıklar",
+  "features.subtitle": "Bir bilgi toplayıcıdan fazlası — Mac'iniz için programlanabilir bir farkındalık katmanı.",
+  "features.browseSources": "Kaynakları Keşfet",
   "features.communitySources.title": "Her Şey İçin Kaynaklar",
   "features.communitySources.description": "Haberler, finans, geliştirici araçları ve daha fazlası — Kaynak Mağazası'ndan yüklemeye hazır önceden oluşturulmuş kaynaklar.",
   "features.aiCreate.title": "Yapay Zeka ile Kaynak Oluşturun",
@@ -31,23 +31,25 @@ const tr: Record<TranslationKey, string> = {
   "features.aiReading.title": "Yapay Zeka Okuma ve Özetleme",
   "features.aiReading.description": "Glanceway MCP sunucusunu yükleyerek yapay zeka asistanınızın kaynakları taramasını, öğeleri okumasını ve özetler oluşturmasını sağlayın.",
   "features.aiReading.link": "MCP Sunucusunu Yükle",
+  "features.aiReading.chatUser": "Hacker News beslememi özetle",
+  "features.aiReading.chatStatus": "Glanceway üzerinden 3 kaynak okunuyor...",
+  "features.aiReading.chatResponse": "Bugünün öne çıkan haberleri <b>açık kaynak AI araçları</b> ve <b>Rust'ın benimsenmesi</b> üzerine odaklanıyor. Yeni bir kod editörü hakkında bir Show HN gönderisi 342 puanla 1 numaraya ulaştı.",
   "features.rss.title": "RSS Desteği",
   "features.rss.description": "Yerel RSS/Atom desteği. Herhangi bir besleme URL'si yapıştırın veya RSSHub ile binlerce beslemeye erişin.",
   "features.rss.linkRsshub": "RSSHub'ı Keşfet",
 
   // CTA
-  "cta.title": "Ready to stay in the loop?",
-  "cta.description": "Download Glanceway and turn your menu bar into a personal information hub.",
+  "cta.title": "Gelişmelerden haberdar olmaya hazır mısınız?",
+  "cta.description": "Glanceway'i indirin ve menü çubuğunuzu kişisel bir bilgi merkezine dönüştürün.",
 
   // Sources section
   "sources.title": "Kaynaklar",
   "sources.subtitle": "Topluluk tarafından oluşturulan kaynaklar. Tek tıkla yükleyin.",
-  "sources.pageTitle": "Sources",
-  "sources.pageSubtitle": "Browse and install community-built sources for Glanceway.",
+  "sources.pageTitle": "Kaynaklar",
+  "sources.pageSubtitle": "Glanceway için topluluk tarafından oluşturulan kaynakları keşfedin ve yükleyin.",
   "sources.rssNote": "RSS besleme URL'lerini doğrudan içe aktarmayı da destekler. Binlerce rotayı keşfedin",
   "sources.submitSource": "Kaynak Gönder",
-  "sources.buildSource": "Build a Source",
-  "sources.devDocs": "Dev Docs",
+  "sources.buildSource": "Kaynak Oluştur",
   "sources.emptyTitle": "Bu kategoride henüz kaynak yok",
   "sources.emptySubtitle": "İlk kaynağı oluşturan siz olun!",
 

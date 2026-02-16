@@ -183,7 +183,7 @@ const sourceBadges = [
           <!-- User message -->
           <div class="flex gap-3 justify-end">
             <div class="rounded-2xl rounded-tr-sm bg-blue-500 px-4 py-2.5 text-white max-w-[80%]">
-              Summarize my Hacker News feed
+              {t("features.aiReading.chatUser")}
             </div>
           </div>
           <!-- AI response -->
@@ -191,9 +191,9 @@ const sourceBadges = [
             <div class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-gray-200 dark:bg-gray-700">
               <span class="text-xs font-bold text-gray-500 dark:text-gray-400">AI</span>
             </div>
-            <div class="rounded-2xl rounded-tl-sm bg-gray-100 px-4 py-2.5 text-gray-700 dark:bg-gray-700 dark:text-gray-300 max-w-[80%]">
-              <p class="text-xs text-gray-400 dark:text-gray-500 mb-1.5">Reading 3 sources via Glanceway...</p>
-              <p>Today's top stories focus on <span class="font-medium">open-source AI tools</span> and <span class="font-medium">Rust adoption</span>. A Show HN post about a new code editor reached #1 with 342 points.</p>
+            <div class="rounded-2xl rounded-tl-sm bg-gray-100 px-4 py-2.5 text-gray-700 dark:bg-gray-700 dark:text-gray-300 max-w-[80%] [&_b]:font-medium">
+              <p class="text-xs text-gray-400 dark:text-gray-500 mb-1.5">{t("features.aiReading.chatStatus")}</p>
+              <p set:html={t("features.aiReading.chatResponse")} />
             </div>
           </div>
         </div>

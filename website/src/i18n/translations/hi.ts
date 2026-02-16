@@ -10,13 +10,13 @@ const hi: Record<TranslationKey, string> = {
   "hero.browseSources": "सोर्स देखें",
 
   // App Preview
-  "appPreview.title": "See it in action",
-  "appPreview.subtitle": "Everything you care about, one glance away from your menu bar.",
+  "appPreview.title": "इसे काम करते देखें",
+  "appPreview.subtitle": "आपकी सभी ज़रूरी जानकारी, मेन्यू बार से बस एक नज़र दूर।",
 
   // Features section
-  "features.title": "Your menu bar, infinite possibilities",
-  "features.subtitle": "More than an information aggregator — a programmable awareness layer for your Mac.",
-  "features.browseSources": "Browse Sources",
+  "features.title": "आपका मेन्यू बार, असीमित संभावनाएं",
+  "features.subtitle": "सिर्फ़ एक सूचना एग्रीगेटर नहीं — आपके Mac के लिए एक प्रोग्रामेबल अवेयरनेस लेयर।",
+  "features.browseSources": "सोर्स देखें",
   "features.communitySources.title": "हर चीज़ के लिए सोर्स",
   "features.communitySources.description": "समाचार, वित्त, डेवलपर टूल्स और भी बहुत कुछ — सोर्स स्टोर से इंस्टॉल के लिए तैयार पूर्व-निर्मित सोर्स।",
   "features.aiCreate.title": "AI से सोर्स बनाएं",
@@ -31,23 +31,25 @@ const hi: Record<TranslationKey, string> = {
   "features.aiReading.title": "AI पठन और सारांश",
   "features.aiReading.description": "Glanceway MCP सर्वर इंस्टॉल करें ताकि आपका AI असिस्टेंट सोर्स ब्राउज़ कर सके, आइटम पढ़ सके और सारांश बना सके।",
   "features.aiReading.link": "MCP सर्वर इंस्टॉल करें",
+  "features.aiReading.chatUser": "मेरा Hacker News फ़ीड सारांशित करो",
+  "features.aiReading.chatStatus": "Glanceway के ज़रिए 3 सोर्स पढ़ रहा है...",
+  "features.aiReading.chatResponse": "आज की शीर्ष कहानियां <b>ओपन-सोर्स AI टूल्स</b> और <b>Rust अपनाने</b> पर केंद्रित हैं। एक नए कोड एडिटर के बारे में Show HN पोस्ट 342 अंकों के साथ #1 पर पहुंचा।",
   "features.rss.title": "RSS समर्थन",
   "features.rss.description": "नेटिव RSS/Atom समर्थन। कोई भी फ़ीड URL पेस्ट करें या RSSHub से हज़ारों फ़ीड्स एक्सेस करें।",
   "features.rss.linkRsshub": "RSSHub खोजें",
 
   // CTA
-  "cta.title": "Ready to stay in the loop?",
-  "cta.description": "Download Glanceway and turn your menu bar into a personal information hub.",
+  "cta.title": "अपडेट रहने के लिए तैयार हैं?",
+  "cta.description": "Glanceway डाउनलोड करें और अपने मेन्यू बार को एक निजी सूचना केंद्र में बदलें।",
 
   // Sources section
   "sources.title": "सोर्स",
   "sources.subtitle": "समुदाय द्वारा बनाए गए सोर्स। एक क्लिक में इंस्टॉल करें।",
-  "sources.pageTitle": "Sources",
-  "sources.pageSubtitle": "Browse and install community-built sources for Glanceway.",
+  "sources.pageTitle": "सोर्स",
+  "sources.pageSubtitle": "Glanceway के लिए समुदाय द्वारा बनाए गए सोर्स ब्राउज़ करें और इंस्टॉल करें।",
   "sources.rssNote": "RSS फ़ीड URL सीधे इंपोर्ट करने का भी समर्थन करता है। हज़ारों रूट्स खोजें",
   "sources.submitSource": "सोर्स सबमिट करें",
-  "sources.buildSource": "Build a Source",
-  "sources.devDocs": "Dev Docs",
+  "sources.buildSource": "सोर्स बनाएं",
   "sources.emptyTitle": "इस श्रेणी में अभी कोई सोर्स नहीं है",
   "sources.emptySubtitle": "पहला सोर्स बनाने वाले बनें!",
 

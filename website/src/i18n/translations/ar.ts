@@ -10,13 +10,13 @@ const ar: Record<TranslationKey, string> = {
   "hero.browseSources": "تصفّح المصادر",
 
   // App Preview
-  "appPreview.title": "See it in action",
-  "appPreview.subtitle": "Everything you care about, one glance away from your menu bar.",
+  "appPreview.title": "شاهده قيد التشغيل",
+  "appPreview.subtitle": "كل ما يهمك، بنظرة واحدة من شريط القوائم.",
 
   // Features section
-  "features.title": "Your menu bar, infinite possibilities",
-  "features.subtitle": "More than an information aggregator — a programmable awareness layer for your Mac.",
-  "features.browseSources": "Browse Sources",
+  "features.title": "شريط القوائم الخاص بك، إمكانيات لا حدود لها",
+  "features.subtitle": "أكثر من مُجمّع معلومات — طبقة وعي قابلة للبرمجة لجهاز Mac الخاص بك.",
+  "features.browseSources": "تصفّح المصادر",
   "features.communitySources.title": "مصادر لكل شيء",
   "features.communitySources.description": "أخبار، مالية، أدوات المطورين والمزيد — مصادر جاهزة للتثبيت من متجر المصادر.",
   "features.aiCreate.title": "أنشئ مصادر بالذكاء الاصطناعي",
@@ -31,23 +31,25 @@ const ar: Record<TranslationKey, string> = {
   "features.aiReading.title": "القراءة والتلخيص بالذكاء الاصطناعي",
   "features.aiReading.description": "ثبّت خادم Glanceway MCP ليتمكن مساعد الذكاء الاصطناعي من تصفّح المصادر وقراءة العناصر وإنشاء الملخصات.",
   "features.aiReading.link": "تثبيت خادم MCP",
+  "features.aiReading.chatUser": "لخّص موجز Hacker News الخاص بي",
+  "features.aiReading.chatStatus": "جارٍ قراءة 3 مصادر عبر Glanceway...",
+  "features.aiReading.chatResponse": "تركّز أبرز مقالات اليوم على <b>أدوات الذكاء الاصطناعي مفتوحة المصدر</b> و<b>اعتماد Rust</b>. منشور Show HN عن محرر أكواد جديد وصل للمركز الأول بـ 342 نقطة.",
   "features.rss.title": "دعم RSS",
   "features.rss.description": "دعم أصلي لـ RSS/Atom. الصق أي رابط تغذية أو استخدم RSSHub للوصول إلى آلاف التغذيات.",
   "features.rss.linkRsshub": "استكشاف RSSHub",
 
   // CTA
-  "cta.title": "Ready to stay in the loop?",
-  "cta.description": "Download Glanceway and turn your menu bar into a personal information hub.",
+  "cta.title": "مستعد لتبقى على اطّلاع؟",
+  "cta.description": "حمّل Glanceway وحوّل شريط القوائم إلى مركز معلومات شخصي.",
 
   // Sources section
   "sources.title": "المصادر",
   "sources.subtitle": "مصادر بناها المجتمع. تثبيت بنقرة واحدة.",
-  "sources.pageTitle": "Sources",
-  "sources.pageSubtitle": "Browse and install community-built sources for Glanceway.",
+  "sources.pageTitle": "المصادر",
+  "sources.pageSubtitle": "تصفّح وثبّت مصادر بناها المجتمع لـ Glanceway.",
   "sources.rssNote": "يدعم أيضًا استيراد روابط RSS مباشرةً. استكشف آلاف المسارات على",
   "sources.submitSource": "أضف مصدرًا",
-  "sources.buildSource": "Build a Source",
-  "sources.devDocs": "Dev Docs",
+  "sources.buildSource": "إنشاء مصدر",
   "sources.emptyTitle": "لا توجد مصادر في هذا التصنيف بعد",
   "sources.emptySubtitle": "كن أول من يبني واحدًا!",
 

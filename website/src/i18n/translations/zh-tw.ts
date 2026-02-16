@@ -11,13 +11,13 @@ const zhTw: Record<TranslationKey, string> = {
   "hero.browseSources": "瀏覽資料來源",
 
   // App Preview
-  "appPreview.title": "See it in action",
-  "appPreview.subtitle": "Everything you care about, one glance away from your menu bar.",
+  "appPreview.title": "看看實際效果",
+  "appPreview.subtitle": "你關心的一切，選單列一瞥即達。",
 
   // Features section
-  "features.title": "Your menu bar, infinite possibilities",
-  "features.subtitle": "More than an information aggregator — a programmable awareness layer for your Mac.",
-  "features.browseSources": "Browse Sources",
+  "features.title": "你的選單列，無限可能",
+  "features.subtitle": "不只是資訊聚合器——為你的 Mac 打造的可程式化感知層。",
+  "features.browseSources": "瀏覽資料來源",
   "features.communitySources.title": "豐富的資料來源",
   "features.communitySources.description": "新聞、財經、開發者工具等——預置資料來源，從來源商店一鍵安裝。",
   "features.aiCreate.title": "用 AI 建立資料來源",
@@ -32,23 +32,25 @@ const zhTw: Record<TranslationKey, string> = {
   "features.aiReading.title": "AI 閱讀與摘要",
   "features.aiReading.description": "安裝 Glanceway MCP 伺服器，讓你的 AI 助手瀏覽資料來源、閱讀內容並產生摘要。",
   "features.aiReading.link": "安裝 MCP 伺服器",
+  "features.aiReading.chatUser": "摘要我的 Hacker News 動態",
+  "features.aiReading.chatStatus": "正透過 Glanceway 讀取 3 個來源...",
+  "features.aiReading.chatResponse": "今日熱門文章聚焦於<b>開源 AI 工具</b>和 <b>Rust 的採用</b>。一篇關於新程式碼編輯器的 Show HN 文章以 342 分登上第一名。",
   "features.rss.title": "支援 RSS",
   "features.rss.description": "原生 RSS/Atom 支援。貼上任意訂閱連結，或使用 RSSHub 取得數千種訂閱源。",
   "features.rss.linkRsshub": "探索 RSSHub",
 
   // CTA
-  "cta.title": "Ready to stay in the loop?",
-  "cta.description": "Download Glanceway and turn your menu bar into a personal information hub.",
+  "cta.title": "準備好保持同步了嗎？",
+  "cta.description": "下載 Glanceway，把你的選單列變成個人資訊中樞。",
 
   // Sources section
   "sources.title": "資料來源",
   "sources.subtitle": "社群建置的資料來源，一鍵安裝。",
-  "sources.pageTitle": "Sources",
-  "sources.pageSubtitle": "Browse and install community-built sources for Glanceway.",
+  "sources.pageTitle": "資料來源",
+  "sources.pageSubtitle": "瀏覽並安裝社群建置的 Glanceway 資料來源。",
   "sources.rssNote": "也支援直接匯入 RSS 訂閱連結。在以下平台探索數千種路由",
   "sources.submitSource": "提交資料來源",
-  "sources.buildSource": "Build a Source",
-  "sources.devDocs": "Dev Docs",
+  "sources.buildSource": "開發資料來源",
   "sources.emptyTitle": "此分類尚無資料來源",
   "sources.emptySubtitle": "成為第一個建置者吧！",
 

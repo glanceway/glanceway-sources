@@ -10,13 +10,13 @@ const pt: Record<TranslationKey, string> = {
   "hero.browseSources": "Explorar Fontes",
 
   // App Preview
-  "appPreview.title": "See it in action",
-  "appPreview.subtitle": "Everything you care about, one glance away from your menu bar.",
+  "appPreview.title": "Veja em ação",
+  "appPreview.subtitle": "Tudo o que importa para você, a um olhar da barra de menus.",
 
   // Features section
-  "features.title": "Your menu bar, infinite possibilities",
-  "features.subtitle": "More than an information aggregator — a programmable awareness layer for your Mac.",
-  "features.browseSources": "Browse Sources",
+  "features.title": "Sua barra de menus, possibilidades infinitas",
+  "features.subtitle": "Mais que um agregador de informações — uma camada de percepção programável para o seu Mac.",
+  "features.browseSources": "Explorar Fontes",
   "features.communitySources.title": "Fontes para tudo",
   "features.communitySources.description": "Notícias, finanças, ferramentas de desenvolvimento e mais — fontes pré-construídas prontas para instalar a partir do Source Store.",
   "features.aiCreate.title": "Crie fontes com IA",
@@ -31,23 +31,25 @@ const pt: Record<TranslationKey, string> = {
   "features.aiReading.title": "Leitura e resumo com IA",
   "features.aiReading.description": "Instale o servidor MCP do Glanceway para que seu assistente de IA explore fontes, leia itens e gere resumos.",
   "features.aiReading.link": "Instalar servidor MCP",
+  "features.aiReading.chatUser": "Resuma meu feed do Hacker News",
+  "features.aiReading.chatStatus": "Lendo 3 fontes via Glanceway...",
+  "features.aiReading.chatResponse": "Os destaques de hoje focam em <b>ferramentas de IA open-source</b> e na <b>adoção de Rust</b>. Um post Show HN sobre um novo editor de código alcançou o #1 com 342 pontos.",
   "features.rss.title": "Suporte RSS",
   "features.rss.description": "Suporte nativo a RSS/Atom. Cole qualquer URL de feed ou use o RSSHub para acessar milhares de feeds.",
   "features.rss.linkRsshub": "Explorar RSSHub",
 
   // CTA
-  "cta.title": "Ready to stay in the loop?",
-  "cta.description": "Download Glanceway and turn your menu bar into a personal information hub.",
+  "cta.title": "Pronto para ficar sempre atualizado?",
+  "cta.description": "Baixe o Glanceway e transforme sua barra de menus em um hub de informações pessoal.",
 
   // Sources section
   "sources.title": "Fontes",
   "sources.subtitle": "Fontes criadas pela comunidade. Um clique para instalar.",
-  "sources.pageTitle": "Sources",
-  "sources.pageSubtitle": "Browse and install community-built sources for Glanceway.",
+  "sources.pageTitle": "Fontes",
+  "sources.pageSubtitle": "Explore e instale fontes criadas pela comunidade para o Glanceway.",
   "sources.rssNote": "Também suporta a importação direta de URLs de feeds RSS. Explore milhares de rotas em",
   "sources.submitSource": "Enviar uma Fonte",
-  "sources.buildSource": "Build a Source",
-  "sources.devDocs": "Dev Docs",
+  "sources.buildSource": "Criar uma Fonte",
   "sources.emptyTitle": "Nenhuma fonte nesta categoria ainda",
   "sources.emptySubtitle": "Seja o primeiro a criar uma!",
 

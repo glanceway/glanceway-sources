@@ -10,13 +10,13 @@ const ru: Record<TranslationKey, string> = {
   "hero.browseSources": "Обзор источников",
 
   // App Preview
-  "appPreview.title": "See it in action",
-  "appPreview.subtitle": "Everything you care about, one glance away from your menu bar.",
+  "appPreview.title": "Посмотрите в действии",
+  "appPreview.subtitle": "Всё, что вас интересует — на расстоянии одного взгляда в строке меню.",
 
   // Features section
-  "features.title": "Your menu bar, infinite possibilities",
-  "features.subtitle": "More than an information aggregator — a programmable awareness layer for your Mac.",
-  "features.browseSources": "Browse Sources",
+  "features.title": "Ваша строка меню — безграничные возможности",
+  "features.subtitle": "Больше, чем агрегатор информации — программируемый слой восприятия для вашего Mac.",
+  "features.browseSources": "Обзор источников",
   "features.communitySources.title": "Источники для всего",
   "features.communitySources.description": "Новости, финансы, инструменты разработчика и многое другое — готовые источники для установки из Source Store.",
   "features.aiCreate.title": "Создавайте источники с ИИ",
@@ -31,23 +31,25 @@ const ru: Record<TranslationKey, string> = {
   "features.aiReading.title": "ИИ-чтение и сводки",
   "features.aiReading.description": "Установите MCP-сервер Glanceway, чтобы ваш ИИ-ассистент мог просматривать источники, читать элементы и создавать сводки.",
   "features.aiReading.link": "Установить MCP-сервер",
+  "features.aiReading.chatUser": "Обобщи мою ленту Hacker News",
+  "features.aiReading.chatStatus": "Чтение 3 источников через Glanceway...",
+  "features.aiReading.chatResponse": "Главные темы сегодня — <b>инструменты ИИ с открытым кодом</b> и <b>распространение Rust</b>. Пост Show HN о новом редакторе кода занял 1-е место с 342 баллами.",
   "features.rss.title": "Поддержка RSS",
   "features.rss.description": "Нативная поддержка RSS/Atom. Вставьте URL фида или используйте RSSHub для доступа к тысячам фидов.",
   "features.rss.linkRsshub": "Исследовать RSSHub",
 
   // CTA
-  "cta.title": "Ready to stay in the loop?",
-  "cta.description": "Download Glanceway and turn your menu bar into a personal information hub.",
+  "cta.title": "Готовы быть в курсе событий?",
+  "cta.description": "Скачайте Glanceway и превратите строку меню в персональный информационный хаб.",
 
   // Sources section
   "sources.title": "Источники",
   "sources.subtitle": "Источники от сообщества. Установка в один клик.",
-  "sources.pageTitle": "Sources",
-  "sources.pageSubtitle": "Browse and install community-built sources for Glanceway.",
+  "sources.pageTitle": "Источники",
+  "sources.pageSubtitle": "Просматривайте и устанавливайте источники от сообщества для Glanceway.",
   "sources.rssNote": "Также поддерживает прямой импорт URL-адресов RSS-лент. Исследуйте тысячи маршрутов на",
   "sources.submitSource": "Предложить источник",
-  "sources.buildSource": "Build a Source",
-  "sources.devDocs": "Dev Docs",
+  "sources.buildSource": "Создать источник",
   "sources.emptyTitle": "В этой категории пока нет источников",
   "sources.emptySubtitle": "Станьте первым, кто создаст!",
 

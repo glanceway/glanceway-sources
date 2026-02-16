@@ -10,13 +10,13 @@ const ko: Record<TranslationKey, string> = {
   "hero.browseSources": "소스 둘러보기",
 
   // App Preview
-  "appPreview.title": "See it in action",
-  "appPreview.subtitle": "Everything you care about, one glance away from your menu bar.",
+  "appPreview.title": "직접 확인해 보세요",
+  "appPreview.subtitle": "관심 있는 모든 것을 메뉴 바에서 한눈에.",
 
   // Features section
-  "features.title": "Your menu bar, infinite possibilities",
-  "features.subtitle": "More than an information aggregator — a programmable awareness layer for your Mac.",
-  "features.browseSources": "Browse Sources",
+  "features.title": "메뉴 바에 무한한 가능성을",
+  "features.subtitle": "단순한 정보 수집기가 아닌, Mac을 위한 프로그래밍 가능한 인식 레이어.",
+  "features.browseSources": "소스 둘러보기",
   "features.communitySources.title": "모든 것을 위한 소스",
   "features.communitySources.description": "뉴스, 금융, 개발자 도구 등 — 소스 스토어에서 바로 설치할 수 있는 사전 구축 소스가 준비되어 있습니다.",
   "features.aiCreate.title": "AI로 소스 만들기",
@@ -31,23 +31,25 @@ const ko: Record<TranslationKey, string> = {
   "features.aiReading.title": "AI 읽기 및 요약",
   "features.aiReading.description": "Glanceway MCP 서버를 설치하여 AI 어시스턴트로 소스를 탐색하고, 항목을 읽고, 요약을 생성하세요.",
   "features.aiReading.link": "MCP 서버 설치",
+  "features.aiReading.chatUser": "내 Hacker News 피드를 요약해줘",
+  "features.aiReading.chatStatus": "Glanceway를 통해 3개의 소스를 읽는 중...",
+  "features.aiReading.chatResponse": "오늘의 인기 기사는 <b>오픈소스 AI 도구</b>와 <b>Rust 도입</b>에 집중되어 있습니다. 새로운 코드 에디터에 대한 Show HN 게시물이 342 포인트로 1위에 올랐습니다.",
   "features.rss.title": "RSS 지원",
   "features.rss.description": "네이티브 RSS/Atom 지원. 피드 URL을 붙여넣거나 RSSHub를 사용해 수천 개의 피드에 접근하세요.",
   "features.rss.linkRsshub": "RSSHub 탐색",
 
   // CTA
-  "cta.title": "Ready to stay in the loop?",
-  "cta.description": "Download Glanceway and turn your menu bar into a personal information hub.",
+  "cta.title": "최신 정보를 놓치고 싶지 않으신가요?",
+  "cta.description": "Glanceway를 다운로드하고 메뉴 바를 개인 정보 허브로 만드세요.",
 
   // Sources section
   "sources.title": "소스",
   "sources.subtitle": "커뮤니티가 만든 소스를 클릭 한 번으로 설치하세요.",
-  "sources.pageTitle": "Sources",
-  "sources.pageSubtitle": "Browse and install community-built sources for Glanceway.",
+  "sources.pageTitle": "소스",
+  "sources.pageSubtitle": "커뮤니티가 만든 Glanceway 소스를 탐색하고 설치하세요.",
   "sources.rssNote": "RSS 피드 URL을 직접 가져올 수도 있습니다. 다양한 라우트를 확인해 보세요:",
   "sources.submitSource": "소스 제출하기",
-  "sources.buildSource": "Build a Source",
-  "sources.devDocs": "Dev Docs",
+  "sources.buildSource": "소스 만들기",
   "sources.emptyTitle": "이 카테고리에는 아직 소스가 없습니다",
   "sources.emptySubtitle": "첫 번째로 만들어 보세요!",
 
