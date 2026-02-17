@@ -74,7 +74,7 @@ Define user-configurable values:
 config:
   - key: API_TOKEN
     name: API Token
-    type: secret         # string, number, boolean, secret, select, or list
+    type: secret         # string, number, boolean, secret, select, list, or multiselect
     description: Your personal API token
     required: true
 
@@ -94,9 +94,32 @@ config:
       - hot
       - new
       - top
+
+  - key: CURRENCY
+    name: Currency
+    type: select
+    description: Display currency
+    required: false
+    default: usd
+    options:             # options support label/value objects
+      - label: US Dollar
+        value: usd
+      - label: Euro
+        value: eur
+
+  - key: CATEGORIES
+    name: Categories
+    type: multiselect    # like select but allows multiple; stored as JSON array
+    description: Categories to show
+    required: false
+    options:
+      - label: Technology
+        value: tech
+      - label: Science
+        value: science
 ```
 
-When a config field has a fixed set of possible values, use `type: select` with an `options` array instead of `type: string`.
+When a config field has a fixed set of possible values, use `type: select` with an `options` array instead of `type: string`. Options can be plain strings or label/value objects. Use `type: multiselect` when users should be able to pick multiple options.
 
 Reference in source using `${KEY}`:
 

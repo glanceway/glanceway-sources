@@ -112,6 +112,25 @@ config:
     type: secret
     required: true
     description: Your API token
+  - key: CURRENCY
+    name: Currency
+    type: select
+    required: false
+    default: usd
+    options:
+      - label: US Dollar
+        value: usd
+      - label: Euro
+        value: eur
+  - key: CATEGORIES
+    name: Categories
+    type: multiselect
+    required: false
+    options:
+      - label: Technology
+        value: tech
+      - label: Science
+        value: science
 ```
 
 ### 2. Create index.js
@@ -169,14 +188,30 @@ Tell the user: Open Glanceway > Sources > Import from File > select `my-source.g
 
 ## Config Field Types
 
-| Type     | Description                         | Value type  |
-|----------|-------------------------------------|-------------|
-| `string` | Free-form text input                | `string`    |
-| `number` | Numeric input                       | `string`    |
-| `boolean`| Toggle switch                       | `string`    |
-| `secret` | Stored in macOS Keychain            | `string`    |
-| `select` | Dropdown (requires `options` list)  | `string`    |
-| `list`   | Multiple string values              | `string[]`  |
+| Type          | Description                                          | Value type  |
+|---------------|------------------------------------------------------|-------------|
+| `string`      | Free-form text input                                 | `string`    |
+| `number`      | Numeric input                                        | `number`    |
+| `boolean`     | Toggle switch                                        | `boolean`   |
+| `secret`      | Stored in macOS Keychain                             | `string`    |
+| `select`      | Dropdown (requires `options` list)                   | `string`    |
+| `list`        | Multiple string values                               | `string[]`  |
+| `multiselect` | Multiple choice from options (like select but multi) | `string[]`  |
+
+`select` and `multiselect` options can be plain strings or label/value objects:
+
+```yaml
+options:              # plain strings (label = value)
+  - hot
+  - new
+  - top
+
+options:              # label/value objects (label shown in UI, value stored)
+  - label: US Dollar
+    value: usd
+  - label: Euro
+    value: eur
+```
 
 ## Categories
 

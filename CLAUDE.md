@@ -55,7 +55,7 @@ tags:
 # config:
 #   - key: API_TOKEN
 #     name: API Token
-#     type: secret             # string, number, boolean, secret, select, or list
+#     type: secret             # string, number, boolean, secret, select, list, or multiselect
 #     required: true
 #     description: Your API token
 
@@ -119,7 +119,7 @@ Add `config` entries for any values the user needs to provide (API tokens, usern
 config:
   - key: API_TOKEN
     name: API Token
-    type: secret # string, number, boolean, secret, select, or list
+    type: secret # string, number, boolean, secret, select, list, or multiselect
     required: true
     description: Your API token
   - key: USERNAME
@@ -137,6 +137,29 @@ config:
       - hot
       - new
       - top
+  - key: CURRENCY
+    name: Currency
+    type: select
+    required: false
+    default: usd
+    description: Display currency
+    options:                              # options support label/value objects
+      - label: US Dollar
+        value: usd
+      - label: Euro
+        value: eur
+  - key: CATEGORIES
+    name: Categories
+    type: multiselect                     # like select but allows multiple; stored as JSON array
+    required: false
+    description: Categories to show
+    options:
+      - label: Technology
+        value: tech
+      - label: Science
+        value: science
+      - label: Finance
+        value: finance
 ```
 
 ### Step 4: Build and Verify
@@ -204,7 +227,7 @@ if (response.ok && response.json) {
 
 ### api.config.get(key)
 
-Get a user-configured value by key (defined in `manifest.yaml` config section). Returns `string` for most types, `string[]` for `list` type.
+Get a user-configured value by key (defined in `manifest.yaml` config section). Returns the value with a type matching the config field type: `string` for `string`/`secret`/`select`, `number` for `number`, `boolean` for `boolean`, `string[]` for `list`/`multiselect`.
 
 ### api.config.getAll()
 
@@ -249,7 +272,7 @@ min_app_version: 1.2.0 # Optional: minimum Glanceway app version required
 config: # Optional: user-configurable values
   - key: API_TOKEN
     name: API Token
-    type: secret # string, number, boolean, secret, select, or list
+    type: secret # string, number, boolean, secret, select, list, or multiselect
     required: true
     description: Description shown to user
   - key: TAGS
@@ -262,10 +285,29 @@ config: # Optional: user-configurable values
     type: select # select requires options list
     required: false
     default: hot
-    options:
+    options:              # plain strings (label = value)
       - hot
       - new
       - top
+  - key: CURRENCY
+    name: Currency
+    type: select
+    required: false
+    default: usd
+    options:              # label/value objects (label shown in UI, value stored)
+      - label: US Dollar
+        value: usd
+      - label: Euro
+        value: eur
+  - key: CATEGORIES
+    name: Categories
+    type: multiselect     # like select but allows picking multiple options; stored as JSON array
+    required: false
+    options:
+      - label: Technology
+        value: tech
+      - label: Science
+        value: science
 ```
 
 ## Source Lifecycle

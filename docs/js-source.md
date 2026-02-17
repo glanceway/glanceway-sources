@@ -34,7 +34,7 @@ min_app_version: 1.2.0 # Optional: minimum Glanceway app version required
 config: # Optional: user-configurable values
   - key: API_TOKEN
     name: API Token
-    type: secret # string, number, boolean, secret, select, or list
+    type: secret # string, number, boolean, secret, select, list, or multiselect
     required: true
     description: Your API token
   - key: TAGS
@@ -51,6 +51,25 @@ config: # Optional: user-configurable values
       - hot
       - new
       - top
+  - key: CURRENCY
+    name: Currency
+    type: select
+    required: false
+    default: usd
+    options:              # options support label/value objects
+      - label: US Dollar
+        value: usd
+      - label: Euro
+        value: eur
+  - key: CATEGORIES
+    name: Categories
+    type: multiselect     # like select but allows picking multiple options; stored as JSON array
+    required: false
+    options:
+      - label: Technology
+        value: tech
+      - label: Science
+        value: science
 ```
 
 Config values defined here can be read in your source via `api.config.get("KEY")`.
