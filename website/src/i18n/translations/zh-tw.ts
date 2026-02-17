@@ -32,7 +32,7 @@ const zhTw: Record<TranslationKey, string> = {
   "features.aiReading.title": "AI 閱讀與摘要",
   "features.aiReading.description": "安裝 Glanceway MCP 伺服器，讓你的 AI 助手瀏覽資料來源、閱讀內容並產生摘要。",
   "features.aiReading.link": "安裝 MCP 伺服器",
-  "features.aiReading.chatUser": "Summarize the unread Hacker News in Glanceway.",
+  "features.aiReading.chatUser": "Summarize unread Hacker News items in Glanceway.",
   "features.aiReading.chatStatus": "Used Glanceway integration, used a tool",
   "features.aiReading.chatResponse": "Here's a summary of your unread Hacker News feed, grouped by theme:<br/><br/><b>Top Stories (by points)</b><br/>The biggest discussion today is a Mastodon post asking whether to walk or drive 50 meters to a car wash — a humorous AI overthinking scenario that racked up 968 points and 621 comments...",
   "features.rss.title": "支援 RSS",

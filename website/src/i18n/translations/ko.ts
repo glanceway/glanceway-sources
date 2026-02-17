@@ -31,7 +31,7 @@ const ko: Record<TranslationKey, string> = {
   "features.aiReading.title": "AI 읽기 및 요약",
   "features.aiReading.description": "Glanceway MCP 서버를 설치하여 AI 어시스턴트로 소스를 탐색하고, 항목을 읽고, 요약을 생성하세요.",
   "features.aiReading.link": "MCP 서버 설치",
-  "features.aiReading.chatUser": "Summarize the unread Hacker News in Glanceway.",
+  "features.aiReading.chatUser": "Summarize unread Hacker News items in Glanceway.",
   "features.aiReading.chatStatus": "Used Glanceway integration, used a tool",
   "features.aiReading.chatResponse": "Here's a summary of your unread Hacker News feed, grouped by theme:<br/><br/><b>Top Stories (by points)</b><br/>The biggest discussion today is a Mastodon post asking whether to walk or drive 50 meters to a car wash — a humorous AI overthinking scenario that racked up 968 points and 621 comments...",
   "features.rss.title": "RSS 지원",

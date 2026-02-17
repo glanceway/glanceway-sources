@@ -31,7 +31,7 @@ const fr: Record<TranslationKey, string> = {
   "features.aiReading.title": "Lecture et résumé par IA",
   "features.aiReading.description": "Installez le serveur MCP Glanceway pour permettre à votre assistant IA de parcourir les sources, lire les éléments et générer des résumés.",
   "features.aiReading.link": "Installer le serveur MCP",
-  "features.aiReading.chatUser": "Summarize the unread Hacker News in Glanceway.",
+  "features.aiReading.chatUser": "Summarize unread Hacker News items in Glanceway.",
   "features.aiReading.chatStatus": "Used Glanceway integration, used a tool",
   "features.aiReading.chatResponse": "Here's a summary of your unread Hacker News feed, grouped by theme:<br/><br/><b>Top Stories (by points)</b><br/>The biggest discussion today is a Mastodon post asking whether to walk or drive 50 meters to a car wash — a humorous AI overthinking scenario that racked up 968 points and 621 comments...",
   "features.rss.title": "Support RSS",
