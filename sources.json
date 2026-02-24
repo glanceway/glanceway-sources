@@ -3,27 +3,6 @@
   "updated_at": "2026-02-16T14:34:41.955Z",
   "sources": [
     {
-      "id": "codytseng/ai-prompt",
-      "name": "AI Prompt",
-      "description": "Send a prompt to an AI model and display the response",
-      "author": "codytseng",
-      "author_url": "https://github.com/codytseng",
-      "category": "Productivity",
-      "tags": [
-        "ai",
-        "llm"
-      ],
-      "type": "js",
-      "latest_version": "1.0.0",
-      "source_url": "https://github.com/glanceway/glanceway-sources/tree/master/sources/codytseng/ai-prompt",
-      "versions": [
-        {
-          "version": "1.0.0",
-          "download_url": "https://github.com/glanceway/glanceway-sources/raw/refs/heads/master/dist/codytseng/ai-prompt/1.0.0.gwsrc"
-        }
-      ]
-    },
-    {
       "id": "codytseng/coingecko-crypto",
       "name": "CoinGecko Crypto Markets",
       "description": "Top cryptocurrencies by market cap from CoinGecko",
@@ -86,51 +65,6 @@
         {
           "version": "1.0.0",
           "download_url": "https://github.com/glanceway/glanceway-sources/raw/refs/heads/master/dist/codytseng/earthquake-usgs/1.0.0.gwsrc"
-        }
-      ]
-    },
-    {
-      "id": "codytseng/finnhub-news",
-      "name": "Finnhub Market News",
-      "description": "Financial news aggregated from major sources like Yahoo, Reuters, and CNBC via Finnhub",
-      "author": "codytseng",
-      "author_url": "https://github.com/codytseng",
-      "category": "Finance",
-      "tags": [
-        "finance",
-        "news",
-        "market",
-        "stocks"
-      ],
-      "type": "yaml",
-      "latest_version": "1.0.0",
-      "source_url": "https://github.com/glanceway/glanceway-sources/tree/master/sources/codytseng/finnhub-news.yaml",
-      "versions": [
-        {
-          "version": "1.0.0",
-          "download_url": "https://github.com/glanceway/glanceway-sources/raw/refs/heads/master/dist/codytseng/finnhub-news/1.0.0.gwsrc"
-        }
-      ]
-    },
-    {
-      "id": "codytseng/github-notifications",
-      "name": "GitHub Notifications",
-      "description": "Get GitHub notifications in your menu bar.\nSupports filtering by repository.\n",
-      "author": "codytseng",
-      "author_url": "https://github.com/codytseng",
-      "category": "Developer",
-      "tags": [
-        "github",
-        "notifications",
-        "developer"
-      ],
-      "type": "js",
-      "latest_version": "1.0.0",
-      "source_url": "https://github.com/glanceway/glanceway-sources/tree/master/sources/codytseng/github-notifications",
-      "versions": [
-        {
-          "version": "1.0.0",
-          "download_url": "https://github.com/glanceway/glanceway-sources/raw/refs/heads/master/dist/codytseng/github-notifications/1.0.0.gwsrc"
         }
       ]
     },
@@ -222,70 +156,6 @@
       ]
     },
     {
-      "id": "codytseng/product-hunt",
-      "name": "Product Hunt",
-      "description": "Today's top products from Product Hunt",
-      "author": "codytseng",
-      "author_url": "https://github.com/codytseng",
-      "category": "News",
-      "tags": [
-        "producthunt",
-        "products",
-        "startups"
-      ],
-      "type": "js",
-      "latest_version": "1.0.0",
-      "source_url": "https://github.com/glanceway/glanceway-sources/tree/master/sources/codytseng/product-hunt",
-      "versions": [
-        {
-          "version": "1.0.0",
-          "download_url": "https://github.com/glanceway/glanceway-sources/raw/refs/heads/master/dist/codytseng/product-hunt/1.0.0.gwsrc"
-        }
-      ]
-    },
-    {
-      "id": "codytseng/reddit",
-      "name": "Reddit",
-      "description": "Hot posts from a subreddit",
-      "author": "codytseng",
-      "author_url": "https://github.com/codytseng",
-      "category": "Social",
-      "tags": [
-        "reddit",
-        "social"
-      ],
-      "type": "js",
-      "latest_version": "1.0.0",
-      "source_url": "https://github.com/glanceway/glanceway-sources/tree/master/sources/codytseng/reddit",
-      "versions": [
-        {
-          "version": "1.0.0",
-          "download_url": "https://github.com/glanceway/glanceway-sources/raw/refs/heads/master/dist/codytseng/reddit/1.0.0.gwsrc"
-        }
-      ]
-    },
-    {
-      "id": "codytseng/service-health-check",
-      "name": "Service Health Check",
-      "description": "Monitor service endpoints and get notified when they go down",
-      "author": "codytseng",
-      "author_url": "https://github.com/codytseng",
-      "category": "Developer",
-      "tags": [
-        "monitoring",
-        "health-check"
-      ],
-      "type": "js",
-      "latest_version": "1.0.0",
-      "source_url": "https://github.com/glanceway/glanceway-sources/tree/master/sources/codytseng/service-health-check",
-      "versions": [
-        {
-          "version": "1.0.0",
-          "download_url": "https://github.com/glanceway/glanceway-sources/raw/refs/heads/master/dist/codytseng/service-health-check/1.0.0.gwsrc"
-        }
-      ]
-    },
-    {
       "id": "codytseng/spaceflight-news",
       "name": "Spaceflight News",
       "description": "Latest space and spaceflight news articles from SNAPI",
@@ -326,51 +196,6 @@
         {
           "version": "1.0.0",
           "download_url": "https://github.com/glanceway/glanceway-sources/raw/refs/heads/master/dist/codytseng/stackoverflow-hot/1.0.0.gwsrc"
-        }
-      ]
-    },
-    {
-      "id": "codytseng/stock-price",
-      "name": "Stock Price Monitor",
-      "description": "Monitor global stock prices in your menu bar.\nDisplays real-time price, change amount, and change percentage.\nPowered by Finnhub (free API key required).\n",
-      "author": "codytseng",
-      "author_url": "https://github.com/codytseng",
-      "category": "Finance",
-      "tags": [
-        "stock",
-        "finance",
-        "market"
-      ],
-      "type": "js",
-      "latest_version": "1.0.0",
-      "source_url": "https://github.com/glanceway/glanceway-sources/tree/master/sources/codytseng/stock-price",
-      "versions": [
-        {
-          "version": "1.0.0",
-          "download_url": "https://github.com/glanceway/glanceway-sources/raw/refs/heads/master/dist/codytseng/stock-price/1.0.0.gwsrc"
-        }
-      ]
-    },
-    {
-      "id": "codytseng/tmdb-trending",
-      "name": "TMDb Trending",
-      "description": "Trending movies and TV shows from The Movie Database",
-      "author": "codytseng",
-      "author_url": "https://github.com/codytseng",
-      "category": "Entertainment",
-      "tags": [
-        "movies",
-        "tv",
-        "trending",
-        "entertainment"
-      ],
-      "type": "js",
-      "latest_version": "1.0.0",
-      "source_url": "https://github.com/glanceway/glanceway-sources/tree/master/sources/codytseng/tmdb-trending",
-      "versions": [
-        {
-          "version": "1.0.0",
-          "download_url": "https://github.com/glanceway/glanceway-sources/raw/refs/heads/master/dist/codytseng/tmdb-trending/1.0.0.gwsrc"
         }
       ]
     },
