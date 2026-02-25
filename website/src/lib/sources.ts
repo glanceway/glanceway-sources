@@ -15,7 +15,7 @@ export interface SourceEntry {
   author_url?: string;
   category: string;
   tags?: string[];
-  type: "js" | "yaml";
+  type: "js";
   latest_version: string;
   source_url: string;
   versions: { version: string; download_url: string }[];
@@ -62,18 +62,7 @@ export function getSourceDetail(id: string): SourceDetail | undefined {
 
   const [author, name] = id.split("/");
 
-  if (source.type === "yaml") {
-    const yamlPath = path.join(SOURCES_DIR, author, `${name}.yaml`);
-    const content = fs.readFileSync(yamlPath, "utf-8");
-    const parsed = YAML.parse(content);
-    return {
-      ...source,
-      config: parsed.config ?? [],
-      files: [{ filename: `${name}.yaml`, code: content, lang: "yaml" }],
-    };
-  }
-
-  // JS source — read all files in directory
+  // Read all files in source directory
   const sourceDir = path.join(SOURCES_DIR, author, name);
   const entries = fs.readdirSync(sourceDir).sort();
 

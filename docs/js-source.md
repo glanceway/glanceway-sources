@@ -2,19 +2,9 @@
 
 JavaScript sources provide full control over data fetching and processing.
 
-## Create Sources with AI
-
-Add [`glanceway-source.md`](../glanceway-source.md) as a skill in Claude Desktop or Claude Code, then ask it to create a source for any API or service. It knows the full Glanceway source spec and will generate a ready-to-import `.gwsrc` file.
-
 ## Getting Started
 
 Create a directory with a `manifest.yaml` and an `index.js` file.
-
-If you want to develop in TypeScript, or have an AI agent build the source for you, use [`create-glanceway-source`](https://github.com/glanceway/create-glanceway-source) to scaffold a project with build tooling, type definitions, and a CLAUDE.md for AI agents:
-
-```bash
-npm create glanceway-source
-```
 
 ## manifest.yaml
 
