@@ -1,0 +1,11 @@
+version: 1.0.0
+name: 财联社电报
+description: 财联社电报快讯
+author: codytseng
+author_url: https://github.com/codytseng
+category: Finance
+tags:
+  - finance
+  - news
+  - chinese
+  - market

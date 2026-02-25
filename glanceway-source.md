@@ -1,6 +1,6 @@
 ---
 name: glanceway-source
-description: Help users create new Glanceway source plugins (YAML or JavaScript)
+description: Help users create new Glanceway source plugins (JavaScript)
 ---
 
 # Glanceway Source Development
@@ -10,26 +10,9 @@ Help users create new source plugins for the Glanceway macOS menu bar app. The e
 ## Workflow
 
 1. Ask the user what data they want to display (which API/service)
-2. Decide YAML vs JavaScript based on requirements
-3. Create the source files
-4. Package into a `.gwsrc` file
-5. Tell the user to import via Glanceway > Sources > Import from File
-
-## Decision Guide: YAML vs JavaScript
-
-**Use a YAML source** when:
-- Data comes from a single JSON API endpoint
-- You only need simple field mapping from the response
-- No complex data transformation, pagination, or conditional logic is required
-
-**Use a JavaScript source** when:
-- You need multiple API calls or conditional logic
-- You need complex data transformations (e.g., URL rewriting, combining fields)
-- You need WebSocket connections for real-time data
-- You need pagination or OAuth flows
-- You need persistent storage between refreshes
-
-When in doubt, start with YAML.
+2. Create the source files (`manifest.yaml` + `index.js`)
+3. Package into a `.gwsrc` file
+4. Tell the user to import via Glanceway > Sources > Import from File
 
 ## Item Schema
 
@@ -44,55 +27,6 @@ Every source emits items with these fields:
 | `timestamp` | Date / string / number | No       | ISO 8601, Unix timestamp, or Date object |
 
 Always map a descriptive field to `subtitle` for maximum information at a glance.
-
-## Creating & Packaging a YAML Source
-
-A YAML source is a single `.yaml` file. To package it as `.gwsrc`, simply copy it with the new extension.
-
-### 1. Create the YAML file
-
-```yaml
-version: 1.0.0
-name: Display Name
-description: Brief description
-author: authorname
-category: Developer  # Developer | News | Social | Finance | Entertainment | Productivity | Other
-
-# Optional: user-configurable fields
-# config:
-#   - key: API_TOKEN
-#     name: API Token
-#     type: secret
-#     required: true
-#     description: Your API token
-
-source:
-  url: https://api.example.com/data
-  method: GET
-  # headers:
-  #   Authorization: Bearer ${API_TOKEN}
-
-parse:
-  root: $.data
-  mapping:
-    id: $.id
-    title: $.title
-    subtitle: $.description
-    url: $.link
-    timestamp: $.created_at
-```
-
-### 2. Package as .gwsrc
-
-```bash
-cp my-source.yaml my-source.gwsrc
-```
-
-That's it. For YAML sources, the `.gwsrc` file is just the YAML file with a different extension.
-
-### 3. Import
-
-Tell the user: Open Glanceway > Sources > Import from File > select `my-source.gwsrc`.
 
 ## Creating & Packaging a JavaScript Source
 
@@ -216,108 +150,6 @@ options:              # label/value objects (label shown in UI, value stored)
 ## Categories
 
 Use one of: `Developer`, `News`, `Social`, `Finance`, `Entertainment`, `Productivity`, `Other`.
-
-# YAML Source Reference
-
-## Source Configuration
-
-### URL and Method
-
-```yaml
-source:
-  url: https://api.example.com/data
-  method: GET  # GET, POST, PUT, DELETE (default: GET)
-```
-
-### Headers
-
-```yaml
-source:
-  url: https://api.example.com/data
-  headers:
-    Authorization: Bearer ${API_TOKEN}
-    Accept: application/json
-```
-
-### Body (POST/PUT)
-
-```yaml
-source:
-  url: https://api.example.com/data
-  method: POST
-  headers:
-    Content-Type: application/json
-  body: |
-    {
-      "query": "search term",
-      "limit": 20
-    }
-```
-
-## Parse Section
-
-Use dot-notation paths to extract data from JSON responses. Only simple property access is supported — no array operators, no wildcards, no recursive descent.
-
-### Path Syntax
-
-| Expression   | Description                                          |
-|--------------|------------------------------------------------------|
-| `$`          | Entire response (use when response is a top-level array) |
-| `$.property` | Child property of root object                        |
-| `$.a.b.c`   | Nested property access via dot notation              |
-
-### Base URL
-
-```yaml
-parse:
-  root: $.items
-  mapping:
-    id: $.id
-    title: $.title
-    url: $.path
-  baseUrl: https://example.com  # prepends to relative url paths
-```
-
-### Filters
-
-```yaml
-parse:
-  root: $.data
-  mapping:
-    id: $.id
-    title: $.title
-  filter:
-    - field: $.type
-      equals: "article"
-    - field: $.status
-      notEquals: "draft"
-```
-
-## Complete YAML Example
-
-```yaml
-version: 1.0.0
-name: Dev.to
-description: Top articles from Dev.to
-author: example
-category: Developer
-tags:
-  - dev
-  - articles
-
-source:
-  url: https://dev.to/api/articles?per_page=500&top=7
-  method: GET
-
-parse:
-  root: $
-  mapping:
-    id: $.id
-    title: $.title
-    subtitle: $.description
-    url: $.url
-    timestamp: $.published_at
-```
 
 # JavaScript Source Reference
 

@@ -13,7 +13,6 @@ interface SourceInfo {
   manifestPath: string;
   indexPath: string;
   version: string;
-  type: "js" | "yaml";
 }
 
 function parseArgs(): { source?: string } {
@@ -56,37 +55,17 @@ function scanSources(filterSource?: string): SourceInfo[] {
 
         const files = fs.readdirSync(versionPath);
         const jsFile = files.find((f) => f.endsWith(".js"));
-        const yamlFile = files.find(
-          (f) => f.endsWith(".yaml") || f.endsWith(".yml"),
-        );
+        const manifestPath = path.join(versionPath, "manifest.yaml");
 
-        if (jsFile) {
-          // JS source
-          const manifestPath = path.join(versionPath, "manifest.yaml");
+        if (jsFile && fs.existsSync(manifestPath)) {
           const indexPath = path.join(versionPath, jsFile);
-
-          if (fs.existsSync(manifestPath)) {
-            sources.push({
-              author: namespace,
-              sourceName,
-              sourcePath: versionPath,
-              manifestPath,
-              indexPath,
-              version,
-              type: "js",
-            });
-          }
-        } else if (yamlFile) {
-          // YAML source
-          const yamlPath = path.join(versionPath, yamlFile);
           sources.push({
             author: namespace,
             sourceName,
-            sourcePath: yamlPath,
-            manifestPath: yamlPath,
-            indexPath: yamlPath,
+            sourcePath: versionPath,
+            manifestPath,
+            indexPath,
             version,
-            type: "yaml",
           });
         }
       }
@@ -179,42 +158,6 @@ async function buildJsSource(source: SourceInfo): Promise<boolean> {
   return true;
 }
 
-async function buildYamlSource(source: SourceInfo): Promise<boolean> {
-  const existingVersions = getExistingVersions(
-    source.author,
-    source.sourceName,
-  );
-
-  if (existingVersions.has(source.version)) {
-    console.log(
-      `  ⏭️  ${source.author}/${source.sourceName}@${source.version} already exists, skipping`,
-    );
-    return false;
-  }
-
-  console.log(
-    `  📦 Building ${source.author}/${source.sourceName}@${source.version}`,
-  );
-
-  // Read YAML content
-  const yamlContent = fs.readFileSync(source.sourcePath, "utf-8");
-
-  // Create dist directory
-  const distPath = path.join(DIST_DIR, source.author, source.sourceName);
-  fs.mkdirSync(distPath, { recursive: true });
-
-  // Create versioned .gwsrc (yaml content with .gwsrc extension)
-  const versionedPath = path.join(distPath, `${source.version}.gwsrc`);
-  fs.writeFileSync(versionedPath, yamlContent);
-
-  // Create/update latest.gwsrc
-  const latestPath = path.join(distPath, "latest.gwsrc");
-  fs.copyFileSync(versionedPath, latestPath);
-
-  console.log(`  ✅ Created ${source.version}.gwsrc and latest.gwsrc`);
-  return true;
-}
-
 async function main() {
   const args = parseArgs();
 
@@ -229,13 +172,7 @@ async function main() {
   console.log(`Found ${sources.length} source(s)\n`);
 
   const results = await Promise.allSettled(
-    sources.map(async (source) => {
-      if (source.type === "js") {
-        return buildJsSource(source);
-      } else {
-        return buildYamlSource(source);
-      }
-    }),
+    sources.map((source) => buildJsSource(source)),
   );
 
   let built = 0;

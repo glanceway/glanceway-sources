@@ -24,7 +24,6 @@ interface SourceInfo {
   manifestPath: string;
   indexPath: string;
   version: string;
-  type: "js" | "yaml";
 }
 
 interface ManifestConfig {
@@ -38,7 +37,6 @@ interface ManifestConfig {
 
 interface TestResult {
   sourceId: string;
-  type: "js" | "yaml";
   status: "pass" | "fail" | "skip";
   itemCount: number;
   refreshItemCount?: number;
@@ -122,35 +120,17 @@ function scanSources(filterSource?: string): SourceInfo[] {
       const versionPath = path.join(sourcePath, latestVersion);
       const files = fs.readdirSync(versionPath);
       const jsFile = files.find((f) => f.endsWith(".js"));
-      const yamlFile = files.find(
-        (f) => f.endsWith(".yaml") || f.endsWith(".yml"),
-      );
+      const manifestPath = path.join(versionPath, "manifest.yaml");
 
-      if (jsFile) {
-        const manifestPath = path.join(versionPath, "manifest.yaml");
+      if (jsFile && fs.existsSync(manifestPath)) {
         const indexPath = path.join(versionPath, jsFile);
-
-        if (fs.existsSync(manifestPath)) {
-          sources.push({
-            author: namespace,
-            sourceName,
-            sourcePath: versionPath,
-            manifestPath,
-            indexPath,
-            version: latestVersion,
-            type: "js",
-          });
-        }
-      } else if (yamlFile) {
-        const yamlPath = path.join(versionPath, yamlFile);
         sources.push({
           author: namespace,
           sourceName,
-          sourcePath: yamlPath,
-          manifestPath: yamlPath,
-          indexPath: yamlPath,
+          sourcePath: versionPath,
+          manifestPath,
+          indexPath,
           version: latestVersion,
-          type: "yaml",
         });
       }
     }
@@ -196,21 +176,6 @@ function resolveConfig(
   }
 
   return { resolved, warnings };
-}
-
-// ─── JSONPath Resolver ─────────────────────────────────────────────────────
-
-function resolvePath(obj: unknown, path: string): unknown {
-  if (path === "$") return obj;
-  if (!path.startsWith("$.")) return undefined;
-
-  const parts = path.slice(2).split(".");
-  let current: unknown = obj;
-  for (const part of parts) {
-    if (current == null || typeof current !== "object") return undefined;
-    current = (current as Record<string, unknown>)[part];
-  }
-  return current;
 }
 
 // ─── Item Validation ───────────────────────────────────────────────────────
@@ -440,7 +405,6 @@ async function testJsSource(
     }
     return {
       sourceId,
-      type: "js",
       status: "skip",
       itemCount: 0,
       durationMs: Date.now() - start,
@@ -458,7 +422,7 @@ async function testJsSource(
   } catch (err: any) {
     return {
       sourceId,
-      type: "js",
+
       status: "fail",
       itemCount: 0,
       durationMs: Date.now() - start,
@@ -480,7 +444,7 @@ async function testJsSource(
     if (typeof factory !== "function") {
       return {
         sourceId,
-        type: "js",
+  
         status: "fail",
         itemCount: 0,
         durationMs: Date.now() - start,
@@ -502,7 +466,7 @@ async function testJsSource(
   } catch (err: any) {
     return {
       sourceId,
-      type: "js",
+
       status: "fail",
       itemCount: 0,
       durationMs: Date.now() - start,
@@ -573,208 +537,6 @@ async function testJsSource(
   };
 }
 
-// ─── YAML Source Testing ───────────────────────────────────────────────────
-
-async function testYamlSource(
-  source: SourceInfo,
-  overrides: Record<string, string>,
-): Promise<TestResult> {
-  const sourceId = `${source.author}/${source.sourceName}`;
-  const start = Date.now();
-
-  const content = fs.readFileSync(source.sourcePath, "utf-8");
-  const manifest = parseYaml(content);
-
-  // Resolve config
-  const configResult = resolveConfig(manifest.config, overrides);
-
-  if (!configResult) {
-    const warningMessages: string[] = [];
-    if (manifest.config) {
-      for (const entry of manifest.config as ManifestConfig[]) {
-        if (
-          overrides[entry.key] === undefined &&
-          entry.default === undefined &&
-          entry.required
-        ) {
-          warningMessages.push(
-            `Required config "${entry.key}" has no default. Use --config ${entry.key}=VALUE to provide a value.`,
-          );
-        }
-      }
-    }
-    return {
-      sourceId,
-      type: "yaml",
-      status: "skip",
-      itemCount: 0,
-      durationMs: Date.now() - start,
-      errors: [],
-      warnings: warningMessages,
-    };
-  }
-
-  const { resolved: config, warnings } = configResult;
-
-  // Substitute config placeholders in source fields
-  const substitute = (str: string): string =>
-    str.replace(/\$\{(\w+)\}/g, (_, key) => {
-      const val = config[key];
-      return val !== undefined ? String(val) : "";
-    });
-
-  const srcDef = manifest.source;
-  if (!srcDef || !srcDef.url) {
-    return {
-      sourceId,
-      type: "yaml",
-      status: "fail",
-      itemCount: 0,
-      durationMs: Date.now() - start,
-      errors: ['YAML source missing "source.url"'],
-      warnings,
-    };
-  }
-
-  const url = substitute(srcDef.url);
-  const method = srcDef.method || "GET";
-  const headers: Record<string, string> = {};
-  if (srcDef.headers) {
-    for (const [k, v] of Object.entries(srcDef.headers)) {
-      headers[k] = substitute(String(v));
-    }
-  }
-  const body = srcDef.body ? substitute(srcDef.body) : undefined;
-
-  // Make real HTTP request
-  let responseData: unknown;
-  try {
-    const controller = new AbortController();
-    const timer = setTimeout(() => controller.abort(), 30000);
-
-    const resp = await globalThis.fetch(url, {
-      method,
-      headers,
-      body,
-      signal: controller.signal,
-    });
-    clearTimeout(timer);
-
-    if (!resp.ok) {
-      return {
-        sourceId,
-        type: "yaml",
-        status: "fail",
-        itemCount: 0,
-        durationMs: Date.now() - start,
-        errors: [`HTTP ${resp.status} from ${url}`],
-        warnings,
-      };
-    }
-
-    responseData = await resp.json();
-  } catch (err: any) {
-    return {
-      sourceId,
-      type: "yaml",
-      status: "fail",
-      itemCount: 0,
-      durationMs: Date.now() - start,
-      errors: [`Fetch error: ${err.message ?? err}`],
-      warnings,
-    };
-  }
-
-  // Resolve root path
-  const parseDef = manifest.parse;
-  if (!parseDef || !parseDef.mapping) {
-    return {
-      sourceId,
-      type: "yaml",
-      status: "fail",
-      itemCount: 0,
-      durationMs: Date.now() - start,
-      errors: ['YAML source missing "parse.mapping"'],
-      warnings,
-    };
-  }
-
-  let rawItems = resolvePath(responseData, parseDef.root || "$");
-  if (!Array.isArray(rawItems)) {
-    return {
-      sourceId,
-      type: "yaml",
-      status: "fail",
-      itemCount: 0,
-      durationMs: Date.now() - start,
-      errors: [
-        `parse.root "${parseDef.root || "$"}" did not resolve to an array`,
-      ],
-      warnings,
-    };
-  }
-
-  // Apply filters
-  if (parseDef.filter && Array.isArray(parseDef.filter)) {
-    for (const rule of parseDef.filter) {
-      if (!rule.field) continue;
-      rawItems = (rawItems as unknown[]).filter((item) => {
-        const val = resolvePath(item, rule.field);
-        if (rule.equals !== undefined) return val === rule.equals;
-        if (rule.notEquals !== undefined) return val !== rule.notEquals;
-        if (rule.exists !== undefined)
-          return rule.exists ? val !== undefined : val === undefined;
-        return true;
-      });
-    }
-  }
-
-  // Map items
-  const mapping = parseDef.mapping;
-  const baseUrl = parseDef.baseUrl || "";
-  const items: EmittedItem[] = (rawItems as unknown[]).map((raw) => {
-    const item: EmittedItem = {} as EmittedItem;
-
-    for (const [field, jsonPath] of Object.entries(mapping)) {
-      let val = resolvePath(raw, jsonPath as string);
-      if (val !== undefined) {
-        // Apply baseUrl for url fields with relative paths
-        if (
-          field === "url" &&
-          typeof val === "string" &&
-          baseUrl &&
-          !val.startsWith("http")
-        ) {
-          val = baseUrl.replace(/\/$/, "") + "/" + val.replace(/^\//, "");
-        }
-        item[field] = val;
-      }
-    }
-
-    // Coerce id to string
-    if (item.id !== undefined && typeof item.id !== "string") {
-      item.id = String(item.id);
-    }
-
-    return item;
-  });
-
-  // Validate
-  const validation = validateItems(items, "items");
-  const errors = [...validation.errors];
-  warnings.push(...validation.warnings);
-
-  return {
-    sourceId,
-    type: "yaml",
-    status: errors.length > 0 ? "fail" : "pass",
-    itemCount: items.length,
-    durationMs: Date.now() - start,
-    errors,
-    warnings,
-  };
-}
-
 // ─── Main ──────────────────────────────────────────────────────────────────
 
 async function main() {
@@ -795,15 +557,9 @@ async function main() {
   // Test sequentially to avoid rate limiting
   for (const source of sources) {
     const sourceId = `${source.author}/${source.sourceName}`;
-    console.log(`Testing ${color.cyan(sourceId)} [${source.type}]...`);
+    console.log(`Testing ${color.cyan(sourceId)}...`);
 
-    let result: TestResult;
-    if (source.type === "js") {
-      result = await testJsSource(source, args.config);
-    } else {
-      result = await testYamlSource(source, args.config);
-    }
-
+    const result = await testJsSource(source, args.config);
     results.push(result);
   }
 
@@ -816,7 +572,6 @@ async function main() {
 
   for (const r of results) {
     const duration = color.dim(`(${r.durationMs}ms)`);
-    const typeTag = `[${r.type}]`;
 
     if (r.status === "pass") {
       const counts =
@@ -824,21 +579,21 @@ async function main() {
           ? `${r.itemCount} items, refresh: ${r.refreshItemCount}`
           : `${r.itemCount} items`;
       console.log(
-        `  ${color.green("PASS")} ${r.sourceId} ${typeTag} ${counts} ${duration}`,
+        `  ${color.green("PASS")} ${r.sourceId} ${counts} ${duration}`,
       );
       for (const w of r.warnings) {
         console.log(`    ${color.yellow("warning")}: ${w}`);
       }
     } else if (r.status === "skip") {
       console.log(
-        `  ${color.yellow("SKIP")} ${r.sourceId} ${typeTag} ${duration}`,
+        `  ${color.yellow("SKIP")} ${r.sourceId} ${duration}`,
       );
       for (const w of r.warnings) {
         console.log(`    ${color.yellow("warning")}: ${w}`);
       }
     } else {
       console.log(
-        `  ${color.red("FAIL")} ${r.sourceId} ${typeTag} ${duration}`,
+        `  ${color.red("FAIL")} ${r.sourceId} ${duration}`,
       );
       for (const e of r.errors) {
         console.log(`    ${color.red("error")}: ${e}`);

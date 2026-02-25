@@ -13,7 +13,6 @@ interface SourceMetadata {
   authorUrl?: string;
   category: string;
   tags?: string[];
-  type: "JS" | "YAML";
   path: string;
   version: string;
   downloadUrl: string;
@@ -118,77 +117,37 @@ function scanSources(): SourceMetadata[] {
       const latest = getLatestVersionDir(sourcePath);
       if (!latest) continue;
 
-      const files = fs.readdirSync(latest.versionPath);
-      const jsFile = files.find((f) => f.endsWith(".js"));
-      const yamlFile = files.find(
-        (f) => f.endsWith(".yaml") || f.endsWith(".yml"),
-      );
-
       const latestVersion = getLatestVersion(namespace, sourceName);
       const downloadUrl = `https://github.com/${GITHUB_REPO}/raw/refs/heads/${GITHUB_BRANCH}/dist/${namespace}/${sourceName}/latest.gwsrc`;
       const installUrl = `glanceway://install?url=${encodeURIComponent(downloadUrl)}`;
 
-      if (jsFile) {
-        // JS source - read manifest.yaml
-        const manifestPath = path.join(latest.versionPath, "manifest.yaml");
-        if (!fs.existsSync(manifestPath)) continue;
+      const manifestPath = path.join(latest.versionPath, "manifest.yaml");
+      if (!fs.existsSync(manifestPath)) continue;
 
-        try {
-          const content = fs.readFileSync(manifestPath, "utf-8");
-          const manifest = parseYaml(content);
-          const author = parseAuthor(
-            manifest.author || namespace,
-            manifest.author_url,
-          );
+      try {
+        const content = fs.readFileSync(manifestPath, "utf-8");
+        const manifest = parseYaml(content);
+        const author = parseAuthor(
+          manifest.author || namespace,
+          manifest.author_url,
+        );
 
-          const version = latestVersion || manifest.version || "1.0.0";
+        const version = latestVersion || manifest.version || "1.0.0";
 
-          sources.push({
-            name: manifest.name || sourceName,
-            description: manifest.description || "",
-            authorName: author.name,
-            authorUrl: author.url,
-            category: manifest.category || "Other",
-            tags: manifest.tags || [],
-            type: "JS",
-            path: `sources/${namespace}/${sourceName}`,
-            version,
-            downloadUrl,
-            installUrl,
-          });
-        } catch (error) {
-          console.error(`Error parsing ${manifestPath}:`, error);
-        }
-      } else if (yamlFile) {
-        // YAML source
-        const yamlPath = path.join(latest.versionPath, yamlFile);
-
-        try {
-          const content = fs.readFileSync(yamlPath, "utf-8");
-          const manifest = parseYaml(content);
-          const author = parseAuthor(
-            manifest.author || namespace,
-            manifest.author_url,
-          );
-
-          const version = latestVersion || manifest.version || "1.0.0";
-
-          sources.push({
-            name: manifest.name || sourceName,
-            description: manifest.description || "",
-            authorName: author.name,
-            authorUrl: author.url,
-            category: manifest.category || "Other",
-            tags: manifest.tags || [],
-            type: "YAML",
-            path: `sources/${namespace}/${sourceName}`,
-            version,
-            downloadUrl,
-            installUrl,
-          });
-        } catch (error) {
-          console.error(`Error parsing ${yamlPath}:`, error);
-        }
+        sources.push({
+          name: manifest.name || sourceName,
+          description: manifest.description || "",
+          authorName: author.name,
+          authorUrl: author.url,
+          category: manifest.category || "Other",
+          tags: manifest.tags || [],
+          path: `sources/${namespace}/${sourceName}`,
+          version,
+          downloadUrl,
+          installUrl,
+        });
+      } catch (error) {
+        console.error(`Error parsing ${manifestPath}:`, error);
       }
     }
   }
@@ -286,7 +245,6 @@ See [CONTRIBUTING.md](./CONTRIBUTING.md) for guidelines on submitting your own i
 
 See the [development documentation](./docs/README.md) to learn how to create sources:
 
-- [YAML Source Development](./docs/yaml-source.md)
 - [JS Source Development](./docs/js-source.md)
 
 ## License
