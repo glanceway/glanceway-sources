@@ -1,7 +1,7 @@
 ---
 import { Code } from "astro:components";
 import { getSourceDetail } from "../lib/sources";
-import type { ConfigField, SourceFile } from "../lib/sources";
+import type { ConfigField, SourceFile, VersionFiles } from "../lib/sources";
 import { ArrowLeft, Download, CloudDownload } from "@lucide/astro";
 import { useTranslations, getLocalePath } from "../i18n/index";
 
@@ -13,7 +13,7 @@ interface Props {
 const { id, locale } = Astro.props;
 const t = useTranslations(locale);
 const source = getSourceDetail(id)!;
-const latestVersion = source.versions[source.versions.length - 1];
+const latestVersion = source.versions[0];
 const installUrl = `glanceway://install?url=${encodeURIComponent(latestVersion.download_url)}`;
 
 const categoryColors: Record<string, string> = {
@@ -41,7 +41,24 @@ const badgeClass = categoryColors[source.category] ?? categoryColors.Other;
       <span class={`mt-1 rounded-full px-2.5 py-0.5 text-xs font-medium ${badgeClass}`}>
         {t(`category.${source.category}` as any)}
       </span>
-      <span class="mt-1.5 font-mono text-xs text-gray-400 dark:text-gray-500">v{source.latest_version}</span>
+      {source.versions.length > 1 ? (
+        <select
+          id="version-select"
+          class="mt-1 rounded-md border border-gray-300 bg-white px-2 py-0.5 font-mono text-xs text-gray-500 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-400"
+        >
+          {source.versions.map((v) => (
+            <option
+              value={v.version}
+              data-download-url={v.download_url}
+              selected={v.version === source.latest_version}
+            >
+              v{v.version}
+            </option>
+          ))}
+        </select>
+      ) : (
+        <span class="mt-1.5 font-mono text-xs text-gray-400 dark:text-gray-500">v{source.latest_version}</span>
+      )}
     </div>
 
     <p class="mt-3 max-w-2xl leading-relaxed text-gray-500 whitespace-pre-line dark:text-gray-400">{source.description.trim()}</p>
@@ -67,6 +84,7 @@ const badgeClass = categoryColors[source.category] ?? categoryColors.Other;
 
     <div class="mt-6 flex flex-wrap items-center gap-3">
       <a
+        id="install-btn"
         href={installUrl}
         class="inline-flex items-center gap-2 rounded-lg bg-gray-900 px-5 py-2.5 text-sm font-semibold text-white no-underline hover:bg-gray-800 dark:bg-white dark:text-gray-900 dark:hover:bg-gray-200"
       >
@@ -74,6 +92,7 @@ const badgeClass = categoryColors[source.category] ?? categoryColors.Other;
         {t("detail.install")}
       </a>
       <a
+        id="download-btn"
         href={latestVersion.download_url}
         class="inline-flex items-center gap-2 rounded-lg border border-gray-300 bg-white px-5 py-2.5 text-sm font-semibold text-gray-700 no-underline hover:bg-gray-50 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700"
         download
@@ -141,54 +160,91 @@ const badgeClass = categoryColors[source.category] ?? categoryColors.Other;
 
   <section>
     <h2 class="mb-4 text-lg font-semibold text-gray-900 dark:text-white">{t("detail.sourceCode")}</h2>
-    <div class="overflow-hidden rounded-xl bg-white shadow-sm ring-1 ring-gray-200 dark:bg-gray-900 dark:ring-gray-800" id="code-viewer">
-      <!-- File tabs -->
-      <div class="flex border-b border-gray-200 bg-gray-50 dark:border-gray-700 dark:bg-gray-800">
-        {source.files.map((f: SourceFile, i: number) => (
-          <button
-            class="file-tab relative px-4 py-2.5 font-mono text-sm"
-            data-index={i}
-          >
-            {f.filename}
-          </button>
+    {source.versionFiles.map((vf: VersionFiles) => (
+      <div class="version-group overflow-hidden rounded-xl bg-white shadow-sm ring-1 ring-gray-200 dark:bg-gray-900 dark:ring-gray-800" data-version={vf.version}>
+        <!-- File tabs -->
+        <div class="flex border-b border-gray-200 bg-gray-50 dark:border-gray-700 dark:bg-gray-800">
+          {vf.files.map((f: SourceFile, i: number) => (
+            <button
+              class="file-tab relative px-4 py-2.5 font-mono text-sm"
+              data-index={i}
+            >
+              {f.filename}
+            </button>
+          ))}
+        </div>
+        <!-- File panels -->
+        {vf.files.map((f: SourceFile, i: number) => (
+          <div class="file-panel" data-index={i}>
+            {f.html ? (
+              <div class="prose prose-sm dark:prose-invert max-w-none p-5"><Fragment set:html={f.html} /></div>
+            ) : (
+              <>
+                <div class="block dark:hidden [&_pre]:!m-0 [&_pre]:!rounded-none [&_pre]:!p-5">
+                  <Code code={f.code} lang={f.lang} theme="github-light" />
+                </div>
+                <div class="hidden dark:block [&_pre]:!m-0 [&_pre]:!rounded-none [&_pre]:!p-5 [&_pre]:!bg-transparent">
+                  <Code code={f.code} lang={f.lang} theme="github-dark" />
+                </div>
+              </>
+            )}
+          </div>
         ))}
       </div>
-      <!-- File panels -->
-      {source.files.map((f: SourceFile, i: number) => (
-        <div class="file-panel" data-index={i}>
-          {f.html ? (
-            <div class="prose prose-sm dark:prose-invert max-w-none p-5"><Fragment set:html={f.html} /></div>
-          ) : (
-            <>
-              <div class="block dark:hidden [&_pre]:!m-0 [&_pre]:!rounded-none [&_pre]:!p-5">
-                <Code code={f.code} lang={f.lang} theme="github-light" />
-              </div>
-              <div class="hidden dark:block [&_pre]:!m-0 [&_pre]:!rounded-none [&_pre]:!p-5 [&_pre]:!bg-transparent">
-                <Code code={f.code} lang={f.lang} theme="github-dark" />
-              </div>
-            </>
-          )}
-        </div>
-      ))}
-    </div>
+    ))}
   </section>
 
   <script>
-    const tabs = document.querySelectorAll<HTMLButtonElement>("#code-viewer .file-tab");
-    const panels = document.querySelectorAll<HTMLDivElement>("#code-viewer .file-panel");
+    const groups = document.querySelectorAll<HTMLDivElement>(".version-group");
+    const versionSelect = document.querySelector<HTMLSelectElement>("#version-select");
+    const installBtn = document.querySelector<HTMLAnchorElement>("#install-btn");
+    const downloadBtn = document.querySelector<HTMLAnchorElement>("#download-btn");
 
-    function activateTab(index: number) {
+    function activateTab(group: HTMLDivElement, index: number) {
+      const tabs = group.querySelectorAll<HTMLButtonElement>(".file-tab");
+      const panels = group.querySelectorAll<HTMLDivElement>(".file-panel");
       tabs.forEach((t) => t.classList.remove("active"));
       tabs[index].classList.add("active");
-
-      panels.forEach((p) => p.style.display = "none");
+      panels.forEach((p) => (p.style.display = "none"));
       panels[index].style.display = "";
     }
 
-    tabs.forEach((tab) => {
-      tab.addEventListener("click", () => activateTab(Number(tab.dataset.index)));
+    function switchVersion(version: string) {
+      // Switch code viewer
+      groups.forEach((g) => {
+        const match = g.dataset.version === version;
+        g.style.display = match ? "" : "none";
+        if (match) activateTab(g, 0);
+      });
+
+      // Update install & download URLs
+      if (versionSelect) {
+        const selected = versionSelect.selectedOptions[0];
+        const downloadUrl = selected?.dataset.downloadUrl;
+        if (downloadUrl) {
+          if (downloadBtn) downloadBtn.href = downloadUrl;
+          if (installBtn) installBtn.href = `glanceway://install?url=${encodeURIComponent(downloadUrl)}`;
+        }
+      }
+    }
+
+    // Init: bind file tabs within each group
+    groups.forEach((group) => {
+      group.querySelectorAll<HTMLButtonElement>(".file-tab").forEach((tab) => {
+        tab.addEventListener("click", () => activateTab(group, Number(tab.dataset.index)));
+      });
     });
 
-    activateTab(0);
+    // Version selector
+    if (versionSelect) {
+      versionSelect.addEventListener("change", () => switchVersion(versionSelect.value));
+      switchVersion(versionSelect.value);
+    } else {
+      // Single version — just show it
+      if (groups[0]) {
+        groups[0].style.display = "";
+        activateTab(groups[0], 0);
+      }
+    }
   </script>
 </div>

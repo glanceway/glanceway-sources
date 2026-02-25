@@ -34,17 +34,23 @@ export interface ConfigField {
 export interface SourceFile {
   filename: string;
   code: string;
-  lang: "ts" | "yaml" | "md";
+  lang: "js" | "yaml" | "md";
   html?: string;
+}
+
+export interface VersionFiles {
+  version: string;
+  files: SourceFile[];
 }
 
 export interface SourceDetail extends SourceEntry {
   config: ConfigField[];
   files: SourceFile[];
+  versionFiles: VersionFiles[];
 }
 
-const LANG_MAP: Record<string, "ts" | "yaml" | "md"> = {
-  ".ts": "ts",
+const LANG_MAP: Record<string, "js" | "yaml" | "md"> = {
+  ".js": "js",
   ".yaml": "yaml",
   ".yml": "yaml",
   ".md": "md",
@@ -55,22 +61,14 @@ export function getSources(): SourceEntry[] {
   return data.sources;
 }
 
-export function getSourceDetail(id: string): SourceDetail | undefined {
-  const sources = getSources();
-  const source = sources.find((s) => s.id === id);
-  if (!source) return undefined;
+const FILE_PRIORITY = ["README.md", "manifest.yaml", "index.js"];
 
-  const [author, name] = id.split("/");
-
-  // Read all files in source directory
-  const sourceDir = path.join(SOURCES_DIR, author, name);
-  const entries = fs.readdirSync(sourceDir).sort();
-
-  let config: ConfigField[] = [];
+function readVersionFiles(versionDir: string): SourceFile[] {
+  const entries = fs.readdirSync(versionDir).sort();
   const files: SourceFile[] = [];
 
   for (const entry of entries) {
-    const filePath = path.join(sourceDir, entry);
+    const filePath = path.join(versionDir, entry);
     if (!fs.statSync(filePath).isFile()) continue;
 
     const ext = path.extname(entry);
@@ -78,23 +76,41 @@ export function getSourceDetail(id: string): SourceDetail | undefined {
     if (!lang) continue;
 
     const code = fs.readFileSync(filePath, "utf-8");
-    const html = lang === "md" ? marked.parse(code) as string : undefined;
+    const html = lang === "md" ? (marked.parse(code) as string) : undefined;
     files.push({ filename: entry, code, lang, html });
-
-    if (entry === "manifest.yaml") {
-      const parsed = YAML.parse(code);
-      config = parsed.config ?? [];
-    }
   }
 
-  const priority = ["README.md", "manifest.yaml"];
   files.sort((a, b) => {
-    const ai = priority.indexOf(a.filename);
-    const bi = priority.indexOf(b.filename);
-    const ap = ai === -1 ? priority.length : ai;
-    const bp = bi === -1 ? priority.length : bi;
+    const ai = FILE_PRIORITY.indexOf(a.filename);
+    const bi = FILE_PRIORITY.indexOf(b.filename);
+    const ap = ai === -1 ? FILE_PRIORITY.length : ai;
+    const bp = bi === -1 ? FILE_PRIORITY.length : bi;
     return ap - bp;
   });
 
-  return { ...source, config, files };
+  return files;
+}
+
+export function getSourceDetail(id: string): SourceDetail | undefined {
+  const sources = getSources();
+  const source = sources.find((s) => s.id === id);
+  if (!source) return undefined;
+
+  const [author, name] = id.split("/");
+  const sourceDir = path.join(SOURCES_DIR, author, name);
+
+  // Read files for all versions
+  const versionFiles: VersionFiles[] = source.versions.map((v) => ({
+    version: v.version,
+    files: readVersionFiles(path.join(sourceDir, v.version)),
+  }));
+
+  // Latest version files and config
+  const latestFiles = versionFiles[0]?.files ?? [];
+  const manifestFile = latestFiles.find((f) => f.filename === "manifest.yaml");
+  const config: ConfigField[] = manifestFile
+    ? (YAML.parse(manifestFile.code).config ?? [])
+    : [];
+
+  return { ...source, config, files: latestFiles, versionFiles };
 }
