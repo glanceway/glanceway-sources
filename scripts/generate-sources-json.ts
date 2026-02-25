@@ -69,6 +69,32 @@ function getVersionsFromDist(author: string, sourceName: string): string[] {
   });
 }
 
+function getLatestVersionDir(sourcePath: string): {
+  version: string;
+  versionPath: string;
+} | null {
+  const versionDirs = fs
+    .readdirSync(sourcePath)
+    .filter((d) => fs.statSync(path.join(sourcePath, d)).isDirectory())
+    .sort((a, b) => {
+      const aParts = a.split(".").map(Number);
+      const bParts = b.split(".").map(Number);
+      for (let i = 0; i < 3; i++) {
+        if ((aParts[i] || 0) !== (bParts[i] || 0)) {
+          return (bParts[i] || 0) - (aParts[i] || 0);
+        }
+      }
+      return 0;
+    });
+
+  if (versionDirs.length === 0) return null;
+
+  return {
+    version: versionDirs[0],
+    versionPath: path.join(sourcePath, versionDirs[0]),
+  };
+}
+
 function scanSources(): SourceEntry[] {
   const sources: SourceEntry[] = [];
 
@@ -81,72 +107,74 @@ function scanSources(): SourceEntry[] {
 
   for (const namespace of namespaces) {
     const namespacePath = path.join(SOURCES_DIR, namespace);
-    const stat = fs.statSync(namespacePath);
+    if (!fs.statSync(namespacePath).isDirectory()) continue;
 
-    if (!stat.isDirectory()) continue;
+    const sourceNames = fs.readdirSync(namespacePath);
 
-    const entries = fs.readdirSync(namespacePath);
+    for (const sourceName of sourceNames) {
+      const sourcePath = path.join(namespacePath, sourceName);
+      if (!fs.statSync(sourcePath).isDirectory()) continue;
 
-    for (const entry of entries) {
-      const entryPath = path.join(namespacePath, entry);
-      const entryStat = fs.statSync(entryPath);
+      const latest = getLatestVersionDir(sourcePath);
+      if (!latest) continue;
 
-      if (entryStat.isDirectory()) {
-        // JS source - look for manifest.yaml
-        const manifestPath = path.join(entryPath, "manifest.yaml");
-        if (fs.existsSync(manifestPath)) {
-          try {
-            const content = fs.readFileSync(manifestPath, "utf-8");
-            const manifest = parseYaml(content);
-            const sourceId = `${namespace}/${entry}`;
-            const versions = getVersionsFromDist(namespace, entry);
+      const files = fs.readdirSync(latest.versionPath);
+      const jsFile = files.find((f) => f.endsWith(".js"));
+      const yamlFile = files.find(
+        (f) => f.endsWith(".yaml") || f.endsWith(".yml"),
+      );
 
-            if (versions.length === 0) {
-              console.log(`  ⚠️  No built versions for ${sourceId}, skipping`);
-              continue;
-            }
+      const sourceId = `${namespace}/${sourceName}`;
+      const versions = getVersionsFromDist(namespace, sourceName);
 
-            const sourceVersions: SourceVersion[] = versions.map((version) => ({
-              version,
-              download_url: `https://github.com/${GITHUB_REPO}/raw/refs/heads/${GITHUB_BRANCH}/dist/${namespace}/${entry}/${version}.gwsrc`,
-              changelog:
-                version === manifest.version ? manifest.changelog : undefined,
-            }));
+      if (versions.length === 0) {
+        console.log(`  ⚠️  No built versions for ${sourceId}, skipping`);
+        continue;
+      }
 
-            const jsEntry: SourceEntry = {
-              id: sourceId,
-              name: manifest.name || entry,
-              description: manifest.description || "",
-              author: manifest.author || namespace,
-              author_url: manifest.author_url,
-              category: manifest.category || "Other",
-              tags: manifest.tags || [],
-              type: "js",
-              latest_version: versions[0],
-              source_url: `https://github.com/${GITHUB_REPO}/tree/${GITHUB_BRANCH}/sources/${namespace}/${entry}`,
-              versions: sourceVersions,
-            };
-            if (manifest.spec != null) jsEntry.spec = manifest.spec;
-            if (manifest.min_app_version != null)
-              jsEntry.min_app_version = manifest.min_app_version;
-            sources.push(jsEntry);
-          } catch (error) {
-            console.error(`Error parsing ${manifestPath}:`, error);
-          }
-        }
-      } else if (entry.endsWith(".yaml") || entry.endsWith(".yml")) {
-        // YAML source
+      if (jsFile) {
+        // JS source - read manifest.yaml from latest version dir
+        const manifestPath = path.join(latest.versionPath, "manifest.yaml");
+        if (!fs.existsSync(manifestPath)) continue;
+
         try {
-          const content = fs.readFileSync(entryPath, "utf-8");
+          const content = fs.readFileSync(manifestPath, "utf-8");
           const manifest = parseYaml(content);
-          const sourceName = entry.replace(/\.ya?ml$/, "");
-          const sourceId = `${namespace}/${sourceName}`;
-          const versions = getVersionsFromDist(namespace, sourceName);
 
-          if (versions.length === 0) {
-            console.log(`  ⚠️  No built versions for ${sourceId}, skipping`);
-            continue;
-          }
+          const sourceVersions: SourceVersion[] = versions.map((version) => ({
+            version,
+            download_url: `https://github.com/${GITHUB_REPO}/raw/refs/heads/${GITHUB_BRANCH}/dist/${namespace}/${sourceName}/${version}.gwsrc`,
+            changelog:
+              version === manifest.version ? manifest.changelog : undefined,
+          }));
+
+          const jsEntry: SourceEntry = {
+            id: sourceId,
+            name: manifest.name || sourceName,
+            description: manifest.description || "",
+            author: manifest.author || namespace,
+            author_url: manifest.author_url,
+            category: manifest.category || "Other",
+            tags: manifest.tags || [],
+            type: "js",
+            latest_version: versions[0],
+            source_url: `https://github.com/${GITHUB_REPO}/tree/${GITHUB_BRANCH}/sources/${namespace}/${sourceName}`,
+            versions: sourceVersions,
+          };
+          if (manifest.spec != null) jsEntry.spec = manifest.spec;
+          if (manifest.min_app_version != null)
+            jsEntry.min_app_version = manifest.min_app_version;
+          sources.push(jsEntry);
+        } catch (error) {
+          console.error(`Error parsing ${manifestPath}:`, error);
+        }
+      } else if (yamlFile) {
+        // YAML source - read the yaml file from latest version dir
+        const yamlPath = path.join(latest.versionPath, yamlFile);
+
+        try {
+          const content = fs.readFileSync(yamlPath, "utf-8");
+          const manifest = parseYaml(content);
 
           const sourceVersions: SourceVersion[] = versions.map((version) => ({
             version,
@@ -165,7 +193,7 @@ function scanSources(): SourceEntry[] {
             tags: manifest.tags || [],
             type: "yaml",
             latest_version: versions[0],
-            source_url: `https://github.com/${GITHUB_REPO}/tree/${GITHUB_BRANCH}/sources/${namespace}/${entry}`,
+            source_url: `https://github.com/${GITHUB_REPO}/tree/${GITHUB_BRANCH}/sources/${namespace}/${sourceName}`,
             versions: sourceVersions,
           };
           if (manifest.spec != null) yamlEntry.spec = manifest.spec;
@@ -173,7 +201,7 @@ function scanSources(): SourceEntry[] {
             yamlEntry.min_app_version = manifest.min_app_version;
           sources.push(yamlEntry);
         } catch (error) {
-          console.error(`Error parsing ${entryPath}:`, error);
+          console.error(`Error parsing ${yamlPath}:`, error);
         }
       }
     }

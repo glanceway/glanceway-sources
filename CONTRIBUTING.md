@@ -10,5 +10,5 @@ Or clone the repo and create a directory for your source under `sources/`, then 
 
 ## Reference
 
-- [JS/TS Source Development](docs/js-source.md) — JavaScript source scaffold and tooling
+- [JS Source Development](docs/js-source.md) — JavaScript source development
 - [YAML Source Development](docs/yaml-source.md) — YAML format, parsing rules, filters

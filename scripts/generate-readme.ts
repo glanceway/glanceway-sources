@@ -69,6 +69,32 @@ function getLatestVersion(author: string, sourceName: string): string | null {
   return versions[0];
 }
 
+function getLatestVersionDir(sourcePath: string): {
+  version: string;
+  versionPath: string;
+} | null {
+  const versionDirs = fs
+    .readdirSync(sourcePath)
+    .filter((d) => fs.statSync(path.join(sourcePath, d)).isDirectory())
+    .sort((a, b) => {
+      const aParts = a.split(".").map(Number);
+      const bParts = b.split(".").map(Number);
+      for (let i = 0; i < 3; i++) {
+        if ((aParts[i] || 0) !== (bParts[i] || 0)) {
+          return (bParts[i] || 0) - (aParts[i] || 0);
+        }
+      }
+      return 0;
+    });
+
+  if (versionDirs.length === 0) return null;
+
+  return {
+    version: versionDirs[0],
+    versionPath: path.join(sourcePath, versionDirs[0]),
+  };
+}
+
 function scanSources(): SourceMetadata[] {
   const sources: SourceMetadata[] = [];
 
@@ -81,65 +107,71 @@ function scanSources(): SourceMetadata[] {
 
   for (const namespace of namespaces) {
     const namespacePath = path.join(SOURCES_DIR, namespace);
-    const stat = fs.statSync(namespacePath);
+    if (!fs.statSync(namespacePath).isDirectory()) continue;
 
-    if (!stat.isDirectory()) continue;
+    const sourceNames = fs.readdirSync(namespacePath);
 
-    const entries = fs.readdirSync(namespacePath);
+    for (const sourceName of sourceNames) {
+      const sourcePath = path.join(namespacePath, sourceName);
+      if (!fs.statSync(sourcePath).isDirectory()) continue;
 
-    for (const entry of entries) {
-      const entryPath = path.join(namespacePath, entry);
-      const entryStat = fs.statSync(entryPath);
+      const latest = getLatestVersionDir(sourcePath);
+      if (!latest) continue;
 
-      if (entryStat.isDirectory()) {
-        // JS source - look for manifest.yaml
-        const manifestPath = path.join(entryPath, "manifest.yaml");
-        if (fs.existsSync(manifestPath)) {
-          try {
-            const content = fs.readFileSync(manifestPath, "utf-8");
-            const manifest = parseYaml(content);
-            const author = parseAuthor(
-              manifest.author || namespace,
-              manifest.author_url,
-            );
+      const files = fs.readdirSync(latest.versionPath);
+      const jsFile = files.find((f) => f.endsWith(".js"));
+      const yamlFile = files.find(
+        (f) => f.endsWith(".yaml") || f.endsWith(".yml"),
+      );
 
-            const latestVersion = getLatestVersion(namespace, entry);
-            const version = latestVersion || manifest.version || "1.0.0";
-            const downloadUrl = `https://github.com/${GITHUB_REPO}/raw/refs/heads/${GITHUB_BRANCH}/dist/${namespace}/${entry}/latest.gwsrc`;
-            const installUrl = `glanceway://install?url=${encodeURIComponent(downloadUrl)}`;
+      const latestVersion = getLatestVersion(namespace, sourceName);
+      const downloadUrl = `https://github.com/${GITHUB_REPO}/raw/refs/heads/${GITHUB_BRANCH}/dist/${namespace}/${sourceName}/latest.gwsrc`;
+      const installUrl = `glanceway://install?url=${encodeURIComponent(downloadUrl)}`;
 
-            sources.push({
-              name: manifest.name || entry,
-              description: manifest.description || "",
-              authorName: author.name,
-              authorUrl: author.url,
-              category: manifest.category || "Other",
-              tags: manifest.tags || [],
-              type: "JS",
-              path: `sources/${namespace}/${entry}`,
-              version,
-              downloadUrl,
-              installUrl,
-            });
-          } catch (error) {
-            console.error(`Error parsing ${manifestPath}:`, error);
-          }
-        }
-      } else if (entry.endsWith(".yaml") || entry.endsWith(".yml")) {
-        // YAML source
+      if (jsFile) {
+        // JS source - read manifest.yaml
+        const manifestPath = path.join(latest.versionPath, "manifest.yaml");
+        if (!fs.existsSync(manifestPath)) continue;
+
         try {
-          const content = fs.readFileSync(entryPath, "utf-8");
+          const content = fs.readFileSync(manifestPath, "utf-8");
           const manifest = parseYaml(content);
-          const sourceName = entry.replace(/\.ya?ml$/, "");
           const author = parseAuthor(
             manifest.author || namespace,
             manifest.author_url,
           );
 
-          const latestVersion = getLatestVersion(namespace, sourceName);
           const version = latestVersion || manifest.version || "1.0.0";
-          const downloadUrl = `https://github.com/${GITHUB_REPO}/raw/refs/heads/${GITHUB_BRANCH}/dist/${namespace}/${sourceName}/latest.gwsrc`;
-          const installUrl = `glanceway://install?url=${encodeURIComponent(downloadUrl)}`;
+
+          sources.push({
+            name: manifest.name || sourceName,
+            description: manifest.description || "",
+            authorName: author.name,
+            authorUrl: author.url,
+            category: manifest.category || "Other",
+            tags: manifest.tags || [],
+            type: "JS",
+            path: `sources/${namespace}/${sourceName}`,
+            version,
+            downloadUrl,
+            installUrl,
+          });
+        } catch (error) {
+          console.error(`Error parsing ${manifestPath}:`, error);
+        }
+      } else if (yamlFile) {
+        // YAML source
+        const yamlPath = path.join(latest.versionPath, yamlFile);
+
+        try {
+          const content = fs.readFileSync(yamlPath, "utf-8");
+          const manifest = parseYaml(content);
+          const author = parseAuthor(
+            manifest.author || namespace,
+            manifest.author_url,
+          );
+
+          const version = latestVersion || manifest.version || "1.0.0";
 
           sources.push({
             name: manifest.name || sourceName,
@@ -149,13 +181,13 @@ function scanSources(): SourceMetadata[] {
             category: manifest.category || "Other",
             tags: manifest.tags || [],
             type: "YAML",
-            path: `sources/${namespace}/${entry}`,
+            path: `sources/${namespace}/${sourceName}`,
             version,
             downloadUrl,
             installUrl,
           });
         } catch (error) {
-          console.error(`Error parsing ${entryPath}:`, error);
+          console.error(`Error parsing ${yamlPath}:`, error);
         }
       }
     }

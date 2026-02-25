@@ -1,7 +1,6 @@
 import * as fs from "fs";
 import * as path from "path";
 import { parse as parseYaml } from "yaml";
-import * as esbuild from "esbuild";
 import archiver from "archiver";
 
 const SOURCES_DIR = path.join(process.cwd(), "sources");
@@ -38,70 +37,57 @@ function scanSources(filterSource?: string): SourceInfo[] {
 
   for (const namespace of namespaces) {
     const namespacePath = path.join(SOURCES_DIR, namespace);
-    const stat = fs.statSync(namespacePath);
+    if (!fs.statSync(namespacePath).isDirectory()) continue;
 
-    if (!stat.isDirectory()) continue;
+    const sourceNames = fs.readdirSync(namespacePath);
 
-    const entries = fs.readdirSync(namespacePath);
+    for (const sourceName of sourceNames) {
+      const sourcePath = path.join(namespacePath, sourceName);
+      if (!fs.statSync(sourcePath).isDirectory()) continue;
 
-    for (const entry of entries) {
-      const entryPath = path.join(namespacePath, entry);
-      const entryStat = fs.statSync(entryPath);
+      const sourceId = `${namespace}/${sourceName}`;
+      if (filterSource && sourceId !== filterSource) continue;
 
-      if (entryStat.isDirectory()) {
-        // JS source - look for manifest.yaml and index.ts or index.js
-        const manifestPath = path.join(entryPath, "manifest.yaml");
-        const indexTsPath = path.join(entryPath, "index.ts");
-        const indexJsPath = path.join(entryPath, "index.js");
-        const indexPath = fs.existsSync(indexTsPath) ? indexTsPath :
-                          fs.existsSync(indexJsPath) ? indexJsPath : null;
+      const versionDirs = fs.readdirSync(sourcePath);
 
-        if (fs.existsSync(manifestPath) && indexPath) {
-          const sourceId = `${namespace}/${entry}`;
+      for (const version of versionDirs) {
+        const versionPath = path.join(sourcePath, version);
+        if (!fs.statSync(versionPath).isDirectory()) continue;
 
-          // Skip if filtering and doesn't match
-          if (filterSource && sourceId !== filterSource) continue;
+        const files = fs.readdirSync(versionPath);
+        const jsFile = files.find((f) => f.endsWith(".js"));
+        const yamlFile = files.find(
+          (f) => f.endsWith(".yaml") || f.endsWith(".yml"),
+        );
 
-          try {
-            const content = fs.readFileSync(manifestPath, "utf-8");
-            const manifest = parseYaml(content);
+        if (jsFile) {
+          // JS source
+          const manifestPath = path.join(versionPath, "manifest.yaml");
+          const indexPath = path.join(versionPath, jsFile);
 
+          if (fs.existsSync(manifestPath)) {
             sources.push({
               author: namespace,
-              sourceName: entry,
-              sourcePath: entryPath,
+              sourceName,
+              sourcePath: versionPath,
               manifestPath,
               indexPath,
-              version: manifest.version || "1.0.0",
+              version,
               type: "js",
             });
-          } catch (error) {
-            console.error(`Error parsing ${manifestPath}:`, error);
           }
-        }
-      } else if (entry.endsWith(".yaml") || entry.endsWith(".yml")) {
-        // YAML source - standalone file
-        const sourceName = entry.replace(/\.ya?ml$/, "");
-        const sourceId = `${namespace}/${sourceName}`;
-
-        // Skip if filtering and doesn't match
-        if (filterSource && sourceId !== filterSource) continue;
-
-        try {
-          const content = fs.readFileSync(entryPath, "utf-8");
-          const manifest = parseYaml(content);
-
+        } else if (yamlFile) {
+          // YAML source
+          const yamlPath = path.join(versionPath, yamlFile);
           sources.push({
             author: namespace,
             sourceName,
-            sourcePath: entryPath,
-            manifestPath: entryPath,
-            indexPath: entryPath,
-            version: manifest.version || "1.0.0",
+            sourcePath: yamlPath,
+            manifestPath: yamlPath,
+            indexPath: yamlPath,
+            version,
             type: "yaml",
           });
-        } catch (error) {
-          console.error(`Error parsing ${entryPath}:`, error);
         }
       }
     }
@@ -128,21 +114,6 @@ function getExistingVersions(author: string, sourceName: string): Set<string> {
   }
 
   return versions;
-}
-
-async function compileTypeScript(indexPath: string): Promise<string> {
-  const result = await esbuild.build({
-    entryPoints: [indexPath],
-    bundle: true,
-    platform: "neutral",
-    format: "iife",
-    globalName: "_source",
-    write: false,
-    external: ["node:*"],
-    footer: { js: "module.exports = _source.default;" },
-  });
-
-  return result.outputFiles[0].text;
 }
 
 async function createZip(
@@ -183,10 +154,8 @@ async function buildJsSource(source: SourceInfo): Promise<boolean> {
     `  📦 Building ${source.author}/${source.sourceName}@${source.version}`,
   );
 
-  // Compile TS sources with esbuild; read JS sources as-is
-  const compiledJs = source.indexPath.endsWith(".ts")
-    ? await compileTypeScript(source.indexPath)
-    : fs.readFileSync(source.indexPath, "utf-8");
+  // Read JS source as-is
+  const compiledJs = fs.readFileSync(source.indexPath, "utf-8");
 
   // Read manifest
   const manifestContent = fs.readFileSync(source.manifestPath, "utf-8");

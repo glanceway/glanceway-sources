@@ -1,7 +1,6 @@
 import * as fs from "fs";
 import * as path from "path";
 import { parse as parseYaml } from "yaml";
-import * as esbuild from "esbuild";
 
 // ─── ANSI Colors ───────────────────────────────────────────────────────────
 
@@ -57,7 +56,7 @@ interface EmittedItem {
   [key: string]: unknown;
 }
 
-// ─── Arg Parsing & Source Scanning (reused from build-sources) ─────────────
+// ─── Arg Parsing & Source Scanning ──────────────────────────────────────────
 
 function parseArgs(): { source?: string; config: Record<string, string> } {
   const args = process.argv.slice(2);
@@ -91,66 +90,68 @@ function scanSources(filterSource?: string): SourceInfo[] {
 
   for (const namespace of namespaces) {
     const namespacePath = path.join(SOURCES_DIR, namespace);
-    const stat = fs.statSync(namespacePath);
+    if (!fs.statSync(namespacePath).isDirectory()) continue;
 
-    if (!stat.isDirectory()) continue;
+    const sourceNames = fs.readdirSync(namespacePath);
 
-    const entries = fs.readdirSync(namespacePath);
+    for (const sourceName of sourceNames) {
+      const sourcePath = path.join(namespacePath, sourceName);
+      if (!fs.statSync(sourcePath).isDirectory()) continue;
 
-    for (const entry of entries) {
-      const entryPath = path.join(namespacePath, entry);
-      const entryStat = fs.statSync(entryPath);
+      const sourceId = `${namespace}/${sourceName}`;
+      if (filterSource && sourceId !== filterSource) continue;
 
-      if (entryStat.isDirectory()) {
-        const manifestPath = path.join(entryPath, "manifest.yaml");
-        const indexTsPath = path.join(entryPath, "index.ts");
-        const indexJsPath = path.join(entryPath, "index.js");
-        const indexPath = fs.existsSync(indexTsPath)
-          ? indexTsPath
-          : fs.existsSync(indexJsPath)
-            ? indexJsPath
-            : null;
-
-        if (fs.existsSync(manifestPath) && indexPath) {
-          const sourceId = `${namespace}/${entry}`;
-          if (filterSource && sourceId !== filterSource) continue;
-
-          try {
-            const content = fs.readFileSync(manifestPath, "utf-8");
-            const manifest = parseYaml(content);
-            sources.push({
-              author: namespace,
-              sourceName: entry,
-              sourcePath: entryPath,
-              manifestPath,
-              indexPath,
-              version: manifest.version || "1.0.0",
-              type: "js",
-            });
-          } catch (error) {
-            console.error(`Error parsing ${manifestPath}:`, error);
+      // Find the latest version directory
+      const versionDirs = fs
+        .readdirSync(sourcePath)
+        .filter((d) => fs.statSync(path.join(sourcePath, d)).isDirectory())
+        .sort((a, b) => {
+          const aParts = a.split(".").map(Number);
+          const bParts = b.split(".").map(Number);
+          for (let i = 0; i < 3; i++) {
+            if ((aParts[i] || 0) !== (bParts[i] || 0)) {
+              return (bParts[i] || 0) - (aParts[i] || 0);
+            }
           }
-        }
-      } else if (entry.endsWith(".yaml") || entry.endsWith(".yml")) {
-        const sourceName = entry.replace(/\.ya?ml$/, "");
-        const sourceId = `${namespace}/${sourceName}`;
-        if (filterSource && sourceId !== filterSource) continue;
+          return 0;
+        });
 
-        try {
-          const content = fs.readFileSync(entryPath, "utf-8");
-          const manifest = parseYaml(content);
+      if (versionDirs.length === 0) continue;
+
+      const latestVersion = versionDirs[0];
+      const versionPath = path.join(sourcePath, latestVersion);
+      const files = fs.readdirSync(versionPath);
+      const jsFile = files.find((f) => f.endsWith(".js"));
+      const yamlFile = files.find(
+        (f) => f.endsWith(".yaml") || f.endsWith(".yml"),
+      );
+
+      if (jsFile) {
+        const manifestPath = path.join(versionPath, "manifest.yaml");
+        const indexPath = path.join(versionPath, jsFile);
+
+        if (fs.existsSync(manifestPath)) {
           sources.push({
             author: namespace,
             sourceName,
-            sourcePath: entryPath,
-            manifestPath: entryPath,
-            indexPath: entryPath,
-            version: manifest.version || "1.0.0",
-            type: "yaml",
+            sourcePath: versionPath,
+            manifestPath,
+            indexPath,
+            version: latestVersion,
+            type: "js",
           });
-        } catch (error) {
-          console.error(`Error parsing ${entryPath}:`, error);
         }
+      } else if (yamlFile) {
+        const yamlPath = path.join(versionPath, yamlFile);
+        sources.push({
+          author: namespace,
+          sourceName,
+          sourcePath: yamlPath,
+          manifestPath: yamlPath,
+          indexPath: yamlPath,
+          version: latestVersion,
+          type: "yaml",
+        });
       }
     }
   }
@@ -407,9 +408,9 @@ function createMockApi(
   return { api, getEmitted: () => emitted };
 }
 
-// ─── TypeScript Source Testing ─────────────────────────────────────────────
+// ─── JavaScript Source Testing ─────────────────────────────────────────────
 
-async function testTsSource(
+async function testJsSource(
   source: SourceInfo,
   overrides: Record<string, string>,
 ): Promise<TestResult> {
@@ -450,24 +451,10 @@ async function testTsSource(
 
   const { resolved: config, warnings } = configResult;
 
-  // Compile TS sources with esbuild; read JS sources as-is
+  // Read JS source as-is
   let compiledJs: string;
   try {
-    if (source.indexPath.endsWith(".ts")) {
-      const result = await esbuild.build({
-        entryPoints: [source.indexPath],
-        bundle: true,
-        platform: "neutral",
-        format: "iife",
-        globalName: "_source",
-        write: false,
-        external: ["node:*"],
-        footer: { js: "module.exports = _source.default;" },
-      });
-      compiledJs = result.outputFiles[0].text;
-    } else {
-      compiledJs = fs.readFileSync(source.indexPath, "utf-8");
-    }
+    compiledJs = fs.readFileSync(source.indexPath, "utf-8");
   } catch (err: any) {
     return {
       sourceId,
@@ -475,7 +462,7 @@ async function testTsSource(
       status: "fail",
       itemCount: 0,
       durationMs: Date.now() - start,
-      errors: [`Compilation failed: ${err.message ?? err}`],
+      errors: [`Failed to read source: ${err.message ?? err}`],
       warnings,
     };
   }
@@ -812,7 +799,7 @@ async function main() {
 
     let result: TestResult;
     if (source.type === "js") {
-      result = await testTsSource(source, args.config);
+      result = await testJsSource(source, args.config);
     } else {
       result = await testYamlSource(source, args.config);
     }
@@ -872,7 +859,6 @@ async function main() {
     `Total: ${color.green(`${passed} passed`)}, ${color.red(`${failed} failed`)}, ${color.yellow(`${skipped} skipped`)}`,
   );
 
-  esbuild.stop();
   process.exit(failed > 0 ? 1 : 0);
 }
 

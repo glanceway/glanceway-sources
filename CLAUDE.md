@@ -36,7 +36,7 @@ When in doubt, start with YAML. If the requirements exceed what YAML can express
 
 ## Creating a YAML Source
 
-YAML sources are single `.yaml` files at `sources/<author>/<source-name>.yaml`. No scaffolding command needed - create the file directly.
+YAML sources are single `.yaml` files placed in a version directory at `sources/<author>/<source-name>/<version>/<source-name>.yaml`. No scaffolding command needed - create the file directly.
 
 ### YAML Source Template
 
@@ -97,15 +97,15 @@ YAML sources are copied as-is (no compilation) with a `.gwsrc` extension. Check 
 
 ### Step 1: Create Source Directory
 
-Create a directory with two files: `manifest.yaml` and `index.js`.
+Create a version directory with two files: `manifest.yaml` and `index.js`.
 
 ```
-my-source/
+sources/<author>/<source-name>/<version>/
 ├── manifest.yaml
 └── index.js
 ```
 
-To submit to this repository, place it under `sources/<author>/<source-name>/`.
+To submit to this repository, place it under `sources/<author>/<source-name>/<version>/` (e.g., `sources/myname/my-source/1.0.0/`).
 
 ### Step 2: Implement index.js
 
