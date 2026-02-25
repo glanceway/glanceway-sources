@@ -18,25 +18,25 @@ Community information sources for [Glanceway](https://glanceway.app).
 ### Entertainment
 
 - **[TMDb Trending](sources/codytseng/tmdb-trending)** by [codytseng](https://github.com/codytseng) - Trending movies and TV shows from The Movie Database [[Download](https://github.com/glanceway/glanceway-sources/raw/refs/heads/master/dist/codytseng/tmdb-trending/latest.gwsrc)]
-- **[TVMaze Schedule](sources/codytseng/tvmaze-schedule.yaml)** by [codytseng](https://github.com/codytseng) - Today's TV episode schedule by country [[Download](https://github.com/glanceway/glanceway-sources/raw/refs/heads/master/dist/codytseng/tvmaze-schedule/latest.gwsrc)]
+- **[TVMaze Schedule](sources/codytseng/tvmaze-schedule)** by [codytseng](https://github.com/codytseng) - Today's TV episode schedule by country [[Download](https://github.com/glanceway/glanceway-sources/raw/refs/heads/master/dist/codytseng/tvmaze-schedule/latest.gwsrc)]
 - **[xkcd Comics](sources/codytseng/xkcd)** by [codytseng](https://github.com/codytseng) - Latest comics from xkcd [[Download](https://github.com/glanceway/glanceway-sources/raw/refs/heads/master/dist/codytseng/xkcd/latest.gwsrc)]
 
 ### Finance
 
 - **[CoinGecko Crypto Markets](sources/codytseng/coingecko-crypto)** by [codytseng](https://github.com/codytseng) - Top cryptocurrencies by market cap from CoinGecko [[Download](https://github.com/glanceway/glanceway-sources/raw/refs/heads/master/dist/codytseng/coingecko-crypto/latest.gwsrc)]
-- **[Finnhub Market News](sources/codytseng/finnhub-news.yaml)** by [codytseng](https://github.com/codytseng) - Financial news aggregated from major sources like Yahoo, Reuters, and CNBC via Finnhub [[Download](https://github.com/glanceway/glanceway-sources/raw/refs/heads/master/dist/codytseng/finnhub-news/latest.gwsrc)]
+- **[Finnhub Market News](sources/codytseng/finnhub-news)** by [codytseng](https://github.com/codytseng) - Financial news aggregated from major sources like Yahoo, Reuters, and CNBC via Finnhub [[Download](https://github.com/glanceway/glanceway-sources/raw/refs/heads/master/dist/codytseng/finnhub-news/latest.gwsrc)]
 - **[Stock Price Monitor](sources/codytseng/stock-price)** by [codytseng](https://github.com/codytseng) - Monitor global stock prices in your menu bar. Displays real-time price, change amount, and change percentage. Powered by Finnhub (free API key required). [[Download](https://github.com/glanceway/glanceway-sources/raw/refs/heads/master/dist/codytseng/stock-price/latest.gwsrc)]
-- **[华尔街见闻](sources/codytseng/wallstreetcn.yaml)** by [codytseng](https://github.com/codytseng) - 华尔街见闻 7x24 快讯 [[Download](https://github.com/glanceway/glanceway-sources/raw/refs/heads/master/dist/codytseng/wallstreetcn/latest.gwsrc)]
+- **[华尔街见闻](sources/codytseng/wallstreetcn)** by [codytseng](https://github.com/codytseng) - 华尔街见闻 7x24 快讯 [[Download](https://github.com/glanceway/glanceway-sources/raw/refs/heads/master/dist/codytseng/wallstreetcn/latest.gwsrc)]
 - **[股价监控](sources/codytseng/cn-stock-price)** by [codytseng](https://github.com/codytseng) - 在菜单栏实时监控 A 股股价。 显示当前价格、涨跌额和涨跌幅。 [[Download](https://github.com/glanceway/glanceway-sources/raw/refs/heads/master/dist/codytseng/cn-stock-price/latest.gwsrc)]
-- **[财联社电报](sources/codytseng/cls-telegraph.yaml)** by [codytseng](https://github.com/codytseng) - 财联社电报快讯 [[Download](https://github.com/glanceway/glanceway-sources/raw/refs/heads/master/dist/codytseng/cls-telegraph/latest.gwsrc)]
+- **[财联社电报](sources/codytseng/cls-telegraph)** by [codytseng](https://github.com/codytseng) - 财联社电报快讯 [[Download](https://github.com/glanceway/glanceway-sources/raw/refs/heads/master/dist/codytseng/cls-telegraph/latest.gwsrc)]
 - **[金十数据](sources/codytseng/jin10)** by [codytseng](https://github.com/codytseng) - 金十数据快讯 [[Download](https://github.com/glanceway/glanceway-sources/raw/refs/heads/master/dist/codytseng/jin10/latest.gwsrc)]
 
 ### News
 
-- **[Earthquake Alerts](sources/codytseng/earthquake-usgs.yaml)** by [codytseng](https://github.com/codytseng) - Recent significant earthquakes worldwide from USGS [[Download](https://github.com/glanceway/glanceway-sources/raw/refs/heads/master/dist/codytseng/earthquake-usgs/latest.gwsrc)]
+- **[Earthquake Alerts](sources/codytseng/earthquake-usgs)** by [codytseng](https://github.com/codytseng) - Recent significant earthquakes worldwide from USGS [[Download](https://github.com/glanceway/glanceway-sources/raw/refs/heads/master/dist/codytseng/earthquake-usgs/latest.gwsrc)]
 - **[Hacker News](sources/codytseng/hacker-news)** by codytseng - Top stories from Hacker News [[Download](https://github.com/glanceway/glanceway-sources/raw/refs/heads/master/dist/codytseng/hacker-news/latest.gwsrc)]
 - **[Product Hunt](sources/codytseng/product-hunt)** by [codytseng](https://github.com/codytseng) - Today's top products from Product Hunt [[Download](https://github.com/glanceway/glanceway-sources/raw/refs/heads/master/dist/codytseng/product-hunt/latest.gwsrc)]
-- **[Spaceflight News](sources/codytseng/spaceflight-news.yaml)** by [codytseng](https://github.com/codytseng) - Latest space and spaceflight news articles from SNAPI [[Download](https://github.com/glanceway/glanceway-sources/raw/refs/heads/master/dist/codytseng/spaceflight-news/latest.gwsrc)]
+- **[Spaceflight News](sources/codytseng/spaceflight-news)** by [codytseng](https://github.com/codytseng) - Latest space and spaceflight news articles from SNAPI [[Download](https://github.com/glanceway/glanceway-sources/raw/refs/heads/master/dist/codytseng/spaceflight-news/latest.gwsrc)]
 
 ### Productivity
 
@@ -71,7 +71,6 @@ See [CONTRIBUTING.md](./CONTRIBUTING.md) for guidelines on submitting your own i
 
 See the [development documentation](./docs/README.md) to learn how to create sources:
 
-- [YAML Source Development](./docs/yaml-source.md)
 - [JS Source Development](./docs/js-source.md)
 
 ## License
