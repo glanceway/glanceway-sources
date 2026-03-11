@@ -24,7 +24,7 @@ module.exports = async (api) => {
               id: item.id.toString(),
               title: item.title,
               subtitle: `${item.score} points · ${item.descendants ?? 0} comments · by ${item.by}`,
-              url: item.url ?? `https://news.ycombinator.com/item?id=${item.id}`,
+              url: `https://news.ycombinator.com/item?id=${item.id}`,
               timestamp: item.time,
             })),
           );
