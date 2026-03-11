@@ -164,7 +164,7 @@ function scanSources(): SourceEntry[] {
   }
 
   // Sort sources by name
-  sources.sort((a, b) => a.name.localeCompare(b.name));
+  sources.sort((a, b) => (a.name.toLowerCase() < b.name.toLowerCase() ? -1 : 1));
 
   return sources;
 }

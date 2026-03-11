@@ -179,7 +179,7 @@ function groupByCategory(
   for (const category of categories) {
     // Sort sources within category by name
     const categorySources = groups.get(category)!;
-    categorySources.sort((a, b) => a.name.localeCompare(b.name));
+    categorySources.sort((a, b) => (a.name.toLowerCase() < b.name.toLowerCase() ? -1 : 1));
     sortedGroups.set(category, categorySources);
   }
 
