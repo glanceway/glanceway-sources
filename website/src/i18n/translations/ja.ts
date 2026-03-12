@@ -3,7 +3,7 @@ import type { TranslationKey } from "./en";
 const ja: Record<TranslationKey, string> = {
   // Hero
   "hero.title": "すべてを一目で",
-  "hero.description": "macOS メニューバーに常駐する軽量アプリ。開発者ニュース、SNS フィード、アラートなど、気になる情報をリアルタイムでお届けします。",
+  "hero.description": "macOS メニューバーに常駐する軽量アプリ。Hacker News、GitHub、Reddit、RSS フィード、株価、暗号資産など、気になる情報をひと目で確認できます。",
   "hero.tagline": "邪魔しない、溢れさせない。",
   "hero.download": "Get on Mac App Store",
   "hero.comingSoon": "近日公開",
@@ -48,7 +48,7 @@ const ja: Record<TranslationKey, string> = {
   "sources.title": "ソース",
   "sources.subtitle": "コミュニティが作成したソース。ワンクリックでインストール。",
   "sources.pageTitle": "ソース",
-  "sources.pageSubtitle": "コミュニティが作成した Glanceway のソースを探してインストール。",
+  "sources.pageSubtitle": "コミュニティが作成した Glanceway のソースを探してインストール。Hacker News、GitHub Trending、Reddit、Product Hunt、株価、暗号資産、RSS など。",
   "sources.rssNote": "RSS フィード URL の直接インポートにも対応しています。以下のプラットフォームで数千のルートを探索できます",
   "sources.submitSource": "ソースを投稿",
   "sources.buildSource": "ソースを作成",

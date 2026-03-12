@@ -3,7 +3,7 @@ import type { TranslationKey } from "./en";
 const ko: Record<TranslationKey, string> = {
   // Hero
   "hero.title": "한눈에 모든 것을",
-  "hero.description": "개발자 뉴스, 소셜 피드, 알림 등 중요한 정보를 놓치지 않게 해주는 가벼운 macOS 메뉴 바 앱입니다.",
+  "hero.description": "Hacker News, GitHub, Reddit, RSS 피드, 주식 시세, 암호화폐 등을 한눈에 볼 수 있는 가벼운 macOS 메뉴 바 앱입니다.",
   "hero.tagline": "방해 없이, 부담 없이.",
   "hero.download": "Get on Mac App Store",
   "hero.comingSoon": "곧 출시",
@@ -48,7 +48,7 @@ const ko: Record<TranslationKey, string> = {
   "sources.title": "소스",
   "sources.subtitle": "커뮤니티가 만든 소스를 클릭 한 번으로 설치하세요.",
   "sources.pageTitle": "소스",
-  "sources.pageSubtitle": "커뮤니티가 만든 Glanceway 소스를 탐색하고 설치하세요.",
+  "sources.pageSubtitle": "커뮤니티가 만든 Glanceway 소스를 탐색하고 설치하세요 — Hacker News, GitHub Trending, Reddit, Product Hunt, 주식 시세, 암호화폐, RSS 등.",
   "sources.rssNote": "RSS 피드 URL을 직접 가져올 수도 있습니다. 다양한 라우트를 확인해 보세요:",
   "sources.submitSource": "소스 제출하기",
   "sources.buildSource": "소스 만들기",

@@ -3,7 +3,7 @@ import type { TranslationKey } from "./en";
 const tr: Record<TranslationKey, string> = {
   // Hero
   "hero.title": "Her şey bir bakışta",
-  "hero.description": "Sizi önemli gelişmelerden haberdar tutan hafif bir macOS menü çubuğu uygulaması — geliştirici haberleri, sosyal akışlar, bildirimler ve daha fazlası.",
+  "hero.description": "Hacker News, GitHub, Reddit, RSS akışları, hisse senedi fiyatları, kripto ve daha fazlasını bir araya getiren hafif bir macOS menü çubuğu uygulaması — hepsi tek bakışta.",
   "hero.tagline": "Dikkat dağınıklığı yok, bilgi yüklemesi yok.",
   "hero.download": "Get on Mac App Store",
   "hero.comingSoon": "Yakında",
@@ -48,7 +48,7 @@ const tr: Record<TranslationKey, string> = {
   "sources.title": "Kaynaklar",
   "sources.subtitle": "Topluluk tarafından oluşturulan kaynaklar. Tek tıkla yükleyin.",
   "sources.pageTitle": "Kaynaklar",
-  "sources.pageSubtitle": "Glanceway için topluluk tarafından oluşturulan kaynakları keşfedin ve yükleyin.",
+  "sources.pageSubtitle": "Glanceway için topluluk tarafından oluşturulan kaynakları keşfedin ve yükleyin — Hacker News, GitHub Trending, Reddit, Product Hunt, hisse senedi fiyatları, kripto fiyatları, RSS ve daha fazlası.",
   "sources.rssNote": "RSS besleme URL'lerini doğrudan içe aktarmayı da destekler. Binlerce rotayı keşfedin",
   "sources.submitSource": "Kaynak Gönder",
   "sources.buildSource": "Kaynak Oluştur",

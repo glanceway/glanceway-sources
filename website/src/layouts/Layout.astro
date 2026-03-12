@@ -12,14 +12,19 @@ import {
 
 interface Props {
   title: string;
+  description?: string;
   locale?: string;
   hideLanguageSwitcher?: boolean;
+  ogImage?: string;
 }
 
-const { title, locale = defaultLocale, hideLanguageSwitcher = false } = Astro.props;
+const { title, locale = defaultLocale, hideLanguageSwitcher = false, ogImage } = Astro.props;
 const t = useTranslations(locale);
 const dir = locales[locale]?.dir ?? "ltr";
 const currentPath = Astro.url.pathname;
+
+const siteUrl = "https://sources.glanceway.app";
+const description = Astro.props.description || t("hero.description");
 
 // Build base path for hreflang (strip locale prefix)
 function getBasePath(path: string, loc: string): string {
@@ -30,6 +35,31 @@ function getBasePath(path: string, loc: string): string {
   return path;
 }
 const basePath = getBasePath(currentPath, locale);
+
+// Canonical URL: always point to the current locale's page
+const canonicalUrl = new URL(currentPath, siteUrl).href;
+
+// OG image
+const ogImageUrl = ogImage ? new URL(ogImage, siteUrl).href : new URL("/app-screenshot.png", siteUrl).href;
+
+// JSON-LD structured data for the homepage
+const isHomePage = basePath === "/" || basePath === "";
+const jsonLd = isHomePage ? JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Glanceway",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "macOS",
+  "description": t("hero.description"),
+  "url": siteUrl,
+  "image": ogImageUrl,
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD",
+  },
+  "installUrl": "https://apps.apple.com/app/6758926117",
+}) : null;
 ---
 
 <!doctype html>
@@ -38,6 +68,25 @@ const basePath = getBasePath(currentPath, locale);
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:site_name" content="Glanceway" />
+    <meta property="og:locale" content={locale.replace("-", "_")} />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageUrl} />
+    <meta name="twitter:site" content="@glancewayapp" />
+
     <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="shortcut icon" href="/favicon.ico" />
@@ -49,10 +98,16 @@ const basePath = getBasePath(currentPath, locale);
         <link
           rel="alternate"
           hreflang={loc === defaultLocale ? "x-default" : loc}
-          href={getLocalePath(loc, basePath)}
+          href={new URL(getLocalePath(loc, basePath), siteUrl).href}
         />
       ))
     }
+    <link
+      rel="alternate"
+      hreflang="en"
+      href={new URL(getLocalePath(defaultLocale, basePath), siteUrl).href}
+    />
+    {jsonLd && <script type="application/ld+json" set:html={jsonLd} />}
     <script is:inline>
       (function () {
         var theme = localStorage.getItem("theme") || "system";

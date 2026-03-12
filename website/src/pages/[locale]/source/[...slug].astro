@@ -18,6 +18,6 @@ const { locale, id } = Astro.props as { locale: string; id: string };
 const source = getSourceDetail(id)!;
 ---
 
-<Layout title={`${source.name} — Glanceway`} locale={locale}>
+<Layout title={`${source.name} — Glanceway`} description={source.description} locale={locale}>
   <SourceDetailPage id={id} locale={locale} />
 </Layout>

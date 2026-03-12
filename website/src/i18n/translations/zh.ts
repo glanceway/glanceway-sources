@@ -4,7 +4,7 @@ const zh: Record<TranslationKey, string> = {
   // Hero
   "hero.title": "一瞥",
   "hero.description":
-    "一款轻量级 macOS 菜单栏应用，让你随时掌握重要动态——开发者资讯、社交动态、提醒通知等",
+    "轻量级 macOS 菜单栏应用，聚合 Hacker News、GitHub、Reddit、RSS 订阅、股票行情、加密货币等信息——一目了然。",
   "hero.tagline": "不打扰，不过载",
   "hero.download": "前往 Mac App Store",
   "hero.comingSoon": "即将发布",
@@ -49,7 +49,7 @@ const zh: Record<TranslationKey, string> = {
   "sources.title": "信息源",
   "sources.subtitle": "社区构建的信息源，一键安装。",
   "sources.pageTitle": "信息源",
-  "sources.pageSubtitle": "浏览并安装社区构建的 Glanceway 信息源。",
+  "sources.pageSubtitle": "浏览并安装社区构建的 Glanceway 信息源——Hacker News、GitHub Trending、Reddit、Product Hunt、股票行情、加密货币、RSS 等。",
   "sources.rssNote": "也支持直接导入 RSS 订阅链接。在以下平台探索数千种路由",
   "sources.submitSource": "提交信息源",
   "sources.buildSource": "开发信息源",

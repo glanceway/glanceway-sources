@@ -4,7 +4,7 @@ const zhTw: Record<TranslationKey, string> = {
   // Hero
   "hero.title": "一瞥",
   "hero.description":
-    "一款輕量級 macOS 選單列應用程式，讓你隨時掌握重要動態——開發者資訊、社群動態、提醒通知等",
+    "一款輕量級 macOS 選單列應用程式，聚合 Hacker News、GitHub、Reddit、RSS 訂閱、股票行情、加密貨幣等資訊——一目瞭然。",
   "hero.tagline": "不干擾，不過載",
   "hero.download": "Get on Mac App Store",
   "hero.comingSoon": "即將發布",
@@ -49,7 +49,7 @@ const zhTw: Record<TranslationKey, string> = {
   "sources.title": "資料來源",
   "sources.subtitle": "社群建置的資料來源，一鍵安裝。",
   "sources.pageTitle": "資料來源",
-  "sources.pageSubtitle": "瀏覽並安裝社群建置的 Glanceway 資料來源。",
+  "sources.pageSubtitle": "瀏覽並安裝社群建置的 Glanceway 資料來源——Hacker News、GitHub Trending、Reddit、Product Hunt、股票行情、加密貨幣、RSS 等。",
   "sources.rssNote": "也支援直接匯入 RSS 訂閱連結。在以下平台探索數千種路由",
   "sources.submitSource": "提交資料來源",
   "sources.buildSource": "開發資料來源",

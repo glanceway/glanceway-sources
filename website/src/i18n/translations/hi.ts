@@ -3,7 +3,7 @@ import type { TranslationKey } from "./en";
 const hi: Record<TranslationKey, string> = {
   // Hero
   "hero.title": "सब कुछ एक नज़र में",
-  "hero.description": "एक हल्का macOS मेन्यू बार ऐप जो आपको ज़रूरी चीज़ों से अपडेट रखता है — डेवलपर समाचार, सोशल फ़ीड, अलर्ट, और बहुत कुछ।",
+  "hero.description": "एक हल्का macOS मेन्यू बार ऐप जो Hacker News, GitHub, Reddit, RSS फ़ीड, शेयर मूल्य, क्रिप्टो और बहुत कुछ एकत्रित करता है — सब एक नज़र में।",
   "hero.tagline": "कोई भटकाव नहीं, कोई ओवरलोड नहीं।",
   "hero.download": "Get on Mac App Store",
   "hero.comingSoon": "जल्द आ रहा है",
@@ -48,7 +48,7 @@ const hi: Record<TranslationKey, string> = {
   "sources.title": "सोर्स",
   "sources.subtitle": "समुदाय द्वारा बनाए गए सोर्स। एक क्लिक में इंस्टॉल करें।",
   "sources.pageTitle": "सोर्स",
-  "sources.pageSubtitle": "Glanceway के लिए समुदाय द्वारा बनाए गए सोर्स ब्राउज़ करें और इंस्टॉल करें।",
+  "sources.pageSubtitle": "Glanceway के लिए समुदाय द्वारा बनाए गए सोर्स ब्राउज़ करें और इंस्टॉल करें — Hacker News, GitHub Trending, Reddit, Product Hunt, शेयर मूल्य, क्रिप्टो, RSS और बहुत कुछ।",
   "sources.rssNote": "RSS फ़ीड URL सीधे इंपोर्ट करने का भी समर्थन करता है। हज़ारों रूट्स खोजें",
   "sources.submitSource": "सोर्स सबमिट करें",
   "sources.buildSource": "सोर्स बनाएं",

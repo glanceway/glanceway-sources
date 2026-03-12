@@ -1,7 +1,7 @@
 const en = {
   // Hero
   "hero.title": "Everything at a glance",
-  "hero.description": "A lightweight macOS menu bar app that keeps you updated with what matters — developer news, social feeds, alerts, and more.",
+  "hero.description": "A lightweight macOS menu bar app that aggregates Hacker News, GitHub, Reddit, RSS feeds, stock prices, crypto, and more — all in one glance.",
   "hero.tagline": "No distractions, no overload.",
   "hero.download": "Get on Mac App Store",
   "hero.comingSoon": "Coming Soon",
@@ -46,7 +46,7 @@ const en = {
   "sources.title": "Sources",
   "sources.subtitle": "Community-built sources. One click to install.",
   "sources.pageTitle": "Sources",
-  "sources.pageSubtitle": "Browse and install community-built sources for Glanceway.",
+  "sources.pageSubtitle": "Browse and install community-built sources for Glanceway — Hacker News, GitHub Trending, Reddit, Product Hunt, stock quotes, crypto prices, RSS, and more.",
   "sources.rssNote": "Also supports importing RSS feed URLs directly. Explore thousands of routes on",
   "sources.submitSource": "Submit a Source",
   "sources.buildSource": "Build a Source",

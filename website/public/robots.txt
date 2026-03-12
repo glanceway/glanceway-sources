@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://sources.glanceway.app/sitemap-index.xml

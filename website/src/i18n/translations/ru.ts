@@ -3,7 +3,7 @@ import type { TranslationKey } from "./en";
 const ru: Record<TranslationKey, string> = {
   // Hero
   "hero.title": "Всё на виду",
-  "hero.description": "Лёгкое приложение в строке меню macOS, которое держит вас в курсе важного — новости разработки, социальные ленты, уведомления и многое другое.",
+  "hero.description": "Лёгкое приложение в строке меню macOS, которое агрегирует Hacker News, GitHub, Reddit, RSS-ленты, котировки акций, криптовалюты и многое другое — всё на виду.",
   "hero.tagline": "Без отвлечений, без перегрузки.",
   "hero.download": "Get on Mac App Store",
   "hero.comingSoon": "Скоро",
@@ -48,7 +48,7 @@ const ru: Record<TranslationKey, string> = {
   "sources.title": "Источники",
   "sources.subtitle": "Источники от сообщества. Установка в один клик.",
   "sources.pageTitle": "Источники",
-  "sources.pageSubtitle": "Просматривайте и устанавливайте источники от сообщества для Glanceway.",
+  "sources.pageSubtitle": "Просматривайте и устанавливайте источники от сообщества для Glanceway — Hacker News, GitHub Trending, Reddit, Product Hunt, котировки акций, криптовалюты, RSS и многое другое.",
   "sources.rssNote": "Также поддерживает прямой импорт URL-адресов RSS-лент. Исследуйте тысячи маршрутов на",
   "sources.submitSource": "Предложить источник",
   "sources.buildSource": "Создать источник",

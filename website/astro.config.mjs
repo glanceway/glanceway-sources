@@ -1,8 +1,10 @@
 import { defineConfig } from "astro/config";
 import tailwind from "@astrojs/tailwind";
+import sitemap from "@astrojs/sitemap";
 
 export default defineConfig({
-  integrations: [tailwind({ applyBaseStyles: false })],
+  site: "https://sources.glanceway.app",
+  integrations: [tailwind({ applyBaseStyles: false }), sitemap()],
   i18n: {
     defaultLocale: "en",
     locales: [

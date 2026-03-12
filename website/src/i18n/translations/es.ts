@@ -3,7 +3,7 @@ import type { TranslationKey } from "./en";
 const es: Record<TranslationKey, string> = {
   // Hero
   "hero.title": "Todo de un vistazo",
-  "hero.description": "Una app ligera para la barra de menús de macOS que te mantiene al día con lo que importa: noticias de desarrollo, redes sociales, alertas y más.",
+  "hero.description": "Una app ligera para la barra de menús de macOS que agrega Hacker News, GitHub, Reddit, feeds RSS, precios de acciones, cripto y más — todo de un vistazo.",
   "hero.tagline": "Sin distracciones, sin sobrecarga.",
   "hero.download": "Get on Mac App Store",
   "hero.comingSoon": "Próximamente",
@@ -48,7 +48,7 @@ const es: Record<TranslationKey, string> = {
   "sources.title": "Fuentes",
   "sources.subtitle": "Fuentes creadas por la comunidad. Un clic para instalar.",
   "sources.pageTitle": "Fuentes",
-  "sources.pageSubtitle": "Explora e instala fuentes creadas por la comunidad para Glanceway.",
+  "sources.pageSubtitle": "Explora e instala fuentes creadas por la comunidad para Glanceway — Hacker News, GitHub Trending, Reddit, Product Hunt, cotizaciones de acciones, precios de cripto, RSS y más.",
   "sources.rssNote": "También permite importar URLs de feeds RSS directamente. Explora miles de rutas en",
   "sources.submitSource": "Enviar una fuente",
   "sources.buildSource": "Crear una fuente",
