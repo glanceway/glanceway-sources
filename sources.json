@@ -3,27 +3,6 @@
   "updated_at": "2026-03-11T09:17:00.131Z",
   "sources": [
     {
-      "id": "codytseng/ai-prompt",
-      "name": "AI Prompt",
-      "description": "Send a prompt to an AI model and display the response",
-      "author": "codytseng",
-      "author_url": "https://github.com/codytseng",
-      "category": "Productivity",
-      "tags": [
-        "ai",
-        "llm"
-      ],
-      "type": "js",
-      "latest_version": "1.0.0",
-      "source_url": "https://github.com/glanceway/glanceway-sources/tree/master/sources/codytseng/ai-prompt",
-      "versions": [
-        {
-          "version": "1.0.0",
-          "download_url": "https://github.com/glanceway/glanceway-sources/raw/refs/heads/master/dist/codytseng/ai-prompt/1.0.0.gwsrc"
-        }
-      ]
-    },
-    {
       "id": "codytseng/coingecko-crypto",
       "name": "CoinGecko Crypto Markets",
       "description": "Top cryptocurrencies by market cap from CoinGecko",
