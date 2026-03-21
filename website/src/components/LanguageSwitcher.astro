@@ -63,4 +63,11 @@ const basePath = getBasePath(currentPath, locale);
   document.addEventListener("click", () => {
     dropdown.classList.add("hidden");
   });
+
+  // Remember manual language selection so auto-redirect won't override it
+  dropdown.querySelectorAll("a[data-lang]").forEach((link) => {
+    link.addEventListener("click", () => {
+      localStorage.setItem("locale-preference", (link as HTMLAnchorElement).dataset.lang!);
+    });
+  });
 </script>
