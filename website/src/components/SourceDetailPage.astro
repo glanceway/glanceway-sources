@@ -26,6 +26,22 @@ const categoryColors: Record<string, string> = {
   Other: "bg-gray-100 text-gray-600 dark:bg-gray-800 dark:text-gray-400",
 };
 const badgeClass = categoryColors[source.category] ?? categoryColors.Other;
+
+const giscusLocaleMap: Record<string, string> = {
+  en: "en",
+  zh: "zh-CN",
+  'zh-tw': "zh-TW",
+  ja: "ja",
+  ko: "ko",
+  es: "es",
+  fr: "fr",
+  de: "de",
+  pt: "pt",
+  ru: "ru",
+  ar: "ar",
+  tr: "tr",
+};
+const giscusLocale = giscusLocaleMap[locale] || "en";
 ---
 
 <!-- Detail hero -->
@@ -193,6 +209,23 @@ const badgeClass = categoryColors[source.category] ?? categoryColors.Other;
       </div>
     ))}
   </section>
+
+  <script
+    src="https://giscus.app/client.js"
+    data-repo="glanceway/glanceway-sources"
+    data-repo-id="R_kgDORRep_Q"
+    data-category="General"
+    data-category-id="DIC_kwDORRep_c4C46Zt"
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="1"
+    data-input-position="top"
+    data-theme="preferred_color_scheme"
+    data-lang={giscusLocale}
+    crossorigin="anonymous"
+    async>
+  </script>
 
   <script>
     const groups = document.querySelectorAll<HTMLDivElement>(".version-group");
