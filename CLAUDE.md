@@ -20,15 +20,15 @@ There is no test framework. Build the source to verify it compiles. There is no 
 
 ### Step 1: Create Source Directory
 
-Create a version directory with two files: `manifest.yaml` and `index.js`.
+Create a `latest` directory with two files: `manifest.yaml` and `index.js`.
 
 ```
-sources/<author>/<source-name>/<version>/
+sources/<author>/<source-name>/latest/
 ├── manifest.yaml
 └── index.js
 ```
 
-To submit to this repository, place it under `sources/<author>/<source-name>/<version>/` (e.g., `sources/myname/my-source/1.0.0/`).
+To submit to this repository, place it under `sources/<author>/<source-name>/latest/` (e.g., `sources/myname/my-source/latest/`). When releasing a new version, update the files in `latest/` and bump the version in `manifest.yaml`. To preserve an older version, copy it to a version-numbered directory (e.g., `1.0.0/`) before updating `latest/`.
 
 ### Step 2: Implement index.js
 

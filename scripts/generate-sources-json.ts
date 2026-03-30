@@ -73,6 +73,17 @@ function getLatestVersionDir(sourcePath: string): {
   version: string;
   versionPath: string;
 } | null {
+  const latestPath = path.join(sourcePath, "latest");
+  if (fs.existsSync(latestPath) && fs.statSync(latestPath).isDirectory()) {
+    const manifestPath = path.join(latestPath, "manifest.yaml");
+    if (fs.existsSync(manifestPath)) {
+      const content = fs.readFileSync(manifestPath, "utf-8");
+      const manifest = parseYaml(content);
+      return { version: manifest.version, versionPath: latestPath };
+    }
+  }
+
+  // Fallback to version-numbered directories
   const versionDirs = fs
     .readdirSync(sourcePath)
     .filter((d) => fs.statSync(path.join(sourcePath, d)).isDirectory())

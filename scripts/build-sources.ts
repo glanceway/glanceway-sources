@@ -13,6 +13,7 @@ interface SourceInfo {
   manifestPath: string;
   indexPath: string;
   version: string;
+  isLatest: boolean;
 }
 
 function parseArgs(): { source?: string } {
@@ -49,8 +50,8 @@ function scanSources(filterSource?: string): SourceInfo[] {
 
       const versionDirs = fs.readdirSync(sourcePath);
 
-      for (const version of versionDirs) {
-        const versionPath = path.join(sourcePath, version);
+      for (const dirName of versionDirs) {
+        const versionPath = path.join(sourcePath, dirName);
         if (!fs.statSync(versionPath).isDirectory()) continue;
 
         const files = fs.readdirSync(versionPath);
@@ -58,6 +59,13 @@ function scanSources(filterSource?: string): SourceInfo[] {
         const manifestPath = path.join(versionPath, "manifest.yaml");
 
         if (jsFile && fs.existsSync(manifestPath)) {
+          let version = dirName;
+          const isLatest = dirName === "latest";
+          if (isLatest) {
+            const content = fs.readFileSync(manifestPath, "utf-8");
+            const manifest = parseYaml(content);
+            version = manifest.version;
+          }
           const indexPath = path.join(versionPath, jsFile);
           sources.push({
             author: namespace,
@@ -66,6 +74,7 @@ function scanSources(filterSource?: string): SourceInfo[] {
             manifestPath,
             indexPath,
             version,
+            isLatest,
           });
         }
       }
@@ -150,11 +159,14 @@ async function buildJsSource(source: SourceInfo): Promise<boolean> {
     { name: "index.js", content: compiledJs },
   ]);
 
-  // Create/update latest.gwsrc
-  const latestPath = path.join(distPath, "latest.gwsrc");
-  fs.copyFileSync(versionedPath, latestPath);
-
-  console.log(`  ✅ Created ${source.version}.gwsrc and latest.gwsrc`);
+  // Create/update latest.gwsrc only for the latest version
+  if (source.isLatest) {
+    const latestPath = path.join(distPath, "latest.gwsrc");
+    fs.copyFileSync(versionedPath, latestPath);
+    console.log(`  ✅ Created ${source.version}.gwsrc and latest.gwsrc`);
+  } else {
+    console.log(`  ✅ Created ${source.version}.gwsrc`);
+  }
   return true;
 }
 
