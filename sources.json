@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-03-30T07:44:15.649Z",
+  "updated_at": "2026-03-30T15:17:01.284Z",
   "sources": [
     {
       "id": "codytseng/ai-prompt",
@@ -244,6 +244,52 @@
         {
           "version": "1.0.0",
           "download_url": "https://github.com/glanceway/glanceway-sources/raw/refs/heads/master/dist/codytseng/product-hunt/latest.gwsrc"
+        }
+      ]
+    },
+    {
+      "id": "codytseng/ptt",
+      "name": "PTT 热门文章",
+      "description": "台湾最大 BBS — PTT 的热门看板文章",
+      "author": "codytseng",
+      "author_url": "https://github.com/codytseng",
+      "category": "News",
+      "tags": [
+        "ptt",
+        "taiwan",
+        "chinese",
+        "bbs"
+      ],
+      "type": "js",
+      "latest_version": "1.0.0",
+      "source_url": "https://github.com/glanceway/glanceway-sources/tree/master/sources/codytseng/ptt",
+      "versions": [
+        {
+          "version": "1.0.0",
+          "download_url": "https://github.com/glanceway/glanceway-sources/raw/refs/heads/master/dist/codytseng/ptt/latest.gwsrc"
+        }
+      ]
+    },
+    {
+      "id": "codytseng/qiita",
+      "name": "Qiita",
+      "description": "日本最大の開発者向け技術記事プラットフォーム Qiita の人気記事",
+      "author": "codytseng",
+      "author_url": "https://github.com/codytseng",
+      "category": "Developer",
+      "tags": [
+        "qiita",
+        "japanese",
+        "tech",
+        "articles"
+      ],
+      "type": "js",
+      "latest_version": "1.0.0",
+      "source_url": "https://github.com/glanceway/glanceway-sources/tree/master/sources/codytseng/qiita",
+      "versions": [
+        {
+          "version": "1.0.0",
+          "download_url": "https://github.com/glanceway/glanceway-sources/raw/refs/heads/master/dist/codytseng/qiita/latest.gwsrc"
         }
       ]
     },
