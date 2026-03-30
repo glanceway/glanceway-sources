@@ -1,7 +1,28 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-03-11T09:17:00.131Z",
+  "updated_at": "2026-03-30T07:44:15.649Z",
   "sources": [
+    {
+      "id": "codytseng/ai-prompt",
+      "name": "AI Prompt",
+      "description": "Send a prompt to an AI model and display the response",
+      "author": "codytseng",
+      "author_url": "https://github.com/codytseng",
+      "category": "Productivity",
+      "tags": [
+        "ai",
+        "llm"
+      ],
+      "type": "js",
+      "latest_version": "1.0.0",
+      "source_url": "https://github.com/glanceway/glanceway-sources/tree/master/sources/codytseng/ai-prompt",
+      "versions": [
+        {
+          "version": "1.0.0",
+          "download_url": "https://github.com/glanceway/glanceway-sources/raw/refs/heads/master/dist/codytseng/ai-prompt/latest.gwsrc"
+        }
+      ]
+    },
     {
       "id": "codytseng/coingecko-crypto",
       "name": "CoinGecko Crypto Markets",
@@ -20,7 +41,7 @@
       "versions": [
         {
           "version": "1.0.0",
-          "download_url": "https://github.com/glanceway/glanceway-sources/raw/refs/heads/master/dist/codytseng/coingecko-crypto/1.0.0.gwsrc"
+          "download_url": "https://github.com/glanceway/glanceway-sources/raw/refs/heads/master/dist/codytseng/coingecko-crypto/latest.gwsrc"
         }
       ]
     },
@@ -42,7 +63,7 @@
       "versions": [
         {
           "version": "1.0.0",
-          "download_url": "https://github.com/glanceway/glanceway-sources/raw/refs/heads/master/dist/codytseng/dev-to/1.0.0.gwsrc"
+          "download_url": "https://github.com/glanceway/glanceway-sources/raw/refs/heads/master/dist/codytseng/dev-to/latest.gwsrc"
         }
       ]
     },
@@ -64,7 +85,7 @@
       "versions": [
         {
           "version": "1.0.0",
-          "download_url": "https://github.com/glanceway/glanceway-sources/raw/refs/heads/master/dist/codytseng/earthquake-usgs/1.0.0.gwsrc"
+          "download_url": "https://github.com/glanceway/glanceway-sources/raw/refs/heads/master/dist/codytseng/earthquake-usgs/latest.gwsrc"
         }
       ]
     },
@@ -87,7 +108,7 @@
       "versions": [
         {
           "version": "1.0.0",
-          "download_url": "https://github.com/glanceway/glanceway-sources/raw/refs/heads/master/dist/codytseng/finnhub-news/1.0.0.gwsrc"
+          "download_url": "https://github.com/glanceway/glanceway-sources/raw/refs/heads/master/dist/codytseng/finnhub-news/latest.gwsrc"
         }
       ]
     },
@@ -104,9 +125,13 @@
         "developer"
       ],
       "type": "js",
-      "latest_version": "1.0.0",
+      "latest_version": "1.1.0",
       "source_url": "https://github.com/glanceway/glanceway-sources/tree/master/sources/codytseng/github-notifications",
       "versions": [
+        {
+          "version": "1.1.0",
+          "download_url": "https://github.com/glanceway/glanceway-sources/raw/refs/heads/master/dist/codytseng/github-notifications/latest.gwsrc"
+        },
         {
           "version": "1.0.0",
           "download_url": "https://github.com/glanceway/glanceway-sources/raw/refs/heads/master/dist/codytseng/github-notifications/1.0.0.gwsrc"
@@ -131,7 +156,7 @@
       "versions": [
         {
           "version": "1.0.0",
-          "download_url": "https://github.com/glanceway/glanceway-sources/raw/refs/heads/master/dist/codytseng/github-trending/1.0.0.gwsrc"
+          "download_url": "https://github.com/glanceway/glanceway-sources/raw/refs/heads/master/dist/codytseng/github-trending/latest.gwsrc"
         }
       ]
     },
@@ -152,7 +177,7 @@
       "versions": [
         {
           "version": "1.0.0",
-          "download_url": "https://github.com/glanceway/glanceway-sources/raw/refs/heads/master/dist/codytseng/hacker-news/1.0.0.gwsrc"
+          "download_url": "https://github.com/glanceway/glanceway-sources/raw/refs/heads/master/dist/codytseng/hacker-news/latest.gwsrc"
         }
       ]
     },
@@ -174,7 +199,7 @@
       "versions": [
         {
           "version": "1.0.0",
-          "download_url": "https://github.com/glanceway/glanceway-sources/raw/refs/heads/master/dist/codytseng/lobsters/1.0.0.gwsrc"
+          "download_url": "https://github.com/glanceway/glanceway-sources/raw/refs/heads/master/dist/codytseng/lobsters/latest.gwsrc"
         }
       ]
     },
@@ -196,7 +221,7 @@
       "versions": [
         {
           "version": "1.0.0",
-          "download_url": "https://github.com/glanceway/glanceway-sources/raw/refs/heads/master/dist/codytseng/npm-trending/1.0.0.gwsrc"
+          "download_url": "https://github.com/glanceway/glanceway-sources/raw/refs/heads/master/dist/codytseng/npm-trending/latest.gwsrc"
         }
       ]
     },
@@ -218,7 +243,7 @@
       "versions": [
         {
           "version": "1.0.0",
-          "download_url": "https://github.com/glanceway/glanceway-sources/raw/refs/heads/master/dist/codytseng/product-hunt/1.0.0.gwsrc"
+          "download_url": "https://github.com/glanceway/glanceway-sources/raw/refs/heads/master/dist/codytseng/product-hunt/latest.gwsrc"
         }
       ]
     },
@@ -239,7 +264,7 @@
       "versions": [
         {
           "version": "1.0.0",
-          "download_url": "https://github.com/glanceway/glanceway-sources/raw/refs/heads/master/dist/codytseng/reddit/1.0.0.gwsrc"
+          "download_url": "https://github.com/glanceway/glanceway-sources/raw/refs/heads/master/dist/codytseng/reddit/latest.gwsrc"
         }
       ]
     },
@@ -260,7 +285,7 @@
       "versions": [
         {
           "version": "1.0.0",
-          "download_url": "https://github.com/glanceway/glanceway-sources/raw/refs/heads/master/dist/codytseng/service-health-check/1.0.0.gwsrc"
+          "download_url": "https://github.com/glanceway/glanceway-sources/raw/refs/heads/master/dist/codytseng/service-health-check/latest.gwsrc"
         }
       ]
     },
@@ -282,7 +307,7 @@
       "versions": [
         {
           "version": "1.0.0",
-          "download_url": "https://github.com/glanceway/glanceway-sources/raw/refs/heads/master/dist/codytseng/spaceflight-news/1.0.0.gwsrc"
+          "download_url": "https://github.com/glanceway/glanceway-sources/raw/refs/heads/master/dist/codytseng/spaceflight-news/latest.gwsrc"
         }
       ]
     },
@@ -304,7 +329,7 @@
       "versions": [
         {
           "version": "1.0.0",
-          "download_url": "https://github.com/glanceway/glanceway-sources/raw/refs/heads/master/dist/codytseng/stackoverflow-hot/1.0.0.gwsrc"
+          "download_url": "https://github.com/glanceway/glanceway-sources/raw/refs/heads/master/dist/codytseng/stackoverflow-hot/latest.gwsrc"
         }
       ]
     },
@@ -326,7 +351,7 @@
       "versions": [
         {
           "version": "1.0.0",
-          "download_url": "https://github.com/glanceway/glanceway-sources/raw/refs/heads/master/dist/codytseng/stock-price/1.0.0.gwsrc"
+          "download_url": "https://github.com/glanceway/glanceway-sources/raw/refs/heads/master/dist/codytseng/stock-price/latest.gwsrc"
         }
       ]
     },
@@ -349,7 +374,7 @@
       "versions": [
         {
           "version": "1.0.0",
-          "download_url": "https://github.com/glanceway/glanceway-sources/raw/refs/heads/master/dist/codytseng/tmdb-trending/1.0.0.gwsrc"
+          "download_url": "https://github.com/glanceway/glanceway-sources/raw/refs/heads/master/dist/codytseng/tmdb-trending/latest.gwsrc"
         }
       ]
     },
@@ -371,7 +396,7 @@
       "versions": [
         {
           "version": "1.0.0",
-          "download_url": "https://github.com/glanceway/glanceway-sources/raw/refs/heads/master/dist/codytseng/tvmaze-schedule/1.0.0.gwsrc"
+          "download_url": "https://github.com/glanceway/glanceway-sources/raw/refs/heads/master/dist/codytseng/tvmaze-schedule/latest.gwsrc"
         }
       ]
     },
@@ -393,7 +418,7 @@
       "versions": [
         {
           "version": "1.0.0",
-          "download_url": "https://github.com/glanceway/glanceway-sources/raw/refs/heads/master/dist/codytseng/v2ex/1.0.0.gwsrc"
+          "download_url": "https://github.com/glanceway/glanceway-sources/raw/refs/heads/master/dist/codytseng/v2ex/latest.gwsrc"
         }
       ]
     },
@@ -415,7 +440,7 @@
       "versions": [
         {
           "version": "1.0.0",
-          "download_url": "https://github.com/glanceway/glanceway-sources/raw/refs/heads/master/dist/codytseng/wikipedia-on-this-day/1.0.0.gwsrc"
+          "download_url": "https://github.com/glanceway/glanceway-sources/raw/refs/heads/master/dist/codytseng/wikipedia-on-this-day/latest.gwsrc"
         }
       ]
     },
@@ -437,7 +462,7 @@
       "versions": [
         {
           "version": "1.0.0",
-          "download_url": "https://github.com/glanceway/glanceway-sources/raw/refs/heads/master/dist/codytseng/xkcd/1.0.0.gwsrc"
+          "download_url": "https://github.com/glanceway/glanceway-sources/raw/refs/heads/master/dist/codytseng/xkcd/latest.gwsrc"
         }
       ]
     },
@@ -460,7 +485,7 @@
       "versions": [
         {
           "version": "1.0.0",
-          "download_url": "https://github.com/glanceway/glanceway-sources/raw/refs/heads/master/dist/codytseng/wallstreetcn/1.0.0.gwsrc"
+          "download_url": "https://github.com/glanceway/glanceway-sources/raw/refs/heads/master/dist/codytseng/wallstreetcn/latest.gwsrc"
         }
       ]
     },
@@ -483,7 +508,7 @@
       "versions": [
         {
           "version": "1.0.0",
-          "download_url": "https://github.com/glanceway/glanceway-sources/raw/refs/heads/master/dist/codytseng/cn-stock-price/1.0.0.gwsrc"
+          "download_url": "https://github.com/glanceway/glanceway-sources/raw/refs/heads/master/dist/codytseng/cn-stock-price/latest.gwsrc"
         }
       ]
     },
@@ -501,9 +526,13 @@
         "market"
       ],
       "type": "js",
-      "latest_version": "1.0.0",
+      "latest_version": "1.1.0",
       "source_url": "https://github.com/glanceway/glanceway-sources/tree/master/sources/codytseng/cls-telegraph",
       "versions": [
+        {
+          "version": "1.1.0",
+          "download_url": "https://github.com/glanceway/glanceway-sources/raw/refs/heads/master/dist/codytseng/cls-telegraph/latest.gwsrc"
+        },
         {
           "version": "1.0.0",
           "download_url": "https://github.com/glanceway/glanceway-sources/raw/refs/heads/master/dist/codytseng/cls-telegraph/1.0.0.gwsrc"
@@ -529,7 +558,7 @@
       "versions": [
         {
           "version": "1.0.0",
-          "download_url": "https://github.com/glanceway/glanceway-sources/raw/refs/heads/master/dist/codytseng/jin10/1.0.0.gwsrc"
+          "download_url": "https://github.com/glanceway/glanceway-sources/raw/refs/heads/master/dist/codytseng/jin10/latest.gwsrc"
         }
       ]
     }
