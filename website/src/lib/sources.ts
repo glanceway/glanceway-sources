@@ -100,10 +100,13 @@ export function getSourceDetail(id: string): SourceDetail | undefined {
   const sourceDir = path.join(SOURCES_DIR, author, name);
 
   // Read files for all versions
-  const versionFiles: VersionFiles[] = source.versions.map((v) => ({
-    version: v.version,
-    files: readVersionFiles(path.join(sourceDir, v.version)),
-  }));
+  const versionFiles: VersionFiles[] = source.versions.map((v, i) => {
+    const dirName = i === 0 && fs.existsSync(path.join(sourceDir, "latest")) ? "latest" : v.version;
+    return {
+      version: v.version,
+      files: readVersionFiles(path.join(sourceDir, dirName)),
+    };
+  });
 
   // Latest version files and config
   const latestFiles = versionFiles[0]?.files ?? [];
