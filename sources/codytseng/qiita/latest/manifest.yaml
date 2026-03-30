@@ -1,0 +1,18 @@
+version: 1.0.0
+name: Qiita
+description: 日本最大の開発者向け技術記事プラットフォーム Qiita の人気記事
+author: codytseng
+author_url: https://github.com/codytseng
+category: Developer
+tags:
+  - qiita
+  - japanese
+  - tech
+  - articles
+
+config:
+  - key: TAG
+    name: タグ
+    type: list
+    required: false
+    description: タグでフィルター（例：Python, JavaScript, React）。空欄の場合は全タグの人気記事を表示します。

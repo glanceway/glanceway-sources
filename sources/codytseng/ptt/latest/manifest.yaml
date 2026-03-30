@@ -1,0 +1,18 @@
+version: 1.0.0
+name: PTT 热门文章
+description: 台湾最大 BBS — PTT 的热门看板文章
+author: codytseng
+author_url: https://github.com/codytseng
+category: News
+tags:
+  - ptt
+  - taiwan
+  - chinese
+  - bbs
+
+config:
+  - key: BOARD
+    name: 看板名称
+    type: list
+    required: false
+    description: 指定看板（如 Gossiping, Stock, Tech_Job）。留空则显示多个热门看板的文章。
