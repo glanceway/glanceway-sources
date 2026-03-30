@@ -135,7 +135,7 @@ function scanSources(): SourceEntry[] {
 
         const sourceVersions: SourceVersion[] = versions.map((version) => ({
           version,
-          download_url: `https://github.com/${GITHUB_REPO}/raw/refs/heads/${GITHUB_BRANCH}/dist/${namespace}/${sourceName}/${version}.gwsrc`,
+          download_url: `https://github.com/${GITHUB_REPO}/raw/refs/heads/${GITHUB_BRANCH}/dist/${namespace}/${sourceName}/${version === latest.version ? "latest" : version}.gwsrc`,
           changelog:
             version === manifest.version ? manifest.changelog : undefined,
         }));
