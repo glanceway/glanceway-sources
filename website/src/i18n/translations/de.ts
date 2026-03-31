@@ -94,6 +94,10 @@ const de: Record<TranslationKey, string> = {
 
   // Language switcher
   "language.label": "Sprache",
+
+  // SEO
+  "seo.homeTitle": "Glanceway — macOS Menüleisten-Hub | RSS, News & eigene Feeds",
+  "seo.keywords": "macOS Menüleiste,RSS Reader,Nachrichten,Aktien,Krypto,GitHub,Entwickler,Dashboard,Aggregator,Ticker,Technologie",
 };
 
 export default de;

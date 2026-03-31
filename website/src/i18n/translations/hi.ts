@@ -94,6 +94,10 @@ const hi: Record<TranslationKey, string> = {
 
   // Language switcher
   "language.label": "भाषा",
+
+  // SEO
+  "seo.homeTitle": "Glanceway — macOS मेन्यू बार सूचना केंद्र | RSS, समाचार और कस्टम फ़ीड",
+  "seo.keywords": "macOS मेन्यू बार,RSS रीडर,समाचार,शेयर,क्रिप्टो,GitHub,डेवलपर,डैशबोर्ड,एग्रीगेटर,टेक्नोलॉजी",
 };
 
 export default hi;

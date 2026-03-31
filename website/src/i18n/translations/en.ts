@@ -92,6 +92,10 @@ const en = {
 
   // Language switcher
   "language.label": "Language",
+
+  // SEO
+  "seo.homeTitle": "Glanceway — macOS Menu Bar Info Hub | RSS, News & Custom Feeds",
+  "seo.keywords": "macOS menu bar,RSS reader,news aggregator,Hacker News,GitHub,Reddit,stock ticker,crypto,developer tools,dashboard,notification,custom feeds,information hub",
 } as const;
 
 export type TranslationKey = keyof typeof en;

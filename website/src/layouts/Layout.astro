@@ -14,18 +14,20 @@ import {
 interface Props {
   title: string;
   description?: string;
+  keywords?: string;
   locale?: string;
   hideLanguageSwitcher?: boolean;
   ogImage?: string;
 }
 
-const { title, locale = defaultLocale, hideLanguageSwitcher = false, ogImage } = Astro.props;
+const { title, locale = defaultLocale, hideLanguageSwitcher = false, ogImage, keywords: keywordsProp } = Astro.props;
 const t = useTranslations(locale);
 const dir = locales[locale]?.dir ?? "ltr";
 const currentPath = Astro.url.pathname;
 
 const siteUrl = "https://sources.glanceway.app";
 const description = Astro.props.description || t("hero.description");
+const keywords = keywordsProp || t("seo.keywords");
 
 // Build base path for hreflang (strip locale prefix)
 function getBasePath(path: string, loc: string): string {
@@ -70,6 +72,7 @@ const jsonLd = isHomePage ? JSON.stringify({
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <meta name="keywords" content={keywords} />
     <link rel="canonical" href={canonicalUrl} />
 
     <!-- Open Graph -->

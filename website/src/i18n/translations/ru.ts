@@ -94,6 +94,10 @@ const ru: Record<TranslationKey, string> = {
 
   // Language switcher
   "language.label": "Язык",
+
+  // SEO
+  "seo.homeTitle": "Glanceway — Информационный хаб в строке меню macOS | RSS, новости и пользовательские каналы",
+  "seo.keywords": "macOS строка меню,RSS ридер,новости,акции,криптовалюта,GitHub,разработчик,дашборд,агрегатор,технологии",
 };
 
 export default ru;

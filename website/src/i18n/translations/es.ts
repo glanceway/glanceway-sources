@@ -94,6 +94,10 @@ const es: Record<TranslationKey, string> = {
 
   // Language switcher
   "language.label": "Idioma",
+
+  // SEO
+  "seo.homeTitle": "Glanceway — Hub en Barra de Menú macOS | RSS, Noticias y feeds a medida",
+  "seo.keywords": "macOS barra de menús,lector RSS,noticias,bolsa,cripto,GitHub,desarrollador,agregador,feeds personalizados,tecnología",
 };
 
 export default es;

@@ -14,6 +14,6 @@ const { locale } = Astro.props as { locale: string };
 const t = useTranslations(locale);
 ---
 
-<Layout title={`Glanceway — ${t("hero.title")}`} description={t("hero.description")} locale={locale}>
+<Layout title={t("seo.homeTitle")} description={t("hero.description")} locale={locale}>
   <HomePage locale={locale} />
 </Layout>

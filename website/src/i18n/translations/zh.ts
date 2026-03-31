@@ -95,6 +95,10 @@ const zh: Record<TranslationKey, string> = {
 
   // Language switcher
   "language.label": "语言",
+
+  // SEO
+  "seo.homeTitle": "Glanceway 一瞥 — macOS 菜单栏信息中心 | RSS、新闻和自定义信息源",
+  "seo.keywords": "macOS 菜单栏,RSS 阅读器,新闻聚合,股票行情,加密货币,GitHub,开发者工具,仪表盘,信息流,V2EX,效率工具,科技资讯,信息源",
 };
 
 export default zh;

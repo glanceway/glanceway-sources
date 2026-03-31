@@ -94,6 +94,10 @@ const ja: Record<TranslationKey, string> = {
 
   // Language switcher
   "language.label": "言語",
+
+  // SEO
+  "seo.homeTitle": "Glanceway — メニューバー情報ハブ | RSS・ニュース・カスタムフィード",
+  "seo.keywords": "macOS メニューバー,RSS リーダー,ニュース,株価,仮想通貨,GitHub,開発者,ダッシュボード,通知,Qiita,情報収集,テック,ニュースアプリ",
 };
 
 export default ja;

@@ -94,6 +94,10 @@ const ko: Record<TranslationKey, string> = {
 
   // Language switcher
   "language.label": "언어",
+
+  // SEO
+  "seo.homeTitle": "Glanceway — macOS 메뉴 바 정보 허브 | RSS, 뉴스 및 맞춤 피드",
+  "seo.keywords": "macOS 메뉴 바,RSS 리더,뉴스,주식,암호화폐,GitHub,개발자,대시보드,알림,정보수집,테크,뉴스 앱",
 };
 
 export default ko;
