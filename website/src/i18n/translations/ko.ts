@@ -40,8 +40,9 @@ const ko: Record<TranslationKey, string> = {
   "features.aiReading.chatStatus": "Used Glanceway integration, used a tool",
   "features.aiReading.chatResponse": "Here's a summary of your unread Hacker News feed, grouped by theme:<br/><br/><b>Top Stories (by points)</b><br/>The biggest discussion today is a Mastodon post asking whether to walk or drive 50 meters to a car wash — a humorous AI overthinking scenario that racked up 968 points and 621 comments...",
   "features.rss.title": "RSS 지원",
-  "features.rss.description": "네이티브 RSS/Atom 지원. 피드 URL을 붙여넣거나 RSSHub를 사용해 수천 개의 피드에 접근하세요.",
+  "features.rss.description": "네이티브 RSS/Atom 지원. 피드 URL을 붙여넣거나 RSSHub / rss.app을 사용해 수천 개의 피드에 접근하세요.",
   "features.rss.linkRsshub": "RSSHub 탐색",
+  "features.rss.linkRssApp": "rss.app 탐색",
 
   // CTA
   "cta.title": "최신 정보를 놓치고 싶지 않으신가요?",

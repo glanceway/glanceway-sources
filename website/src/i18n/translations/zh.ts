@@ -41,8 +41,9 @@ const zh: Record<TranslationKey, string> = {
   "features.aiReading.chatStatus": "Used Glanceway integration, used a tool",
   "features.aiReading.chatResponse": "Here's a summary of your unread Hacker News feed, grouped by theme:<br/><br/><b>Top Stories (by points)</b><br/>The biggest discussion today is a Mastodon post asking whether to walk or drive 50 meters to a car wash — a humorous AI overthinking scenario that racked up 968 points and 621 comments...",
   "features.rss.title": "支持 RSS",
-  "features.rss.description": "原生 RSS/Atom 支持。粘贴任意订阅链接，或使用 RSSHub 获取数千种订阅源。",
+  "features.rss.description": "原生 RSS/Atom 支持。粘贴任意订阅链接，或使用 RSSHub / rss.app 获取数千种订阅源。",
   "features.rss.linkRsshub": "探索 RSSHub",
+  "features.rss.linkRssApp": "探索 rss.app",
 
   // CTA
   "cta.title": "准备好保持同步了吗？",

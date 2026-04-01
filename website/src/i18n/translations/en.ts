@@ -38,8 +38,9 @@ const en = {
   "features.aiReading.chatStatus": "Used Glanceway integration, used a tool",
   "features.aiReading.chatResponse": "Here's a summary of your unread Hacker News feed, grouped by theme:<br/><br/><b>Top Stories (by points)</b><br/>The biggest discussion today is a Mastodon post asking whether to walk or drive 50 meters to a car wash — a humorous AI overthinking scenario that racked up 968 points and 621 comments...",
   "features.rss.title": "RSS Support",
-  "features.rss.description": "Native RSS/Atom support. Paste any feed URL or use RSSHub to access thousands of feeds.",
+  "features.rss.description": "Native RSS/Atom support. Paste any feed URL or use RSSHub / rss.app to access thousands of feeds.",
   "features.rss.linkRsshub": "Explore RSSHub",
+  "features.rss.linkRssApp": "Explore rss.app",
 
   // CTA
   "cta.title": "Ready to stay in the loop?",

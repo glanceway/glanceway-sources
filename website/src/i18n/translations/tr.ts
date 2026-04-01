@@ -40,8 +40,9 @@ const tr: Record<TranslationKey, string> = {
   "features.aiReading.chatStatus": "Used Glanceway integration, used a tool",
   "features.aiReading.chatResponse": "Here's a summary of your unread Hacker News feed, grouped by theme:<br/><br/><b>Top Stories (by points)</b><br/>The biggest discussion today is a Mastodon post asking whether to walk or drive 50 meters to a car wash — a humorous AI overthinking scenario that racked up 968 points and 621 comments...",
   "features.rss.title": "RSS Desteği",
-  "features.rss.description": "Yerel RSS/Atom desteği. Herhangi bir besleme URL'si yapıştırın veya RSSHub ile binlerce beslemeye erişin.",
+  "features.rss.description": "Yerel RSS/Atom desteği. Herhangi bir besleme URL'si yapıştırın veya RSSHub / rss.app ile binlerce beslemeye erişin.",
   "features.rss.linkRsshub": "RSSHub'ı Keşfet",
+  "features.rss.linkRssApp": "rss.app'i Keşfet",
 
   // CTA
   "cta.title": "Gelişmelerden haberdar olmaya hazır mısınız?",

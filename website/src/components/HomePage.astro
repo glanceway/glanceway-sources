@@ -146,14 +146,24 @@ const sourceBadges = [
         >
           {t("features.rss.description")}
         </p>
-        <a
-          href="https://rsshub.netlify.app/routes"
-          target="_blank"
-          class="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-gray-600 no-underline hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
-        >
-          {t("features.rss.linkRsshub")}
-          <ArrowRight class="h-3.5 w-3.5" />
-        </a>
+        <div class="mt-4 flex items-center gap-4">
+          <a
+            href="https://rsshub.netlify.app/routes"
+            target="_blank"
+            class="inline-flex items-center gap-1.5 text-sm font-medium text-gray-600 no-underline hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
+          >
+            {t("features.rss.linkRsshub")}
+            <ArrowRight class="h-3.5 w-3.5" />
+          </a>
+          <a
+            href="https://rss.app"
+            target="_blank"
+            class="inline-flex items-center gap-1.5 text-sm font-medium text-gray-600 no-underline hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
+          >
+            {t("features.rss.linkRssApp")}
+            <ArrowRight class="h-3.5 w-3.5" />
+          </a>
+        </div>
       </div>
       <div class="flex-1 min-w-0 w-full">
         <div class="space-y-2.5">
