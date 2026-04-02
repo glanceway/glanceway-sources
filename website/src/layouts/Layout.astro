@@ -43,7 +43,7 @@ const basePath = getBasePath(currentPath, locale);
 const canonicalUrl = new URL(currentPath, siteUrl).href;
 
 // OG image
-const ogImageUrl = ogImage ? new URL(ogImage, siteUrl).href : new URL("/app-screenshot.png", siteUrl).href;
+const ogImageUrl = ogImage ? new URL(ogImage, siteUrl).href : new URL("/og-image.png", siteUrl).href;
 
 // JSON-LD structured data for the homepage
 const isHomePage = basePath === "/" || basePath === "";
@@ -74,11 +74,6 @@ const jsonLd = isHomePage ? JSON.stringify({
     <meta name="description" content={description} />
     <meta name="keywords" content={keywords} />
     <link rel="canonical" href={canonicalUrl} />
-
-    <!-- Inter font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
@@ -250,7 +245,7 @@ const jsonLd = isHomePage ? JSON.stringify({
             <div class="flex flex-col gap-2">
               <span class="text-xs font-medium text-gray-500 dark:text-gray-400">Support</span>
               <a href="mailto:support@glanceway.app" class="text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300 transition-colors">support@glanceway.app</a>
-              <a href="/privacy" class="text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300 transition-colors">Privacy Policy</a>
+              <a href={getLocalePath(locale, "/privacy")} class="text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300 transition-colors">Privacy Policy</a>
             </div>
           </div>
         </div>
