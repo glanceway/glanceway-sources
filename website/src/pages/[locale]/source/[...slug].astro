@@ -18,6 +18,10 @@ const { locale, id } = Astro.props as { locale: string; id: string };
 const source = getSourceDetail(id)!;
 ---
 
-<Layout title={`${source.name} — Glanceway`} description={source.description} locale={locale}>
+<Layout
+  title={`${source.name} — Glanceway Source for macOS Menu Bar`}
+  description={`${source.description.replace(/\.?\s*$/, '.')} Install ${source.name} in Glanceway to see ${source.category.toLowerCase()} updates in your macOS menu bar.`}
+  locale={locale}
+>
   <SourceDetailPage id={id} locale={locale} />
 </Layout>

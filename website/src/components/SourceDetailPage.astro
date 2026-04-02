@@ -42,7 +42,31 @@ const giscusLocaleMap: Record<string, string> = {
   tr: "tr",
 };
 const giscusLocale = giscusLocaleMap[locale] || "en";
+
+const sourceJsonLd = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": source.name,
+  "description": source.description,
+  "applicationCategory": source.category,
+  "operatingSystem": "macOS",
+  "softwareVersion": source.latest_version,
+  "author": {
+    "@type": "Person",
+    "name": source.author,
+    ...(source.author_url ? { "url": source.author_url } : {}),
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD",
+  },
+  "installUrl": installUrl,
+  ...(source.tags?.length ? { "keywords": source.tags.join(", ") } : {}),
+});
 ---
+
+<script type="application/ld+json" set:html={sourceJsonLd} />
 
 <!-- Detail hero -->
 <div>

@@ -4,7 +4,15 @@ import sitemap from "@astrojs/sitemap";
 
 export default defineConfig({
   site: "https://sources.glanceway.app",
-  integrations: [tailwind({ applyBaseStyles: false }), sitemap()],
+  integrations: [
+    tailwind({ applyBaseStyles: false }),
+    sitemap({
+      serialize(item) {
+        item.lastmod = new Date().toISOString();
+        return item;
+      },
+    }),
+  ],
   i18n: {
     defaultLocale: "en",
     locales: [
