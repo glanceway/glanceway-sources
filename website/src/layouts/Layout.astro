@@ -75,6 +75,11 @@ const jsonLd = isHomePage ? JSON.stringify({
     <meta name="keywords" content={keywords} />
     <link rel="canonical" href={canonicalUrl} />
 
+    <!-- Inter font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
@@ -188,9 +193,9 @@ const jsonLd = isHomePage ? JSON.stringify({
     </script>
   </head>
   <body
-    class="min-h-screen bg-gray-50 text-gray-900 dark:bg-gray-950 dark:text-gray-100"
+    class="min-h-screen text-gray-900 dark:text-gray-100"
   >
-    <header class="bg-white shadow-sm dark:bg-gray-900">
+    <header class="sticky top-0 z-50 header-blend">
       <div
         class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4"
       >
@@ -204,12 +209,12 @@ const jsonLd = isHomePage ? JSON.stringify({
         <nav class="flex items-center gap-4 text-sm">
           <a
             href={getLocalePath(locale, "/sources")}
-            class="font-medium text-gray-600 no-underline hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
+            class="font-medium text-gray-600 no-underline hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition-colors"
           >{t("nav.sources")}</a>
           {!hideLanguageSwitcher && <LanguageSwitcher locale={locale} currentPath={currentPath} />}
           <button
             id="theme-toggle"
-            class="flex h-8 w-8 items-center justify-center rounded-lg text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-white"
+            class="flex h-8 w-8 items-center justify-center rounded-lg text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-white transition-colors"
             aria-label="Toggle theme"
           >
             <Sun class="theme-icon h-4 w-4" data-theme="light" />
@@ -222,51 +227,43 @@ const jsonLd = isHomePage ? JSON.stringify({
     <main>
       <slot />
     </main>
-    <footer
-      class="border-t border-gray-200 bg-white dark:border-gray-800 dark:bg-gray-900"
-    >
-      <div class="mx-auto max-w-6xl px-6 py-8">
-        <div
-          class="flex flex-col items-center justify-between gap-4 sm:flex-row"
-        >
-          <div
-            class="flex items-center gap-2 text-sm font-semibold text-gray-900 dark:text-white"
-          >
-            <img src="/logo.svg" alt="Glanceway" class="h-5 w-5 dark:invert" />
-            Glanceway
+    <footer>
+      <div class="mx-auto max-w-6xl px-6 py-10">
+        <div class="flex flex-col gap-8 sm:flex-row sm:justify-between">
+          <!-- Left: brand + copyright -->
+          <div>
+            <div class="flex items-center gap-2 text-sm font-semibold text-gray-900 dark:text-white">
+              <img src="/logo.svg" alt="Glanceway" class="h-5 w-5 dark:invert" />
+              Glanceway
+            </div>
+            <p class="mt-3 text-xs text-gray-400 dark:text-gray-500">
+              {t("footer.copyright", { year: new Date().getFullYear().toString() })}
+            </p>
           </div>
-          <div
-            class="flex items-center gap-6 text-sm text-gray-400 dark:text-gray-500"
-          >
-            <a
-              href="https://x.com/glancewayapp"
-              target="_blank"
-              class="hover:text-gray-600 dark:hover:text-gray-300"
-              >X.com</a
-            >
-            <a
-              href="https://github.com/glanceway/glanceway-sources"
-              target="_blank"
-              class="hover:text-gray-600 dark:hover:text-gray-300"
-              >GitHub</a
-            >
-            <a
-              href="mailto:support@glanceway.app"
-              class="hover:text-gray-600 dark:hover:text-gray-300"
-              >Support</a
-            >
-            <span class="text-gray-200 dark:text-gray-700">|</span>
-            <a
-              href="/privacy"
-              class="hover:text-gray-600 dark:hover:text-gray-300"
-              >Privacy</a
-            >
+          <!-- Right: links -->
+          <div class="flex gap-12 text-sm">
+            <div class="flex flex-col gap-2">
+              <span class="text-xs font-medium text-gray-500 dark:text-gray-400">Social</span>
+              <a href="https://x.com/glancewayapp" target="_blank" class="text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300 transition-colors">X (Twitter)</a>
+              <a href="https://github.com/glanceway/glanceway-sources" target="_blank" class="text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300 transition-colors">GitHub</a>
+            </div>
+            <div class="flex flex-col gap-2">
+              <span class="text-xs font-medium text-gray-500 dark:text-gray-400">Support</span>
+              <a href="mailto:support@glanceway.app" class="text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300 transition-colors">support@glanceway.app</a>
+              <a href="/privacy" class="text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300 transition-colors">Privacy Policy</a>
+            </div>
           </div>
-        </div>
-        <div class="mt-6 text-center text-xs text-gray-300 dark:text-gray-600">
-          {t("footer.copyright", { year: new Date().getFullYear().toString() })}
         </div>
       </div>
     </footer>
+    <script is:inline>
+      (function () {
+        var h = document.querySelector(".header-blend");
+        if (!h) return;
+        function u() { h.classList.toggle("scrolled", window.scrollY > 10); }
+        u();
+        window.addEventListener("scroll", u, { passive: true });
+      })();
+    </script>
   </body>
 </html>

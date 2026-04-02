@@ -22,36 +22,38 @@ const categories = [
 ];
 ---
 
-<div class="bg-gray-50 dark:bg-gray-950">
-  <div class="mx-auto max-w-6xl px-6 py-12">
-    <div class="mb-8 flex items-end justify-between gap-4">
-      <div>
-        <h1
-          class="mb-2 text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl dark:text-white"
+<div>
+  <div class="mx-auto max-w-6xl px-6 py-14">
+    <div class="mb-10">
+      <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
+        <div>
+          <h1
+            class="mb-2 text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl dark:text-white"
+          >
+            {t("sources.pageTitle")}
+          </h1>
+          <p class="text-gray-500 dark:text-gray-400">
+            {t("sources.pageSubtitle")}
+          </p>
+          <p class="mt-1 text-sm text-gray-400 dark:text-gray-500">
+            {t("sources.rssNote")}
+            <a
+              href="https://rsshub.netlify.app/routes"
+              class="text-gray-500 underline hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300 transition-colors"
+              target="_blank">RSSHub</a
+            > / <a
+              href="https://rss.app"
+              class="text-gray-500 underline hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300 transition-colors"
+              target="_blank">rss.app</a
+            >.
+          </p>
+        </div>
+        <a
+          href="https://github.com/glanceway/glanceway-sources/blob/master/docs/README.md"
+          class="shrink-0 self-start rounded-xl border border-gray-200 dark:border-gray-700 px-4 py-2 text-sm font-medium text-gray-700 no-underline hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800 transition-colors"
+          target="_blank">{t("sources.buildSource")}</a
         >
-          {t("sources.pageTitle")}
-        </h1>
-        <p class="text-gray-500 dark:text-gray-400">
-          {t("sources.pageSubtitle")}
-        </p>
-        <p class="mt-1 text-sm text-gray-400 dark:text-gray-500">
-          {t("sources.rssNote")}
-          <a
-            href="https://rsshub.netlify.app/routes"
-            class="text-gray-500 underline hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300"
-            target="_blank">RSSHub</a
-          > / <a
-            href="https://rss.app"
-            class="text-gray-500 underline hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300"
-            target="_blank">rss.app</a
-          >.
-        </p>
       </div>
-      <a
-        href="https://github.com/glanceway/glanceway-sources/blob/master/docs/README.md"
-        class="shrink-0 rounded-lg border border-gray-300 px-4 py-2 text-sm font-medium text-gray-700 no-underline hover:bg-gray-100 dark:border-gray-700 dark:text-gray-300 dark:hover:bg-gray-800"
-        target="_blank">{t("sources.buildSource")}</a
-      >
     </div>
 
     <div class="mb-6 flex flex-wrap gap-2">
@@ -92,7 +94,7 @@ const categories = [
       </p>
       <a
         href="https://github.com/glanceway/glanceway-sources/blob/master/docs/README.md"
-        class="mt-4 inline-block rounded-lg bg-gray-900 px-5 py-2.5 text-sm font-semibold text-white no-underline hover:bg-gray-800 dark:bg-white dark:text-gray-900 dark:hover:bg-gray-200"
+        class="mt-4 inline-block btn-primary"
         target="_blank">{t("sources.buildSource")}</a
       >
     </div>

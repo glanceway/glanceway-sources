@@ -45,9 +45,9 @@ const giscusLocale = giscusLocaleMap[locale] || "en";
 ---
 
 <!-- Detail hero -->
-<div class="bg-white shadow-sm dark:bg-gray-900">
+<div>
   <div class="mx-auto max-w-6xl px-6 py-10">
-    <a href={getLocalePath(locale, "/sources")} class="mb-6 inline-flex items-center gap-1 text-sm text-gray-400 hover:text-gray-600 dark:text-gray-500 dark:hover:text-gray-300">
+    <a href={getLocalePath(locale, "/sources")} class="mb-6 inline-flex items-center gap-1 text-sm text-gray-400 hover:text-gray-600 dark:text-gray-500 dark:hover:text-gray-300 transition-colors">
       <ArrowLeft class="h-4 w-4" />
       {t("detail.allSources")}
     </a>
@@ -102,7 +102,7 @@ const giscusLocale = giscusLocaleMap[locale] || "en";
       <a
         id="install-btn"
         href={installUrl}
-        class="inline-flex items-center gap-2 rounded-lg bg-gray-900 px-5 py-2.5 text-sm font-semibold text-white no-underline hover:bg-gray-800 dark:bg-white dark:text-gray-900 dark:hover:bg-gray-200"
+        class="btn-primary"
       >
         <Download class="h-4 w-4" />
         {t("detail.install")}
@@ -110,7 +110,7 @@ const giscusLocale = giscusLocaleMap[locale] || "en";
       <a
         id="download-btn"
         href={latestVersion.download_url}
-        class="inline-flex items-center gap-2 rounded-lg border border-gray-300 bg-white px-5 py-2.5 text-sm font-semibold text-gray-700 no-underline hover:bg-gray-50 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700"
+        class="inline-flex items-center gap-2 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 px-5 py-2.5 text-sm font-semibold text-gray-700 dark:text-gray-300 no-underline hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
         download
       >
         <CloudDownload class="h-4 w-4" />
@@ -125,7 +125,7 @@ const giscusLocale = giscusLocaleMap[locale] || "en";
     source.config.length > 0 && (
       <section>
         <h2 class="mb-4 text-lg font-semibold text-gray-900 dark:text-white">{t("detail.configuration")}</h2>
-        <div class="overflow-x-auto rounded-xl bg-white shadow-sm ring-1 ring-gray-200 dark:bg-gray-900 dark:ring-gray-800">
+        <div class="overflow-x-auto rounded-2xl bg-white/70 dark:bg-gray-900/70 ring-1 ring-gray-200/60 dark:ring-gray-700/40" style="backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);">
           <table class="w-full text-left text-sm">
             <thead>
               <tr class="border-b border-gray-100 dark:border-gray-800">
@@ -177,7 +177,7 @@ const giscusLocale = giscusLocaleMap[locale] || "en";
   <section>
     <h2 class="mb-4 text-lg font-semibold text-gray-900 dark:text-white">{t("detail.sourceCode")}</h2>
     {source.versionFiles.map((vf: VersionFiles) => (
-      <div class="version-group overflow-hidden rounded-xl bg-white shadow-sm ring-1 ring-gray-200 dark:bg-gray-900 dark:ring-gray-800" data-version={vf.version}>
+      <div class="version-group overflow-hidden rounded-2xl bg-white/70 dark:bg-gray-900/70 ring-1 ring-gray-200/60 dark:ring-gray-700/40" style="backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);" data-version={vf.version}>
         <!-- File tabs -->
         <div class="flex border-b border-gray-200 bg-gray-50 dark:border-gray-700 dark:bg-gray-800">
           {vf.files.map((f: SourceFile, i: number) => (
@@ -210,22 +210,52 @@ const giscusLocale = giscusLocaleMap[locale] || "en";
     ))}
   </section>
 
-  <script
-    is:inline
-    src="https://giscus.app/client.js"
-    data-repo="glanceway/glanceway-sources"
-    data-repo-id="R_kgDORRep_Q"
-    data-category="General"
-    data-category-id="DIC_kwDORRep_c4C46Zt"
-    data-mapping="pathname"
-    data-strict="0"
-    data-reactions-enabled="1"
-    data-emit-metadata="1"
-    data-input-position="top"
-    data-theme="preferred_color_scheme"
-    data-lang={giscusLocale}
-    crossorigin="anonymous"
-    async>
+  <div id="giscus-container" data-lang={giscusLocale}></div>
+  <script is:inline>
+    (function () {
+      function getGiscusTheme() {
+        return document.documentElement.classList.contains("dark")
+          ? "transparent_dark"
+          : "light";
+      }
+
+      // Load giscus
+      var container = document.getElementById("giscus-container");
+      if (!container) return;
+      var lang = container.getAttribute("data-lang") || "en";
+      var s = document.createElement("script");
+      s.src = "https://giscus.app/client.js";
+      s.setAttribute("data-repo", "glanceway/glanceway-sources");
+      s.setAttribute("data-repo-id", "R_kgDORRep_Q");
+      s.setAttribute("data-category", "General");
+      s.setAttribute("data-category-id", "DIC_kwDORRep_c4C46Zt");
+      s.setAttribute("data-mapping", "pathname");
+      s.setAttribute("data-strict", "0");
+      s.setAttribute("data-reactions-enabled", "1");
+      s.setAttribute("data-emit-metadata", "1");
+      s.setAttribute("data-input-position", "top");
+      s.setAttribute("data-theme", getGiscusTheme());
+      s.setAttribute("data-lang", lang);
+      s.setAttribute("crossorigin", "anonymous");
+      s.async = true;
+      container.appendChild(s);
+
+      // Sync theme on toggle
+      var btn = document.getElementById("theme-toggle");
+      if (btn) {
+        btn.addEventListener("click", function () {
+          setTimeout(function () {
+            var iframe = document.querySelector("iframe.giscus-frame");
+            if (iframe) {
+              iframe.contentWindow.postMessage(
+                { giscus: { setConfig: { theme: getGiscusTheme() } } },
+                "https://giscus.app"
+              );
+            }
+          }, 50);
+        });
+      }
+    })();
   </script>
 
   <script>
