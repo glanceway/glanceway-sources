@@ -98,7 +98,7 @@ const ru: Record<TranslationKey, string> = {
 
   // SEO
   "seo.homeTitle": "Glanceway — Информационный хаб в строке меню macOS | RSS, новости и пользовательские каналы",
-  "seo.sourcesTitle": "Источники Glanceway — Плагины и каналы данных для строки меню macOS",
+  "seo.sourcesTitle": "Источники Glanceway — Каналы данных для строки меню macOS",
   "seo.keywords": "macOS строка меню,RSS ридер,новости,акции,криптовалюта,GitHub,разработчик,дашборд,агрегатор,технологии",
 };
 

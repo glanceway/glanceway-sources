@@ -98,7 +98,7 @@ const pt: Record<TranslationKey, string> = {
 
   // SEO
   "seo.homeTitle": "Glanceway — Hub na Barra de Menu macOS | RSS, Notícias e feeds próprios",
-  "seo.sourcesTitle": "Fontes Glanceway — Plugins e feeds para a barra de menu do macOS",
+  "seo.sourcesTitle": "Fontes Glanceway — Feeds de dados para a barra de menu do macOS",
   "seo.keywords": "macOS barra de menu,leitor RSS,notícias,ações,cripto,GitHub,desenvolvedor,agregador,feeds personalizados,tecnologia",
 };
 

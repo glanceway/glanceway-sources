@@ -98,7 +98,7 @@ const ja: Record<TranslationKey, string> = {
 
   // SEO
   "seo.homeTitle": "Glanceway — メニューバー情報ハブ | RSS・ニュース・カスタムフィード",
-  "seo.sourcesTitle": "Glanceway ソース — macOS メニューバー プラグイン＆データフィード",
+  "seo.sourcesTitle": "Glanceway ソース — macOS メニューバーのデータフィード",
   "seo.keywords": "macOS メニューバー,RSS リーダー,ニュース,株価,仮想通貨,GitHub,開発者,ダッシュボード,通知,Qiita,情報収集,テック,ニュースアプリ",
 };
 
