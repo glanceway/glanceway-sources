@@ -43,7 +43,7 @@ const basePath = getBasePath(currentPath, locale);
 const canonicalUrl = new URL(currentPath, siteUrl).href;
 
 // OG image
-const ogImageUrl = ogImage ? new URL(ogImage, siteUrl).href : new URL("/og-image.webp", siteUrl).href;
+const ogImageUrl = ogImage ? new URL(ogImage, siteUrl).href : new URL("/og-image.png", siteUrl).href;
 
 // JSON-LD structured data for the homepage
 const isHomePage = basePath === "/" || basePath === "";

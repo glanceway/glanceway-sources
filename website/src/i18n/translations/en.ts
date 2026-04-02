@@ -95,7 +95,7 @@ const en = {
   "language.label": "Language",
 
   // SEO
-  "seo.homeTitle": "Glanceway — macOS Menu Bar Info Hub | RSS, News & Custom Feeds",
+  "seo.homeTitle": "Glanceway — macOS Menu Bar Info Hub | RSS & News",
   "seo.sourcesTitle": "Glanceway Sources — Data Feeds for Your macOS Menu Bar",
   "seo.keywords": "macOS menu bar,RSS reader,news aggregator,Hacker News,GitHub,Reddit,stock ticker,crypto,developer tools,dashboard,notification,custom feeds,information hub",
 } as const;
