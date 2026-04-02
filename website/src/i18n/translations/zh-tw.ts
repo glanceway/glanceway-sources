@@ -99,6 +99,7 @@ const zhTw: Record<TranslationKey, string> = {
 
   // SEO
   "seo.homeTitle": "Glanceway 一瞥 — macOS 選單列資訊中心 | RSS、新聞與自訂資料源",
+  "seo.sourcesTitle": "Glanceway 資訊源 — macOS 選單列外掛與資料訂閱",
   "seo.keywords": "macOS 選單列,RSS 閱讀器,新聞聚合,股票行情,加密貨幣,GitHub,開發者工具,儀表板,資訊流,PTT,效率工具,科技資訊,資料來源",
 };
 

@@ -98,6 +98,7 @@ const tr: Record<TranslationKey, string> = {
 
   // SEO
   "seo.homeTitle": "Glanceway — macOS Menü Çubuğu Bilgi Merkezi | RSS, Haberler ve Özel Beslemeler",
+  "seo.sourcesTitle": "Glanceway Kaynaklar — macOS Menü Çubuğu Eklentileri ve Veri Beslemeleri",
   "seo.keywords": "macOS menü çubuğu,RSS okuyucu,haberler,hisse senedi,kripto,GitHub,geliştirici,gösterge paneli,toplayıcı,teknoloji",
 };
 

@@ -98,6 +98,7 @@ const de: Record<TranslationKey, string> = {
 
   // SEO
   "seo.homeTitle": "Glanceway — macOS Menüleisten-Hub | RSS, News & eigene Feeds",
+  "seo.sourcesTitle": "Glanceway Quellen — macOS Menüleisten-Plugins und Datenfeeds",
   "seo.keywords": "macOS Menüleiste,RSS Reader,Nachrichten,Aktien,Krypto,GitHub,Entwickler,Dashboard,Aggregator,Ticker,Technologie",
 };
 

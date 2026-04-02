@@ -98,6 +98,7 @@ const ko: Record<TranslationKey, string> = {
 
   // SEO
   "seo.homeTitle": "Glanceway — macOS 메뉴 바 정보 허브 | RSS, 뉴스 및 맞춤 피드",
+  "seo.sourcesTitle": "Glanceway 소스 — macOS 메뉴 바 플러그인 및 데이터 피드",
   "seo.keywords": "macOS 메뉴 바,RSS 리더,뉴스,주식,암호화폐,GitHub,개발자,대시보드,알림,정보수집,테크,뉴스 앱",
 };
 

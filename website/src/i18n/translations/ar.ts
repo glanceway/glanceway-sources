@@ -98,6 +98,7 @@ const ar: Record<TranslationKey, string> = {
 
   // SEO
   "seo.homeTitle": "Glanceway — مركز المعلومات في شريط القوائم macOS | RSS والأخبار والمصادر المخصصة",
+  "seo.sourcesTitle": "مصادر Glanceway — إضافات وخلاصات بيانات لشريط قوائم macOS",
   "seo.keywords": "macOS شريط القوائم,قارئ RSS,أخبار,أسهم,عملات رقمية,GitHub,مطور,لوحة معلومات,مجمع,تقنية",
 };
 

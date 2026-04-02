@@ -1,8 +1,11 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import SourcesPage from "../components/SourcesPage.astro";
+import { useTranslations } from "../i18n/index";
+
+const t = useTranslations("en");
 ---
 
-<Layout title="Glanceway Sources — macOS Menu Bar Plugins & Data Feeds" description="Browse and install community-built sources for Glanceway — Hacker News, GitHub Trending, Reddit, Product Hunt, stock quotes, crypto prices, RSS, and more.">
+<Layout title={t("seo.sourcesTitle")} description={t("sources.pageSubtitle")}>
   <SourcesPage locale="en" />
 </Layout>
