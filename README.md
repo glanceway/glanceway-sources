@@ -46,6 +46,7 @@ Community information sources for [Glanceway](https://glanceway.app).
 
 ### Social
 
+- **[Nostr Relay Feed](sources/codytseng/nostr-relay-feed)** by [codytseng](https://github.com/codytseng) - Display text notes from Nostr relays. [[Download](https://github.com/glanceway/glanceway-sources/raw/refs/heads/master/dist/codytseng/nostr-relay-feed/latest.gwsrc)]
 - **[Reddit](sources/codytseng/reddit)** by [codytseng](https://github.com/codytseng) - Hot posts from a subreddit [[Download](https://github.com/glanceway/glanceway-sources/raw/refs/heads/master/dist/codytseng/reddit/latest.gwsrc)]
 
 ### Other

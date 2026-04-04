@@ -1,0 +1,23 @@
+version: 1.0.0
+name: Nostr Relay Feed
+description: Display text notes from Nostr relays.
+author: codytseng
+author_url: https://github.com/codytseng
+category: Social
+tags:
+  - nostr
+  - social
+  - decentralized
+
+config:
+  - key: RELAY_URLS
+    name: Relay URLs
+    type: list
+    required: true
+    description: "Nostr relay WebSocket URLs (e.g. wss://relay.damus.io)"
+  - key: NOTE_URL_TEMPLATE
+    name: Note URL Template
+    type: string
+    required: false
+    default: "https://jumble.social/notes/{code}"
+    description: "URL template for opening notes. Use {code} as placeholder for the nevent code."
