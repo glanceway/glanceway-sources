@@ -3,7 +3,7 @@ import type { TranslationKey } from "./en";
 const ru: Record<TranslationKey, string> = {
   // Hero
   "hero.title": "Всё на виду",
-  "hero.description": "Лёгкое приложение в строке меню macOS, которое агрегирует Hacker News, GitHub, Reddit, RSS-ленты, котировки акций, криптовалюты и многое другое — всё на виду.",
+  "hero.description": "Лёгкое приложение в строке меню macOS, которое агрегирует Hacker News, GitHub, Reddit, RSS-ленты, котировки акций, криптовалюты, инструменты разработчика и многое другое. Создавайте собственные источники с помощью ИИ или кода.",
   "hero.tagline": "Без отвлечений, без перегрузки.",
   "hero.download": "Get on Mac App Store",
   "hero.comingSoon": "Скоро",
@@ -97,9 +97,13 @@ const ru: Record<TranslationKey, string> = {
   "language.label": "Язык",
 
   // SEO
-  "seo.homeTitle": "Glanceway — Информационный хаб в строке меню macOS | RSS, новости и пользовательские каналы",
-  "seo.sourcesTitle": "Источники Glanceway — Каналы данных для строки меню macOS",
+  "seo.homeTitle": "Информационный хаб в строке меню macOS — RSS, новости и каналы данных | Glanceway",
+  "seo.sourcesTitle": "Источники для строки меню macOS — Hacker News, GitHub, RSS и другие | Glanceway",
   "seo.keywords": "macOS строка меню,RSS ридер,новости,акции,криптовалюта,GitHub,разработчик,дашборд,агрегатор,технологии",
+
+  // Related sources
+  "related.title": "Похожие источники",
+
 };
 
 export default ru;

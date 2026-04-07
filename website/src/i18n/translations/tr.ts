@@ -3,7 +3,7 @@ import type { TranslationKey } from "./en";
 const tr: Record<TranslationKey, string> = {
   // Hero
   "hero.title": "Her şey bir bakışta",
-  "hero.description": "Hacker News, GitHub, Reddit, RSS akışları, hisse senedi fiyatları, kripto ve daha fazlasını bir araya getiren hafif bir macOS menü çubuğu uygulaması — hepsi tek bakışta.",
+  "hero.description": "Hacker News, GitHub, Reddit, RSS akışları, hisse senedi fiyatları, kripto, geliştirici araçları ve daha fazlasını bir araya getiren hafif bir macOS menü çubuğu uygulaması. Yapay zeka veya kodla özel kaynaklar oluşturun.",
   "hero.tagline": "Dikkat dağınıklığı yok, bilgi yüklemesi yok.",
   "hero.download": "Get on Mac App Store",
   "hero.comingSoon": "Yakında",
@@ -97,9 +97,13 @@ const tr: Record<TranslationKey, string> = {
   "language.label": "Dil",
 
   // SEO
-  "seo.homeTitle": "Glanceway — macOS Menü Çubuğu Bilgi Merkezi | RSS, Haberler ve Özel Beslemeler",
-  "seo.sourcesTitle": "Glanceway Kaynaklar — macOS Menü Çubuğunuz İçin Veri Beslemeleri",
+  "seo.homeTitle": "macOS Menü Çubuğu Bilgi Merkezi — RSS, Haberler ve Özel Beslemeler | Glanceway",
+  "seo.sourcesTitle": "macOS Menü Çubuğu Kaynakları — Hacker News, GitHub, RSS ve Daha Fazlası | Glanceway",
   "seo.keywords": "macOS menü çubuğu,RSS okuyucu,haberler,hisse senedi,kripto,GitHub,geliştirici,gösterge paneli,toplayıcı,teknoloji",
+
+  // Related sources
+  "related.title": "İlgili Kaynaklar",
+
 };
 
 export default tr;

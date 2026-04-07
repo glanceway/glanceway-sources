@@ -3,7 +3,7 @@ import type { TranslationKey } from "./en";
 const fr: Record<TranslationKey, string> = {
   // Hero
   "hero.title": "Tout en un coup d'\u0153il",
-  "hero.description": "Une application légère dans la barre de menus de macOS qui agrège Hacker News, GitHub, Reddit, flux RSS, cours de bourse, crypto et plus — tout en un coup d'œil.",
+  "hero.description": "Une application légère dans la barre de menus macOS qui agrège Hacker News, GitHub, Reddit, flux RSS, cours de bourse, crypto, outils de développement et plus. Créez des sources personnalisées avec l'IA ou le code.",
   "hero.tagline": "Sans distractions, sans surcharge.",
   "hero.download": "Get on Mac App Store",
   "hero.comingSoon": "Bientôt disponible",
@@ -97,9 +97,13 @@ const fr: Record<TranslationKey, string> = {
   "language.label": "Langue",
 
   // SEO
-  "seo.homeTitle": "Glanceway — Hub Barre de Menus macOS | RSS, Actus & flux personnalisé",
-  "seo.sourcesTitle": "Sources Glanceway — Flux de données pour votre barre de menus macOS",
+  "seo.homeTitle": "Hub Barre de Menus macOS — RSS, Actus & Flux Personnalisés | Glanceway",
+  "seo.sourcesTitle": "Sources pour Barre de Menus macOS — Hacker News, GitHub, RSS & Plus | Glanceway",
   "seo.keywords": "macOS barre de menus,lecteur RSS,actualités,bourse,crypto,GitHub,développeur,agrégateur,flux personnalisé,technologie",
+
+  // Related sources
+  "related.title": "Sources similaires",
+
 };
 
 export default fr;

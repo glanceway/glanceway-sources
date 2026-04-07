@@ -1,9 +1,10 @@
 ---
 import { Code } from "astro:components";
-import { getSourceDetail } from "../lib/sources";
+import { getSources, getSourceDetail } from "../lib/sources";
 import type { ConfigField, SourceFile, VersionFiles } from "../lib/sources";
 import { ArrowLeft, Download, CloudDownload } from "@lucide/astro";
 import { useTranslations, getLocalePath } from "../i18n/index";
+import SourceCard from "./SourceCard.astro";
 
 interface Props {
   id: string;
@@ -13,6 +14,10 @@ interface Props {
 const { id, locale } = Astro.props;
 const t = useTranslations(locale);
 const source = getSourceDetail(id)!;
+const allSources = getSources();
+const relatedSources = allSources
+  .filter((s) => s.category === source.category && s.id !== source.id)
+  .slice(0, 4);
 const latestVersion = source.versions[0];
 const installUrl = `glanceway://install?url=${encodeURIComponent(latestVersion.download_url)}`;
 
@@ -64,9 +69,21 @@ const sourceJsonLd = JSON.stringify({
   "installUrl": installUrl,
   ...(source.tags?.length ? { "keywords": source.tags.join(", ") } : {}),
 });
+
+const siteUrl = "https://glanceway.app";
+const breadcrumbJsonLd = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": `${siteUrl}${getLocalePath(locale, "/")}` },
+    { "@type": "ListItem", "position": 2, "name": t("sources.title"), "item": `${siteUrl}${getLocalePath(locale, "/sources")}` },
+    { "@type": "ListItem", "position": 3, "name": source.name },
+  ],
+});
 ---
 
 <script type="application/ld+json" set:html={sourceJsonLd} />
+<script type="application/ld+json" set:html={breadcrumbJsonLd} />
 
 <!-- Detail hero -->
 <div>
@@ -233,6 +250,26 @@ const sourceJsonLd = JSON.stringify({
       </div>
     ))}
   </section>
+
+  {relatedSources.length > 0 && (
+    <section>
+      <h2 class="mb-4 text-lg font-semibold text-gray-900 dark:text-white">{t("related.title")}</h2>
+      <div class="grid gap-4 sm:grid-cols-2">
+        {relatedSources.map((s) => (
+          <SourceCard
+            id={s.id}
+            name={s.name}
+            description={s.description}
+            category={s.category}
+            tags={s.tags}
+            author={s.author}
+            type={s.type}
+            locale={locale}
+          />
+        ))}
+      </div>
+    </section>
+  )}
 
   <div id="giscus-container" data-lang={giscusLocale}></div>
   <script is:inline>

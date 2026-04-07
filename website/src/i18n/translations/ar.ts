@@ -3,7 +3,7 @@ import type { TranslationKey } from "./en";
 const ar: Record<TranslationKey, string> = {
   // Hero
   "hero.title": "كل شيء بنظرة واحدة",
-  "hero.description": "تطبيق خفيف لشريط القوائم في macOS يجمع Hacker News وGitHub وReddit وتغذيات RSS وأسعار الأسهم والعملات الرقمية والمزيد — كل ذلك بنظرة واحدة.",
+  "hero.description": "تطبيق خفيف لشريط القوائم في macOS يجمع Hacker News وGitHub وReddit وتغذيات RSS وأسعار الأسهم والعملات الرقمية وأدوات المطورين والمزيد. أنشئ مصادر مخصصة باستخدام الذكاء الاصطناعي أو البرمجة.",
   "hero.tagline": "بلا تشتيت، بلا إرهاق.",
   "hero.download": "Get on Mac App Store",
   "hero.comingSoon": "قريبًا",
@@ -97,9 +97,13 @@ const ar: Record<TranslationKey, string> = {
   "language.label": "اللغة",
 
   // SEO
-  "seo.homeTitle": "Glanceway — مركز المعلومات في شريط القوائم macOS | RSS والأخبار والمصادر المخصصة",
-  "seo.sourcesTitle": "مصادر Glanceway — خلاصات بيانات لشريط قوائم macOS",
+  "seo.homeTitle": "مركز المعلومات في شريط القوائم macOS — RSS والأخبار والمصادر المخصصة | Glanceway",
+  "seo.sourcesTitle": "مصادر شريط القوائم macOS — Hacker News وGitHub وRSS والمزيد | Glanceway",
   "seo.keywords": "macOS شريط القوائم,قارئ RSS,أخبار,أسهم,عملات رقمية,GitHub,مطور,لوحة معلومات,مجمع,تقنية",
+
+  // Related sources
+  "related.title": "مصادر ذات صلة",
+
 };
 
 export default ar;

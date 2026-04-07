@@ -3,7 +3,7 @@ import type { TranslationKey } from "./en";
 const hi: Record<TranslationKey, string> = {
   // Hero
   "hero.title": "सब कुछ एक नज़र में",
-  "hero.description": "एक हल्का macOS मेन्यू बार ऐप जो Hacker News, GitHub, Reddit, RSS फ़ीड, शेयर मूल्य, क्रिप्टो और बहुत कुछ एकत्रित करता है — सब एक नज़र में।",
+  "hero.description": "एक हल्का macOS मेन्यू बार ऐप जो Hacker News, GitHub, Reddit, RSS फ़ीड, शेयर मूल्य, क्रिप्टो, डेवलपर टूल्स और बहुत कुछ एकत्रित करता है। AI या कोड से कस्टम स्रोत बनाएं।",
   "hero.tagline": "कोई भटकाव नहीं, कोई ओवरलोड नहीं।",
   "hero.download": "Get on Mac App Store",
   "hero.comingSoon": "जल्द आ रहा है",
@@ -97,9 +97,13 @@ const hi: Record<TranslationKey, string> = {
   "language.label": "भाषा",
 
   // SEO
-  "seo.homeTitle": "Glanceway — macOS मेन्यू बार सूचना केंद्र | RSS, समाचार और कस्टम फ़ीड",
-  "seo.sourcesTitle": "Glanceway स्रोत — macOS मेन्यू बार के लिए डेटा फ़ीड",
+  "seo.homeTitle": "macOS मेन्यू बार सूचना केंद्र — RSS, समाचार और कस्टम फ़ीड | Glanceway",
+  "seo.sourcesTitle": "macOS मेन्यू बार स्रोत — Hacker News, GitHub, RSS और अधिक | Glanceway",
   "seo.keywords": "macOS मेन्यू बार,RSS रीडर,समाचार,शेयर,क्रिप्टो,GitHub,डेवलपर,डैशबोर्ड,एग्रीगेटर,टेक्नोलॉजी",
+
+  // Related sources
+  "related.title": "संबंधित स्रोत",
+
 };
 
 export default hi;

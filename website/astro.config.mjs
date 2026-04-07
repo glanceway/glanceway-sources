@@ -3,15 +3,10 @@ import tailwind from "@astrojs/tailwind";
 import sitemap from "@astrojs/sitemap";
 
 export default defineConfig({
-  site: "https://sources.glanceway.app",
+  site: "https://glanceway.app",
   integrations: [
     tailwind({ applyBaseStyles: false }),
-    sitemap({
-      serialize(item) {
-        item.lastmod = new Date().toISOString();
-        return item;
-      },
-    }),
+    sitemap(),
   ],
   i18n: {
     defaultLocale: "en",

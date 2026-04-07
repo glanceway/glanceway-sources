@@ -3,7 +3,7 @@ import type { TranslationKey } from "./en";
 const ja: Record<TranslationKey, string> = {
   // Hero
   "hero.title": "すべてを一目で",
-  "hero.description": "macOS メニューバーに常駐する軽量アプリ。Hacker News、GitHub、Reddit、RSS フィード、株価、暗号資産など、気になる情報をひと目で確認できます。",
+  "hero.description": "macOS メニューバーに常駐する軽量アプリ。Hacker News、GitHub、Reddit、RSS フィード、株価、暗号資産、開発者ツールなどを集約。AI やコードでカスタムソースも作成可能。",
   "hero.tagline": "邪魔しない、溢れさせない。",
   "hero.download": "Get on Mac App Store",
   "hero.comingSoon": "近日公開",
@@ -97,9 +97,13 @@ const ja: Record<TranslationKey, string> = {
   "language.label": "言語",
 
   // SEO
-  "seo.homeTitle": "Glanceway — メニューバー情報ハブ | RSS・ニュース・カスタムフィード",
-  "seo.sourcesTitle": "Glanceway ソース — macOS メニューバーのデータフィード",
+  "seo.homeTitle": "macOS メニューバー情報ハブ — RSS・ニュース・カスタムフィード | Glanceway",
+  "seo.sourcesTitle": "macOS メニューバーソース — Hacker News、GitHub、RSS など | Glanceway",
   "seo.keywords": "macOS メニューバー,RSS リーダー,ニュース,株価,仮想通貨,GitHub,開発者,ダッシュボード,通知,Qiita,情報収集,テック,ニュースアプリ",
+
+  // Related sources
+  "related.title": "関連ソース",
+
 };
 
 export default ja;

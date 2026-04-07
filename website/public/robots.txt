@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://sources.glanceway.app/sitemap-index.xml
+Sitemap: https://glanceway.app/sitemap-index.xml

@@ -3,7 +3,7 @@ import type { TranslationKey } from "./en";
 const de: Record<TranslationKey, string> = {
   // Hero
   "hero.title": "Alles auf einen Blick",
-  "hero.description": "Eine schlanke macOS-Menüleisten-App, die Hacker News, GitHub, Reddit, RSS-Feeds, Aktienkurse, Krypto und mehr aggregiert — alles auf einen Blick.",
+  "hero.description": "Eine schlanke macOS-Menüleisten-App, die Hacker News, GitHub, Reddit, RSS-Feeds, Aktienkurse, Krypto, Entwickler-Tools und mehr aggregiert. Erstellen Sie eigene Quellen mit KI oder Code.",
   "hero.tagline": "Keine Ablenkungen, keine Reizüberflutung.",
   "hero.download": "Get on Mac App Store",
   "hero.comingSoon": "Demnächst verfügbar",
@@ -97,9 +97,13 @@ const de: Record<TranslationKey, string> = {
   "language.label": "Sprache",
 
   // SEO
-  "seo.homeTitle": "Glanceway — macOS Menüleisten-Hub | RSS, News & eigene Feeds",
-  "seo.sourcesTitle": "Glanceway Quellen — Datenfeeds für Ihre macOS Menüleiste",
+  "seo.homeTitle": "macOS Menüleisten Info-Hub — RSS, News & eigene Feeds | Glanceway",
+  "seo.sourcesTitle": "macOS Menüleisten-Quellen — Hacker News, GitHub, RSS & mehr | Glanceway",
   "seo.keywords": "macOS Menüleiste,RSS Reader,Nachrichten,Aktien,Krypto,GitHub,Entwickler,Dashboard,Aggregator,Ticker,Technologie",
+
+  // Related sources
+  "related.title": "Ähnliche Quellen",
+
 };
 
 export default de;

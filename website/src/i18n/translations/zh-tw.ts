@@ -4,7 +4,7 @@ const zhTw: Record<TranslationKey, string> = {
   // Hero
   "hero.title": "一瞥",
   "hero.description":
-    "一款輕量級 macOS 選單列應用程式，聚合 Hacker News、GitHub、Reddit、RSS 訂閱、股票行情、加密貨幣等資訊——一目瞭然。",
+    "輕量級 macOS 選單列應用程式，聚合 Hacker News、GitHub、Reddit、RSS 訂閱、股票行情、加密貨幣、開發者工具等資料來源。支援用 AI 或程式碼建立自訂資料來源。",
   "hero.tagline": "不干擾，不過載",
   "hero.download": "Get on Mac App Store",
   "hero.comingSoon": "即將發布",
@@ -98,9 +98,13 @@ const zhTw: Record<TranslationKey, string> = {
   "language.label": "語言",
 
   // SEO
-  "seo.homeTitle": "Glanceway 一瞥 — macOS 選單列資訊中心 | RSS、新聞與自訂資料源",
-  "seo.sourcesTitle": "Glanceway 資訊源 — macOS 選單列資料訂閱",
+  "seo.homeTitle": "macOS 選單列資訊中心 — RSS、新聞與自訂資料源 | Glanceway",
+  "seo.sourcesTitle": "macOS 選單列資料來源 — Hacker News、GitHub、RSS 等 | Glanceway",
   "seo.keywords": "macOS 選單列,RSS 閱讀器,新聞聚合,股票行情,加密貨幣,GitHub,開發者工具,儀表板,資訊流,PTT,效率工具,科技資訊,資料來源",
+
+  // Related sources
+  "related.title": "相關資料來源",
+
 };
 
 export default zhTw;

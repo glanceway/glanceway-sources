@@ -3,7 +3,7 @@ import type { TranslationKey } from "./en";
 const ko: Record<TranslationKey, string> = {
   // Hero
   "hero.title": "한눈에 모든 것을",
-  "hero.description": "Hacker News, GitHub, Reddit, RSS 피드, 주식 시세, 암호화폐 등을 한눈에 볼 수 있는 가벼운 macOS 메뉴 바 앱입니다.",
+  "hero.description": "Hacker News, GitHub, Reddit, RSS 피드, 주식 시세, 암호화폐, 개발자 도구 등을 집약하는 가벼운 macOS 메뉴 바 앱. AI나 코드로 맞춤 소스도 만들 수 있습니다.",
   "hero.tagline": "방해 없이, 부담 없이.",
   "hero.download": "Get on Mac App Store",
   "hero.comingSoon": "곧 출시",
@@ -97,9 +97,13 @@ const ko: Record<TranslationKey, string> = {
   "language.label": "언어",
 
   // SEO
-  "seo.homeTitle": "Glanceway — macOS 메뉴 바 정보 허브 | RSS, 뉴스 및 맞춤 피드",
-  "seo.sourcesTitle": "Glanceway 소스 — macOS 메뉴 바를 위한 데이터 피드",
+  "seo.homeTitle": "macOS 메뉴 바 정보 허브 — RSS, 뉴스 및 맞춤 피드 | Glanceway",
+  "seo.sourcesTitle": "macOS 메뉴 바 소스 — Hacker News, GitHub, RSS 등 | Glanceway",
   "seo.keywords": "macOS 메뉴 바,RSS 리더,뉴스,주식,암호화폐,GitHub,개발자,대시보드,알림,정보수집,테크,뉴스 앱",
+
+  // Related sources
+  "related.title": "관련 소스",
+
 };
 
 export default ko;

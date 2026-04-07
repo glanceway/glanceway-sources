@@ -1,8 +1,11 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import HomePage from "../components/HomePage.astro";
+import { useTranslations } from "../i18n/index";
+
+const t = useTranslations("en");
 ---
 
-<Layout title="Glanceway — macOS Menu Bar Info Hub | RSS, News & Custom Feeds" description="A macOS menu bar info aggregator with RSS support. Install sources like Hacker News, GitHub, and stocks from the Source Store, or create your own with code or AI.">
+<Layout title={t("seo.homeTitle")} description={t("hero.description")}>
   <HomePage locale="en" />
 </Layout>

@@ -1,7 +1,7 @@
 const en = {
   // Hero
   "hero.title": "Everything at a glance",
-  "hero.description": "A lightweight macOS menu bar app that aggregates Hacker News, GitHub, Reddit, RSS feeds, stock prices, crypto, and more — all in one glance.",
+  "hero.description": "A lightweight macOS menu bar app that aggregates Hacker News, GitHub, Reddit, RSS feeds, stock prices, crypto, developer tools and more. Build custom sources with AI or code.",
   "hero.tagline": "No distractions, no overload.",
   "hero.download": "Get on Mac App Store",
   "hero.comingSoon": "Coming Soon",
@@ -95,9 +95,13 @@ const en = {
   "language.label": "Language",
 
   // SEO
-  "seo.homeTitle": "Glanceway — macOS Menu Bar Info Hub | RSS & News",
-  "seo.sourcesTitle": "Glanceway Sources — Data Feeds for Your macOS Menu Bar",
+  "seo.homeTitle": "macOS Menu Bar Info Hub — RSS, News & Custom Feeds | Glanceway",
+  "seo.sourcesTitle": "macOS Menu Bar Sources — Hacker News, GitHub, RSS & More | Glanceway",
   "seo.keywords": "macOS menu bar,RSS reader,news aggregator,Hacker News,GitHub,Reddit,stock ticker,crypto,developer tools,dashboard,notification,custom feeds,information hub",
+
+  // Related sources
+  "related.title": "Related Sources",
+
 } as const;
 
 export type TranslationKey = keyof typeof en;

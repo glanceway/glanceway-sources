@@ -3,7 +3,7 @@ import type { TranslationKey } from "./en";
 const pt: Record<TranslationKey, string> = {
   // Hero
   "hero.title": "Tudo num relance",
-  "hero.description": "Um app leve para a barra de menus do macOS que agrega Hacker News, GitHub, Reddit, feeds RSS, preços de ações, cripto e mais — tudo de relance.",
+  "hero.description": "Um app leve para a barra de menus do macOS que agrega Hacker News, GitHub, Reddit, feeds RSS, preços de ações, cripto, ferramentas de desenvolvimento e mais. Crie fontes personalizadas com IA ou código.",
   "hero.tagline": "Sem distrações, sem sobrecarga.",
   "hero.download": "Get on Mac App Store",
   "hero.comingSoon": "Em breve",
@@ -97,9 +97,13 @@ const pt: Record<TranslationKey, string> = {
   "language.label": "Idioma",
 
   // SEO
-  "seo.homeTitle": "Glanceway — Hub na Barra de Menu macOS | RSS, Notícias e feeds próprios",
-  "seo.sourcesTitle": "Fontes Glanceway — Feeds de dados para a barra de menu do macOS",
+  "seo.homeTitle": "Hub na Barra de Menu macOS — RSS, Notícias e Feeds Personalizados | Glanceway",
+  "seo.sourcesTitle": "Fontes para Barra de Menu macOS — Hacker News, GitHub, RSS e Mais | Glanceway",
   "seo.keywords": "macOS barra de menu,leitor RSS,notícias,ações,cripto,GitHub,desenvolvedor,agregador,feeds personalizados,tecnologia",
+
+  // Related sources
+  "related.title": "Fontes relacionadas",
+
 };
 
 export default pt;
