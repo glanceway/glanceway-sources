@@ -203,7 +203,7 @@ const jsonLd = isHomePage ? JSON.stringify({
         </a>
         <nav class="flex items-center gap-4 text-sm">
           <a
-            href={getLocalePath(locale, "/sources")}
+            href={getLocalePath(locale, "/sources/")}
             class="font-medium text-gray-600 no-underline hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition-colors"
           >{t("nav.sources")}</a>
           {!hideLanguageSwitcher && <LanguageSwitcher locale={locale} currentPath={currentPath} />}
@@ -245,7 +245,7 @@ const jsonLd = isHomePage ? JSON.stringify({
             <div class="flex flex-col gap-2">
               <span class="text-xs font-medium text-gray-500 dark:text-gray-400">Support</span>
               <a href="mailto:support@glanceway.app" class="text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300 transition-colors">support@glanceway.app</a>
-              <a href={getLocalePath(locale, "/privacy")} class="text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300 transition-colors">Privacy Policy</a>
+              <a href={getLocalePath(locale, "/privacy/")} class="text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300 transition-colors">Privacy Policy</a>
             </div>
           </div>
         </div>

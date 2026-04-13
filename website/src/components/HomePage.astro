@@ -9,7 +9,7 @@ interface Props {
 const { locale } = Astro.props;
 const t = useTranslations(locale);
 
-const sourcesPath = getLocalePath(locale, "/sources");
+const sourcesPath = getLocalePath(locale, "/sources/");
 
 const sourceBadges = [
   "Hacker News",

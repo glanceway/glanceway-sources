@@ -76,7 +76,7 @@ const breadcrumbJsonLd = JSON.stringify({
   "@type": "BreadcrumbList",
   "itemListElement": [
     { "@type": "ListItem", "position": 1, "name": "Home", "item": `${siteUrl}${getLocalePath(locale, "/")}` },
-    { "@type": "ListItem", "position": 2, "name": t("sources.title"), "item": `${siteUrl}${getLocalePath(locale, "/sources")}` },
+    { "@type": "ListItem", "position": 2, "name": t("sources.title"), "item": `${siteUrl}${getLocalePath(locale, "/sources/")}` },
     { "@type": "ListItem", "position": 3, "name": source.name },
   ],
 });
@@ -88,7 +88,7 @@ const breadcrumbJsonLd = JSON.stringify({
 <!-- Detail hero -->
 <div>
   <div class="mx-auto max-w-6xl px-6 py-10">
-    <a href={getLocalePath(locale, "/sources")} class="mb-6 inline-flex items-center gap-1 text-sm text-gray-400 hover:text-gray-600 dark:text-gray-500 dark:hover:text-gray-300 transition-colors">
+    <a href={getLocalePath(locale, "/sources/")} class="mb-6 inline-flex items-center gap-1 text-sm text-gray-400 hover:text-gray-600 dark:text-gray-500 dark:hover:text-gray-300 transition-colors">
       <ArrowLeft class="h-4 w-4" />
       {t("detail.allSources")}
     </a>
