@@ -88,10 +88,30 @@ const breadcrumbJsonLd = JSON.stringify({
 <!-- Detail hero -->
 <div>
   <div class="mx-auto max-w-6xl px-6 py-10">
-    <a href={getLocalePath(locale, "/sources/")} class="mb-6 inline-flex items-center gap-1 text-sm text-gray-400 hover:text-gray-600 dark:text-gray-500 dark:hover:text-gray-300 transition-colors">
+    <a id="back-to-sources" href={getLocalePath(locale, "/sources/")} class="mb-6 inline-flex items-center gap-1 text-sm text-gray-400 hover:text-gray-600 dark:text-gray-500 dark:hover:text-gray-300 transition-colors">
       <ArrowLeft class="h-4 w-4" />
       {t("detail.allSources")}
     </a>
+    <script is:inline>
+      (function () {
+        var link = document.getElementById("back-to-sources");
+        if (!link) return;
+        link.addEventListener("click", function (e) {
+          if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
+          try {
+            var ref = document.referrer ? new URL(document.referrer) : null;
+            if (
+              ref &&
+              ref.origin === window.location.origin &&
+              /\/sources\/?$/.test(ref.pathname)
+            ) {
+              e.preventDefault();
+              history.back();
+            }
+          } catch (_) {}
+        });
+      })();
+    </script>
 
     <div class="flex flex-wrap items-center gap-3">
       <h1 class="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{source.name}</h1>
