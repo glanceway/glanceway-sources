@@ -103,7 +103,7 @@ const breadcrumbJsonLd = JSON.stringify({
             if (
               ref &&
               ref.origin === window.location.origin &&
-              /\/sources\/?$/.test(ref.pathname)
+              /\/(?:sources|categories\/[^/]+)\/?$/.test(ref.pathname)
             ) {
               e.preventDefault();
               history.back();
@@ -115,9 +115,12 @@ const breadcrumbJsonLd = JSON.stringify({
 
     <div class="flex flex-wrap items-center gap-3">
       <h1 class="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{source.name}</h1>
-      <span class={`mt-1 rounded-full px-2.5 py-0.5 text-xs font-medium ${badgeClass}`}>
+      <a
+        href={getLocalePath(locale, `/categories/${source.category.toLowerCase()}/`)}
+        class={`mt-1 rounded-full px-2.5 py-0.5 text-xs font-medium no-underline hover:opacity-80 transition-opacity ${badgeClass}`}
+      >
         {t(`category.${source.category}` as any)}
-      </span>
+      </a>
       {source.versions.length > 1 ? (
         <select
           id="version-select"

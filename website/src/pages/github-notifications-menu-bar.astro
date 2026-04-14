@@ -1,0 +1,12 @@
+---
+import Layout from "../layouts/Layout.astro";
+import LandingPage from "../components/LandingPage.astro";
+import { getLandingPage } from "../content/landingPages";
+
+const slug = "github-notifications-menu-bar";
+const page = getLandingPage(slug, "en")!;
+---
+
+<Layout title={page.title} description={page.description} singleLocale>
+  <LandingPage slug={slug} locale="en" />
+</Layout>

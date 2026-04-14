@@ -95,12 +95,52 @@ const en = {
   "language.label": "Language",
 
   // SEO
-  "seo.homeTitle": "macOS Menu Bar Info Hub — RSS, News & Custom Feeds | Glanceway",
-  "seo.sourcesTitle": "macOS Menu Bar Sources — Hacker News, GitHub, RSS & More | Glanceway",
-  "seo.keywords": "macOS menu bar,RSS reader,news aggregator,Hacker News,GitHub,Reddit,stock ticker,crypto,developer tools,dashboard,notification,custom feeds,information hub",
+  "seo.homeTitle": "Mac menu bar app for RSS, news, GitHub & crypto — Glanceway",
+  "seo.sourcesTitle": "Mac menu bar sources — Hacker News, GitHub, RSS & more — Glanceway",
+  "seo.keywords": "mac menu bar app,macOS menu bar,RSS reader,menu bar news reader,Hacker News menu bar,GitHub notifications menu bar,Reddit menu bar,stock ticker menu bar,crypto price menu bar,developer tools,custom feeds,information dashboard",
 
   // Related sources
   "related.title": "Related Sources",
+
+  // Landing pages (shared strings)
+  "landing.faqTitle": "Frequently asked questions",
+  "landing.browseCategory": "Browse more in this category",
+
+  // Category landing pages
+  "categoryPage.Developer.title": "Developer menu bar sources for Mac — Glanceway",
+  "categoryPage.Developer.description": "Install developer-focused menu bar sources in Glanceway: GitHub notifications, Hacker News, Lobsters, Stack Overflow, npm trending, dev.to, and more.",
+  "categoryPage.Developer.h1": "Developer menu bar sources for Mac",
+  "categoryPage.Developer.intro": "Watch the tools you actually live in — GitHub notifications, Hacker News, Lobsters, Stack Overflow, npm, dev.to — from your macOS menu bar. Every source below installs into Glanceway in one click and refreshes automatically. Pick the feeds you care about; skip the ones you don't.",
+
+  "categoryPage.News.title": "News menu bar sources for Mac — Glanceway",
+  "categoryPage.News.description": "Install news aggregator menu bar sources in Glanceway: financial news, world events, spaceflight, earthquakes, and more — always one glance away.",
+  "categoryPage.News.h1": "News menu bar sources for Mac",
+  "categoryPage.News.intro": "Stay in the loop without opening a browser tab. Glanceway's news sources stream the latest headlines — finance, world events, spaceflight, natural disasters — straight into your macOS menu bar. Install the ones you care about and they refresh on their own.",
+
+  "categoryPage.Social.title": "Social menu bar sources for Mac — Glanceway",
+  "categoryPage.Social.description": "Browse Reddit, Hacker News, Product Hunt, V2EX, PTT, and other community sources from your macOS menu bar with Glanceway.",
+  "categoryPage.Social.h1": "Social & community menu bar sources for Mac",
+  "categoryPage.Social.intro": "Your favorite communities — Reddit, Hacker News, Product Hunt, V2EX, PTT — right in the menu bar. Glanceway pulls the latest hot posts on a schedule you control, so you can glance without losing an afternoon to the feed.",
+
+  "categoryPage.Finance.title": "Finance & stock menu bar sources for Mac — Glanceway",
+  "categoryPage.Finance.description": "Live stock quotes, crypto prices, and financial news in your macOS menu bar. Install finance sources in Glanceway and watch markets without switching apps.",
+  "categoryPage.Finance.h1": "Finance & stock menu bar sources for Mac",
+  "categoryPage.Finance.intro": "Watch the markets while you work. Glanceway's finance sources put live stock quotes, crypto prices, and financial news in your macOS menu bar — US markets, Chinese A-shares, global crypto, and realtime breaking-news wires — all in one click away.",
+
+  "categoryPage.Entertainment.title": "Entertainment menu bar sources for Mac — Glanceway",
+  "categoryPage.Entertainment.description": "TV schedules, trending movies, xkcd, and more fun sources for your macOS menu bar with Glanceway.",
+  "categoryPage.Entertainment.h1": "Entertainment menu bar sources for Mac",
+  "categoryPage.Entertainment.intro": "A little fun in the menu bar. TV schedules, trending movies, today's xkcd comic — Glanceway's entertainment sources keep the lightweight stuff where it belongs: out of your tabs and one click away.",
+
+  "categoryPage.Productivity.title": "Productivity menu bar sources for Mac — Glanceway",
+  "categoryPage.Productivity.description": "Service health checks, Wikipedia 'On this day', AI prompts, and other productivity sources for your macOS menu bar with Glanceway.",
+  "categoryPage.Productivity.h1": "Productivity menu bar sources for Mac",
+  "categoryPage.Productivity.intro": "Small signals that keep your day on track. Monitor service health, keep a learning habit with Wikipedia 'On this day', or jog your AI prompt library — all from the macOS menu bar.",
+
+  "categoryPage.Other.title": "More menu bar sources for Mac — Glanceway",
+  "categoryPage.Other.description": "Everything else: niche, experimental, and specialized menu bar sources for Glanceway on macOS.",
+  "categoryPage.Other.h1": "More menu bar sources",
+  "categoryPage.Other.intro": "The long tail — niche, experimental, and specialized sources that don't fit a single bucket. If you can imagine it in your menu bar, it probably lives here.",
 
 } as const;
 

@@ -1,0 +1,40 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import CategoryPage from "../../../components/CategoryPage.astro";
+import { nonDefaultLocales, useTranslations } from "../../../i18n/index";
+import type { TranslationKey } from "../../../i18n/index";
+
+export function getStaticPaths() {
+  const categories = [
+    "Developer",
+    "News",
+    "Social",
+    "Finance",
+    "Entertainment",
+    "Productivity",
+    "Other",
+  ];
+  const paths: {
+    params: { locale: string; category: string };
+    props: { locale: string; category: string };
+  }[] = [];
+  for (const locale of nonDefaultLocales) {
+    for (const category of categories) {
+      paths.push({
+        params: { locale, category: category.toLowerCase() },
+        props: { locale, category },
+      });
+    }
+  }
+  return paths;
+}
+
+const { locale, category } = Astro.props as { locale: string; category: string };
+const t = useTranslations(locale);
+const title = t(`categoryPage.${category}.title` as TranslationKey);
+const description = t(`categoryPage.${category}.description` as TranslationKey);
+---
+
+<Layout title={title} description={description} locale={locale}>
+  <CategoryPage locale={locale} category={category} />
+</Layout>

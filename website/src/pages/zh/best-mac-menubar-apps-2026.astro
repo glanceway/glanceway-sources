@@ -1,0 +1,12 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import LandingPage from "../../components/LandingPage.astro";
+import { getLandingPage } from "../../content/landingPages";
+
+const slug = "best-mac-menubar-apps-2026";
+const page = getLandingPage(slug, "zh")!;
+---
+
+<Layout title={page.title} description={page.description} locale="zh" singleLocale>
+  <LandingPage slug={slug} locale="zh" />
+</Layout>

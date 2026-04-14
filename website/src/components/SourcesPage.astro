@@ -1,5 +1,6 @@
 ---
 import SourceCard from "./SourceCard.astro";
+import CategoryTabs from "./CategoryTabs.astro";
 import { getSources } from "../lib/sources";
 import { useTranslations } from "../i18n/index";
 
@@ -10,16 +11,6 @@ interface Props {
 const { locale } = Astro.props;
 const t = useTranslations(locale);
 const sources = getSources();
-const categories = [
-  "All",
-  "Developer",
-  "News",
-  "Social",
-  "Finance",
-  "Entertainment",
-  "Productivity",
-  "Other",
-];
 ---
 
 <div>
@@ -56,20 +47,9 @@ const categories = [
       </div>
     </div>
 
-    <div class="mb-6 flex flex-wrap gap-2">
-      {
-        categories.map((cat) => (
-          <button
-            class="category-tab rounded-full px-3.5 py-1.5 text-sm font-medium transition-colors"
-            data-category={cat}
-          >
-            {t(`category.${cat}` as any)}
-          </button>
-        ))
-      }
-    </div>
+    <CategoryTabs locale={locale} active="All" />
 
-    <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3" id="grid">
+    <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
       {
         sources.map((s) => (
           <SourceCard
@@ -85,67 +65,5 @@ const categories = [
         ))
       }
     </div>
-    <div id="empty-state" class="hidden py-16 text-center">
-      <p class="text-lg text-gray-400 dark:text-gray-500">
-        {t("sources.emptyTitle")}
-      </p>
-      <p class="mt-2 text-sm text-gray-400 dark:text-gray-500">
-        {t("sources.emptySubtitle")}
-      </p>
-      <a
-        href="https://github.com/glanceway/glanceway-sources/blob/master/docs/README.md"
-        class="mt-4 inline-block btn-primary"
-        target="_blank">{t("sources.buildSource")}</a
-      >
-    </div>
   </div>
 </div>
-
-<script>
-  const tabs = document.querySelectorAll<HTMLButtonElement>(".category-tab");
-  const cards = document.querySelectorAll<HTMLAnchorElement>("#grid > a");
-  const emptyState = document.getElementById("empty-state")!;
-
-  function setActive(tab: HTMLButtonElement) {
-    tabs.forEach((t) => t.classList.remove("active"));
-    tab.classList.add("active");
-  }
-
-  function filter(category: string) {
-    let visible = 0;
-    cards.forEach((card) => {
-      if (category === "All" || card.dataset.category === category) {
-        card.style.display = "";
-        visible++;
-      } else {
-        card.style.display = "none";
-      }
-    });
-    emptyState.classList.toggle("hidden", visible > 0);
-  }
-
-  function applyCategory(cat: string, updateUrl: boolean) {
-    const tab = Array.from(tabs).find((t) => t.dataset.category === cat) ?? tabs[0];
-    setActive(tab);
-    filter(tab.dataset.category!);
-    if (updateUrl) {
-      const url = new URL(window.location.href);
-      if (tab.dataset.category === "All") {
-        url.searchParams.delete("category");
-      } else {
-        url.searchParams.set("category", tab.dataset.category!);
-      }
-      history.replaceState(null, "", url.toString());
-    }
-  }
-
-  tabs.forEach((tab) => {
-    tab.addEventListener("click", () => {
-      applyCategory(tab.dataset.category!, true);
-    });
-  });
-
-  // Initial: restore from URL, default to "All"
-  const initial = new URL(window.location.href).searchParams.get("category") ?? "All";
-  applyCategory(initial, false);
-</script>

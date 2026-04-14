@@ -1,0 +1,37 @@
+---
+import { useTranslations, getLocalePath } from "../i18n/index";
+import type { TranslationKey } from "../i18n/index";
+
+interface Props {
+  locale: string;
+  active: string; // "All" or one of the category names
+}
+
+const { locale, active } = Astro.props;
+const t = useTranslations(locale);
+
+const tabs: { key: string; href: string }[] = [
+  { key: "All", href: getLocalePath(locale, "/sources/") },
+  { key: "Developer", href: getLocalePath(locale, "/categories/developer/") },
+  { key: "News", href: getLocalePath(locale, "/categories/news/") },
+  { key: "Social", href: getLocalePath(locale, "/categories/social/") },
+  { key: "Finance", href: getLocalePath(locale, "/categories/finance/") },
+  { key: "Entertainment", href: getLocalePath(locale, "/categories/entertainment/") },
+  { key: "Productivity", href: getLocalePath(locale, "/categories/productivity/") },
+  { key: "Other", href: getLocalePath(locale, "/categories/other/") },
+];
+---
+
+<div class="mb-6 flex flex-wrap gap-2">
+  {tabs.map((tab) => (
+    <a
+      href={tab.href}
+      class:list={[
+        "category-tab rounded-full px-3.5 py-1.5 text-sm font-medium no-underline transition-colors",
+        tab.key === active && "active",
+      ]}
+    >
+      {t(`category.${tab.key}` as TranslationKey)}
+    </a>
+  ))}
+</div>

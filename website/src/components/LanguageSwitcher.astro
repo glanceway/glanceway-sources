@@ -6,9 +6,15 @@ import { getLocalePath, defaultLocale } from "../i18n/index";
 interface Props {
   locale: string;
   currentPath: string;
+  /**
+   * If true, other-locale links point to each locale's home page instead of
+   * this page's translation (because no translation exists). Prevents 404s
+   * when a page is only shipped in one locale.
+   */
+  singleLocale?: boolean;
 }
 
-const { locale, currentPath } = Astro.props;
+const { locale, currentPath, singleLocale = false } = Astro.props;
 
 // Strip the current locale prefix from the path to get the base path
 function getBasePath(path: string, loc: string): string {
@@ -37,7 +43,7 @@ const basePath = getBasePath(currentPath, locale);
   >
     {Object.entries(locales).map(([code, config]) => (
       <a
-        href={getLocalePath(code, basePath)}
+        href={getLocalePath(code, singleLocale && code !== locale ? "/" : basePath)}
         class:list={[
           "block px-4 py-2 text-sm no-underline hover:bg-gray-100 dark:hover:bg-gray-800",
           code === locale

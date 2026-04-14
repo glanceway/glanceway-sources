@@ -1,0 +1,101 @@
+---
+import SourceCard from "./SourceCard.astro";
+import CategoryTabs from "./CategoryTabs.astro";
+import { getSources } from "../lib/sources";
+import { useTranslations, getLocalePath } from "../i18n/index";
+import type { TranslationKey } from "../i18n/index";
+
+interface Props {
+  locale: string;
+  category: string;
+}
+
+const { locale, category } = Astro.props;
+const t = useTranslations(locale);
+
+const allSources = getSources();
+const sources = allSources.filter((s) => s.category === category);
+
+const h1 = t(`categoryPage.${category}.h1` as TranslationKey);
+const intro = t(`categoryPage.${category}.intro` as TranslationKey);
+
+const siteUrl = "https://glanceway.app";
+const pagePath = getLocalePath(locale, `/categories/${category.toLowerCase()}/`);
+const canonical = `${siteUrl}${pagePath}`;
+
+const collectionJsonLd = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": h1,
+  "description": intro,
+  "url": canonical,
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "Glanceway",
+    "url": siteUrl,
+  },
+  "mainEntity": {
+    "@type": "ItemList",
+    "numberOfItems": sources.length,
+    "itemListElement": sources.map((s, i) => ({
+      "@type": "ListItem",
+      "position": i + 1,
+      "name": s.name,
+      "url": `${siteUrl}${getLocalePath(locale, `/source/${s.id}/`)}`,
+    })),
+  },
+});
+
+const breadcrumbJsonLd = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": `${siteUrl}${getLocalePath(locale, "/")}` },
+    { "@type": "ListItem", "position": 2, "name": t("sources.title"), "item": `${siteUrl}${getLocalePath(locale, "/sources/")}` },
+    { "@type": "ListItem", "position": 3, "name": t(`category.${category}` as TranslationKey) },
+  ],
+});
+---
+
+<script type="application/ld+json" set:html={collectionJsonLd} />
+<script type="application/ld+json" set:html={breadcrumbJsonLd} />
+
+<div class="mx-auto max-w-6xl px-6 py-14">
+  <div class="mb-10">
+    <h1 class="mb-3 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl dark:text-white">
+      {h1}
+    </h1>
+    <p class="max-w-3xl text-base leading-relaxed text-gray-500 dark:text-gray-400">
+      {intro}
+    </p>
+  </div>
+
+  <CategoryTabs locale={locale} active={category} />
+
+  {sources.length > 0 ? (
+    <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      {sources.map((s) => (
+        <SourceCard
+          id={s.id}
+          name={s.name}
+          description={s.description}
+          category={s.category}
+          tags={s.tags}
+          author={s.author}
+          type={s.type}
+          locale={locale}
+        />
+      ))}
+    </div>
+  ) : (
+    <div class="py-16 text-center">
+      <p class="text-lg text-gray-400 dark:text-gray-500">
+        {t("sources.emptyTitle")}
+      </p>
+      <p class="mt-2 text-sm text-gray-400 dark:text-gray-500">
+        {t("sources.emptySubtitle")}
+      </p>
+    </div>
+  )}
+
+</div>

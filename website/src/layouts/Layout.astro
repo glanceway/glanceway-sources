@@ -18,9 +18,15 @@ interface Props {
   locale?: string;
   hideLanguageSwitcher?: boolean;
   ogImage?: string;
+  /**
+   * If true, the page exists only in its own locale (no sibling locale variants).
+   * Suppresses hreflang alternates for other locales and the auto-redirect script
+   * so browsers in other languages don't get sent to 404s.
+   */
+  singleLocale?: boolean;
 }
 
-const { title, locale = defaultLocale, hideLanguageSwitcher = false, ogImage, keywords: keywordsProp } = Astro.props;
+const { title, locale = defaultLocale, hideLanguageSwitcher = false, ogImage, keywords: keywordsProp, singleLocale = false } = Astro.props;
 const t = useTranslations(locale);
 const dir = locales[locale]?.dir ?? "ltr";
 const currentPath = Astro.url.pathname;
@@ -97,22 +103,22 @@ const jsonLd = isHomePage ? JSON.stringify({
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <meta name="apple-mobile-web-app-title" content="Glanceway" />
     <link rel="manifest" href="/site.webmanifest" />
-    {
-      localeKeys.map((loc) => (
-        <link
-          rel="alternate"
-          hreflang={loc === defaultLocale ? "x-default" : loc}
-          href={new URL(getLocalePath(loc, basePath), siteUrl).href}
-        />
-      ))
-    }
-    <link
-      rel="alternate"
-      hreflang="en"
-      href={new URL(getLocalePath(defaultLocale, basePath), siteUrl).href}
-    />
+    {!singleLocale && localeKeys.map((loc) => (
+      <link
+        rel="alternate"
+        hreflang={loc === defaultLocale ? "x-default" : loc}
+        href={new URL(getLocalePath(loc, basePath), siteUrl).href}
+      />
+    ))}
+    {!singleLocale && (
+      <link
+        rel="alternate"
+        hreflang="en"
+        href={new URL(getLocalePath(defaultLocale, basePath), siteUrl).href}
+      />
+    )}
     {jsonLd && <script type="application/ld+json" set:html={jsonLd} />}
-    {locale === defaultLocale && (
+    {locale === defaultLocale && !singleLocale && (
       <script is:inline define:vars={{ nonDefaultLocales, basePath, defaultLocale }}>
         (function () {
           var pref = localStorage.getItem("locale-preference");
@@ -206,7 +212,7 @@ const jsonLd = isHomePage ? JSON.stringify({
             href={getLocalePath(locale, "/sources/")}
             class="font-medium text-gray-600 no-underline hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition-colors"
           >{t("nav.sources")}</a>
-          {!hideLanguageSwitcher && <LanguageSwitcher locale={locale} currentPath={currentPath} />}
+          {!hideLanguageSwitcher && <LanguageSwitcher locale={locale} currentPath={currentPath} singleLocale={singleLocale} />}
           <button
             id="theme-toggle"
             class="flex h-8 w-8 items-center justify-center rounded-lg text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-white transition-colors"

@@ -105,6 +105,10 @@ const zhTw: Record<TranslationKey, string> = {
   // Related sources
   "related.title": "相關資料來源",
 
+  // Landing pages
+  "landing.faqTitle": "常見問題",
+  "landing.browseCategory": "瀏覽更多同類資料來源",
+
 };
 
 export default zhTw;

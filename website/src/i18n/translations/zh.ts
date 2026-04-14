@@ -105,6 +105,10 @@ const zh: Record<TranslationKey, string> = {
   // Related sources
   "related.title": "相关信息源",
 
+  // Landing pages
+  "landing.faqTitle": "常见问题",
+  "landing.browseCategory": "浏览更多同类信息源",
+
 };
 
 export default zh;
