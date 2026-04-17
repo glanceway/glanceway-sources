@@ -1,4 +1,4 @@
-version: 1.1.0
+version: 1.0.0
 name: Stock Price Monitor
 description: |
   Monitor global stock prices in your menu bar.

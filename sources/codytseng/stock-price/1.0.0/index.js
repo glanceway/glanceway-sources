@@ -47,7 +47,6 @@ module.exports = async (api) => {
         id: symbol,
         title: name ? `${name} (${symbol})` : symbol,
         subtitle: `${price} ${arrow} ${sign}${change} (${sign}${changePct}%)`,
-        tickerText: `${symbol} ${price} ${sign}${changePct}%`,
         url: `https://finnhub.io/stock/${symbol}`,
       });
     }

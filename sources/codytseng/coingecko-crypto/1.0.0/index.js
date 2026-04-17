@@ -40,7 +40,6 @@ module.exports = async (api) => {
         id: item.id,
         title: `${item.name} (${item.symbol.toUpperCase()})`,
         subtitle: `${currencySymbol(currency)}${item.current_price.toLocaleString("en-US")}${changeStr}`,
-        tickerText: `${item.symbol.toUpperCase()} ${currencySymbol(currency)}${item.current_price.toLocaleString("en-US")}${changeStr}`,
         url: `https://www.coingecko.com/en/coins/${item.id}`,
         timestamp: now - i,
       };

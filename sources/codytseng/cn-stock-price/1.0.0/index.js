@@ -49,7 +49,6 @@ module.exports = async (api) => {
         id: `${ml}${stock.f12}`,
         title: `${stock.f14} (${ml}${stock.f12})`,
         subtitle: `${price} ${arrow} ${sign}${change} (${sign}${changePct}%)`,
-        tickerText: `${stock.f14} ${price} ${sign}${changePct}%`,
         url: `https://quote.eastmoney.com/${ml.toLowerCase()}${stock.f12}.html`,
       };
     });
