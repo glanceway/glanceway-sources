@@ -97,13 +97,17 @@ Sends information items to Glanceway for display.
 
 #### InfoItem
 
-| Field       | Type                   | Required | Description                                   |
-| ----------- | ---------------------- | -------- | --------------------------------------------- |
-| `id`        | string                 | Yes      | Unique identifier                             |
-| `title`     | string                 | Yes      | Main display text                             |
-| `subtitle`  | string                 | No       | Secondary text                                |
-| `url`       | string                 | No       | Clickable link                                |
-| `timestamp` | Date / string / number | No       | Item time (ISO 8601, Unix timestamp, or Date) |
+| Field        | Type                   | Required | Description                                                                                       |
+| ------------ | ---------------------- | -------- | ------------------------------------------------------------------------------------------------- |
+| `id`         | string                 | Yes      | Unique identifier                                                                                 |
+| `title`      | string                 | Yes      | Main display text                                                                                 |
+| `subtitle`   | string                 | No       | Secondary text                                                                                    |
+| `url`        | string                 | No       | Clickable link                                                                                    |
+| `timestamp`  | Date / string / number | No       | Item time (ISO 8601, Unix timestamp, or Date)                                                     |
+| `notify`     | boolean                | No       | If `true`, content changes re-mark read items as unread so users notice updates (default: `false`) |
+| `tickerText` | string                 | No       | Text shown in the menu bar scrolling ticker; falls back to `title` if omitted                     |
+
+Use `notify: true` for notification-style items where one record represents an ongoing thread (e.g. a PR or issue) — without it, once a user reads the item, subsequent content updates remain marked as read. Use `tickerText` when `title` is too long or not suited for the menu bar ticker; keep it short so it reads cleanly when scrolling.
 
 #### Example
 
