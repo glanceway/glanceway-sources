@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-04-04T09:30:01.557Z",
+  "updated_at": "2026-04-17T14:31:00.901Z",
   "sources": [
     {
       "id": "codytseng/ai-prompt",
@@ -36,12 +36,16 @@
         "markets"
       ],
       "type": "js",
-      "latest_version": "1.0.0",
+      "latest_version": "1.1.0",
       "source_url": "https://github.com/glanceway/glanceway-sources/tree/master/sources/codytseng/coingecko-crypto",
       "versions": [
         {
-          "version": "1.0.0",
+          "version": "1.1.0",
           "download_url": "https://github.com/glanceway/glanceway-sources/raw/refs/heads/master/dist/codytseng/coingecko-crypto/latest.gwsrc"
+        },
+        {
+          "version": "1.0.0",
+          "download_url": "https://github.com/glanceway/glanceway-sources/raw/refs/heads/master/dist/codytseng/coingecko-crypto/1.0.0.gwsrc"
         }
       ]
     },
@@ -414,12 +418,16 @@
         "market"
       ],
       "type": "js",
-      "latest_version": "1.0.0",
+      "latest_version": "1.1.0",
       "source_url": "https://github.com/glanceway/glanceway-sources/tree/master/sources/codytseng/stock-price",
       "versions": [
         {
-          "version": "1.0.0",
+          "version": "1.1.0",
           "download_url": "https://github.com/glanceway/glanceway-sources/raw/refs/heads/master/dist/codytseng/stock-price/latest.gwsrc"
+        },
+        {
+          "version": "1.0.0",
+          "download_url": "https://github.com/glanceway/glanceway-sources/raw/refs/heads/master/dist/codytseng/stock-price/1.0.0.gwsrc"
         }
       ]
     },
@@ -571,12 +579,16 @@
         "a-share"
       ],
       "type": "js",
-      "latest_version": "1.0.0",
+      "latest_version": "1.1.0",
       "source_url": "https://github.com/glanceway/glanceway-sources/tree/master/sources/codytseng/cn-stock-price",
       "versions": [
         {
-          "version": "1.0.0",
+          "version": "1.1.0",
           "download_url": "https://github.com/glanceway/glanceway-sources/raw/refs/heads/master/dist/codytseng/cn-stock-price/latest.gwsrc"
+        },
+        {
+          "version": "1.0.0",
+          "download_url": "https://github.com/glanceway/glanceway-sources/raw/refs/heads/master/dist/codytseng/cn-stock-price/1.0.0.gwsrc"
         }
       ]
     },
