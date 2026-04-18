@@ -1,3 +1,4 @@
+id: codytseng/nostr-relay-feed
 version: 1.0.0
 name: Nostr Relay Feed
 description: Display text notes from Nostr relays.

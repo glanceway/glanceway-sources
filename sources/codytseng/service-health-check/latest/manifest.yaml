@@ -1,3 +1,4 @@
+id: codytseng/service-health-check
 version: 1.0.0
 name: Service Health Check
 description: Monitor service endpoints and get notified when they go down

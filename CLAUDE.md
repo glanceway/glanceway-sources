@@ -186,7 +186,10 @@ The connection object has `send(message)` and `close()` methods.
 
 ## manifest.yaml Full Schema
 
+The `id` field is required and must be declared in `manifest.yaml` as `<author>/<source-name>` (matching the directory layout). It uniquely identifies a package across versions — the Glanceway app uses it to detect re-imports of the same source and offer in-place upgrade (preserving items, read state, favorites, custom name, refresh interval, color tag, and config). The build script validates `id` and fails if it is missing or does not match `<author>/<source-name>`. **Never change a source's `id` after release — changing it breaks upgrade detection and re-imports become fresh installs.**
+
 ```yaml
+id: authorname/source-name # Required: stable package identifier, must match <author>/<source-name>
 version: 1.0.0 # Required: semantic version
 name: Display Name # Required: shown in Glanceway
 description: Brief description # Required

@@ -145,8 +145,17 @@ async function buildJsSource(source: SourceInfo): Promise<boolean> {
   // Read JS source as-is
   const compiledJs = fs.readFileSync(source.indexPath, "utf-8");
 
-  // Read manifest
+  // Read manifest as-is. Sources must declare their own stable `id` field
+  // (e.g. `id: author/sourceName`) — the app uses it to detect re-imports of
+  // the same package and offer in-place upgrade.
   const manifestContent = fs.readFileSync(source.manifestPath, "utf-8");
+  const expectedId = `${source.author}/${source.sourceName}`;
+  const manifest = parseYaml(manifestContent);
+  if (manifest.id !== expectedId) {
+    throw new Error(
+      `manifest.id must be "${expectedId}" (got ${JSON.stringify(manifest.id)}) in ${source.manifestPath}`,
+    );
+  }
 
   // Create dist directory
   const distPath = path.join(DIST_DIR, source.author, source.sourceName);
