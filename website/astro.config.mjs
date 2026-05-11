@@ -4,6 +4,7 @@ import sitemap from "@astrojs/sitemap";
 
 export default defineConfig({
   site: "https://glanceway.app",
+  trailingSlash: "always",
   integrations: [
     tailwind({ applyBaseStyles: false }),
     sitemap(),

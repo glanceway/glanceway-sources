@@ -24,9 +24,11 @@ interface Props {
    * so browsers in other languages don't get sent to 404s.
    */
   singleLocale?: boolean;
+  /** Override the canonical URL (e.g. point non-English pages to the English version). */
+  canonicalOverride?: string;
 }
 
-const { title, locale = defaultLocale, hideLanguageSwitcher = false, ogImage, keywords: keywordsProp, singleLocale = false } = Astro.props;
+const { title, locale = defaultLocale, hideLanguageSwitcher = false, ogImage, keywords: keywordsProp, singleLocale = false, canonicalOverride } = Astro.props;
 const t = useTranslations(locale);
 const dir = locales[locale]?.dir ?? "ltr";
 const currentPath = Astro.url.pathname;
@@ -45,8 +47,9 @@ function getBasePath(path: string, loc: string): string {
 }
 const basePath = getBasePath(currentPath, locale);
 
-// Canonical URL: always point to the current locale's page
-const canonicalUrl = new URL(currentPath, siteUrl).href;
+const canonicalUrl = canonicalOverride
+  ? new URL(canonicalOverride, siteUrl).href
+  : new URL(currentPath, siteUrl).href;
 
 // OG image
 const ogImageUrl = ogImage ? new URL(ogImage, siteUrl).href : new URL("/og-image.png", siteUrl).href;
