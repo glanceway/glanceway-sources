@@ -22,6 +22,7 @@ const source = getSourceDetail(id)!;
   title={`${source.name} menu bar source for Mac — Glanceway`}
   description={`${source.description.replace(/\.?\s*$/, '.')} Install ${source.name} in Glanceway and get ${source.category.toLowerCase()} updates in your macOS menu bar, one click away.`}
   locale={locale}
+  canonicalOverride={`/source/${id}/`}
 >
   <SourceDetailPage id={id} locale={locale} />
 </Layout>
