@@ -40,7 +40,8 @@ const hi: Record<TranslationKey, string> = {
   "features.aiReading.chatStatus": "Used Glanceway integration, used a tool",
   "features.aiReading.chatResponse": "Here's a summary of your unread Hacker News feed, grouped by theme:<br/><br/><b>Top Stories (by points)</b><br/>The biggest discussion today is a Mastodon post asking whether to walk or drive 50 meters to a car wash — a humorous AI overthinking scenario that racked up 968 points and 621 comments...",
   "features.rss.title": "RSS समर्थन",
-  "features.rss.description": "नेटिव RSS/Atom समर्थन। कोई भी फ़ीड URL पेस्ट करें या RSSHub / rss.app से हज़ारों फ़ीड्स एक्सेस करें।",
+  "features.rss.description": "RSS/Atom फ़ीड और RSS पॉडकास्ट का नेटिव समर्थन। लेखों और नए एपिसोड के लिए फ़ीड URL पेस्ट करें, या RSSHub / rss.app से और फ़ीड खोजें।",
+  "features.rss.linkPodcasts": "{name} खोजें",
   "features.rss.linkRsshub": "RSSHub खोजें",
   "features.rss.linkRssApp": "rss.app खोजें",
 
@@ -53,7 +54,7 @@ const hi: Record<TranslationKey, string> = {
   "sources.subtitle": "समुदाय द्वारा बनाए गए सोर्स। एक क्लिक में इंस्टॉल करें।",
   "sources.pageTitle": "सोर्स",
   "sources.pageSubtitle": "Glanceway के लिए समुदाय द्वारा बनाए गए सोर्स ब्राउज़ करें और इंस्टॉल करें — Hacker News, GitHub Trending, Reddit, Product Hunt, शेयर मूल्य, क्रिप्टो, RSS और बहुत कुछ।",
-  "sources.rssNote": "RSS फ़ीड URL सीधे इंपोर्ट करने का भी समर्थन करता है। हज़ारों रूट्स खोजें",
+  "sources.rssNote": "RSS फ़ीड और पॉडकास्ट URL सीधे जोड़ें। और फ़ीड खोजें:",
   "sources.submitSource": "सोर्स सबमिट करें",
   "sources.buildSource": "सोर्स बनाएं",
   "sources.emptyTitle": "इस श्रेणी में अभी कोई सोर्स नहीं है",

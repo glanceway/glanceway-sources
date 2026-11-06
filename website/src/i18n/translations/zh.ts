@@ -41,7 +41,8 @@ const zh: Record<TranslationKey, string> = {
   "features.aiReading.chatStatus": "Used Glanceway integration, used a tool",
   "features.aiReading.chatResponse": "Here's a summary of your unread Hacker News feed, grouped by theme:<br/><br/><b>Top Stories (by points)</b><br/>The biggest discussion today is a Mastodon post asking whether to walk or drive 50 meters to a car wash — a humorous AI overthinking scenario that racked up 968 points and 621 comments...",
   "features.rss.title": "支持 RSS",
-  "features.rss.description": "原生 RSS/Atom 支持。粘贴任意订阅链接，或使用 RSSHub / rss.app 获取数千种订阅源。",
+  "features.rss.description": "原生支持 RSS/Atom 订阅与 RSS 播客。粘贴订阅链接，关注文章与播客新单集；也可通过 RSSHub / rss.app 发现更多订阅源。",
+  "features.rss.linkPodcasts": "探索 {name}",
   "features.rss.linkRsshub": "探索 RSSHub",
   "features.rss.linkRssApp": "探索 rss.app",
 
@@ -54,7 +55,7 @@ const zh: Record<TranslationKey, string> = {
   "sources.subtitle": "社区构建的信息源，一键安装。",
   "sources.pageTitle": "信息源",
   "sources.pageSubtitle": "浏览并安装社区构建的 Glanceway 信息源——Hacker News、GitHub Trending、Reddit、Product Hunt、股票行情、加密货币、RSS 等。",
-  "sources.rssNote": "也支持直接导入 RSS 订阅链接。在以下平台探索数千种路由",
+  "sources.rssNote": "也支持直接添加 RSS 订阅与播客链接。在以下平台探索更多订阅源",
   "sources.submitSource": "提交信息源",
   "sources.buildSource": "开发信息源",
   "sources.emptyTitle": "该分类暂无信息源",

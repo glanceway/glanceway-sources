@@ -40,7 +40,8 @@ const de: Record<TranslationKey, string> = {
   "features.aiReading.chatStatus": "Used Glanceway integration, used a tool",
   "features.aiReading.chatResponse": "Here's a summary of your unread Hacker News feed, grouped by theme:<br/><br/><b>Top Stories (by points)</b><br/>The biggest discussion today is a Mastodon post asking whether to walk or drive 50 meters to a car wash — a humorous AI overthinking scenario that racked up 968 points and 621 comments...",
   "features.rss.title": "RSS-Unterstützung",
-  "features.rss.description": "Native RSS/Atom-Unterstützung. Füge eine Feed-URL ein oder nutze RSSHub / rss.app für tausende Feeds.",
+  "features.rss.description": "Native Unterstützung für RSS/Atom und RSS-Podcasts. Füge eine Feed-URL ein, um Artikel und neue Folgen zu verfolgen, oder entdecke weitere Feeds mit RSSHub / rss.app.",
+  "features.rss.linkPodcasts": "{name} entdecken",
   "features.rss.linkRsshub": "RSSHub entdecken",
   "features.rss.linkRssApp": "rss.app entdecken",
 
@@ -53,7 +54,7 @@ const de: Record<TranslationKey, string> = {
   "sources.subtitle": "Von der Community erstellte Quellen. Ein Klick zur Installation.",
   "sources.pageTitle": "Quellen",
   "sources.pageSubtitle": "Durchsuche und installiere von der Community erstellte Quellen für Glanceway — Hacker News, GitHub Trending, Reddit, Product Hunt, Aktienkurse, Krypto-Preise, RSS und mehr.",
-  "sources.rssNote": "Unterstützt auch den direkten Import von RSS-Feed-URLs. Entdecke tausende Routen auf",
+  "sources.rssNote": "Füge auch RSS-Feeds und Podcasts direkt hinzu. Entdecke weitere Feeds auf",
   "sources.submitSource": "Quelle einreichen",
   "sources.buildSource": "Quelle erstellen",
   "sources.emptyTitle": "Noch keine Quellen in dieser Kategorie",

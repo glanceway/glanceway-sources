@@ -38,7 +38,8 @@ const en = {
   "features.aiReading.chatStatus": "Used Glanceway integration, used a tool",
   "features.aiReading.chatResponse": "Here's a summary of your unread Hacker News feed, grouped by theme:<br/><br/><b>Top Stories (by points)</b><br/>The biggest discussion today is a Mastodon post asking whether to walk or drive 50 meters to a car wash — a humorous AI overthinking scenario that racked up 968 points and 621 comments...",
   "features.rss.title": "RSS Support",
-  "features.rss.description": "Native RSS/Atom support. Paste any feed URL or use RSSHub / rss.app to access thousands of feeds.",
+  "features.rss.description": "Follow your favorite reads and podcasts with native RSS/Atom support. Paste a feed URL to keep up with articles and new episodes, or discover more feeds with RSSHub / rss.app.",
+  "features.rss.linkPodcasts": "Explore {name}",
   "features.rss.linkRsshub": "Explore RSSHub",
   "features.rss.linkRssApp": "Explore rss.app",
 
@@ -51,7 +52,7 @@ const en = {
   "sources.subtitle": "Community-built sources. One click to install.",
   "sources.pageTitle": "Sources",
   "sources.pageSubtitle": "Browse and install community-built sources for Glanceway — Hacker News, GitHub Trending, Reddit, Product Hunt, stock quotes, crypto prices, RSS, and more.",
-  "sources.rssNote": "Also supports importing RSS feed URLs directly. Explore thousands of routes on",
+  "sources.rssNote": "Also supports RSS feeds and podcast subscriptions directly. Explore more feeds on",
   "sources.submitSource": "Submit a Source",
   "sources.buildSource": "Build a Source",
   "sources.emptyTitle": "No sources in this category yet",

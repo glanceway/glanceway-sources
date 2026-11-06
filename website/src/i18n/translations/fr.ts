@@ -40,7 +40,8 @@ const fr: Record<TranslationKey, string> = {
   "features.aiReading.chatStatus": "Used Glanceway integration, used a tool",
   "features.aiReading.chatResponse": "Here's a summary of your unread Hacker News feed, grouped by theme:<br/><br/><b>Top Stories (by points)</b><br/>The biggest discussion today is a Mastodon post asking whether to walk or drive 50 meters to a car wash — a humorous AI overthinking scenario that racked up 968 points and 621 comments...",
   "features.rss.title": "Support RSS",
-  "features.rss.description": "Support natif RSS/Atom. Collez une URL de flux ou utilisez RSSHub / rss.app pour accéder à des milliers de flux.",
+  "features.rss.description": "Prise en charge native des flux RSS/Atom et des podcasts RSS. Collez une URL pour suivre les articles et les nouveaux épisodes, ou découvrez des flux avec RSSHub / rss.app.",
+  "features.rss.linkPodcasts": "Explorer {name}",
   "features.rss.linkRsshub": "Explorer RSSHub",
   "features.rss.linkRssApp": "Explorer rss.app",
 
@@ -53,7 +54,7 @@ const fr: Record<TranslationKey, string> = {
   "sources.subtitle": "Des sources créées par la communauté. Un clic pour installer.",
   "sources.pageTitle": "Sources",
   "sources.pageSubtitle": "Parcourez et installez des sources créées par la communauté pour Glanceway — Hacker News, GitHub Trending, Reddit, Product Hunt, cours de bourse, prix crypto, RSS et plus.",
-  "sources.rssNote": "Prend également en charge l'import direct d'URLs de flux RSS. Explorez des milliers de routes sur",
+  "sources.rssNote": "Ajoutez aussi directement des flux RSS et des podcasts. Découvrez des flux sur",
   "sources.submitSource": "Proposer une source",
   "sources.buildSource": "Créer une source",
   "sources.emptyTitle": "Aucune source dans cette catégorie pour le moment",

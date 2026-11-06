@@ -1,4 +1,5 @@
 ---
+import PodcastDirectories from "./PodcastDirectories.astro";
 import SourceCard from "./SourceCard.astro";
 import CategoryTabs from "./CategoryTabs.astro";
 import { getSources } from "../lib/sources";
@@ -26,7 +27,7 @@ const sources = getSources();
           <p class="text-gray-500 dark:text-gray-400">
             {t("sources.pageSubtitle")}
           </p>
-          <p class="mt-1 text-sm text-gray-400 dark:text-gray-500">
+          <p class="mt-4 max-w-2xl text-sm text-gray-400 dark:text-gray-500">
             {t("sources.rssNote")}
             <a
               href="https://rsshub.netlify.app/routes"
@@ -38,6 +39,7 @@ const sources = getSources();
               target="_blank">rss.app</a
             >.
           </p>
+          <div class="mt-3"><PodcastDirectories locale={locale} /></div>
         </div>
         <a
           href="https://github.com/glanceway/glanceway-sources/blob/master/docs/README.md"

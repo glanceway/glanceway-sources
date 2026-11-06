@@ -40,7 +40,8 @@ const ja: Record<TranslationKey, string> = {
   "features.aiReading.chatStatus": "Used Glanceway integration, used a tool",
   "features.aiReading.chatResponse": "Here's a summary of your unread Hacker News feed, grouped by theme:<br/><br/><b>Top Stories (by points)</b><br/>The biggest discussion today is a Mastodon post asking whether to walk or drive 50 meters to a car wash — a humorous AI overthinking scenario that racked up 968 points and 621 comments...",
   "features.rss.title": "RSS サポート",
-  "features.rss.description": "ネイティブ RSS/Atom サポート。フィード URL を貼り付けるか、RSSHub / rss.app で数千のフィードにアクセス。",
+  "features.rss.description": "RSS/Atom と RSS ポッドキャストにネイティブ対応。フィード URL を貼り付けて記事や新しいエピソードをチェック。RSSHub / rss.app でさらに多くのフィードを探せます。",
+  "features.rss.linkPodcasts": "{name} を探索",
   "features.rss.linkRsshub": "RSSHub を探索",
   "features.rss.linkRssApp": "rss.app を探索",
 
@@ -53,7 +54,7 @@ const ja: Record<TranslationKey, string> = {
   "sources.subtitle": "コミュニティが作成したソース。ワンクリックでインストール。",
   "sources.pageTitle": "ソース",
   "sources.pageSubtitle": "コミュニティが作成した Glanceway のソースを探してインストール。Hacker News、GitHub Trending、Reddit、Product Hunt、株価、暗号資産、RSS など。",
-  "sources.rssNote": "RSS フィード URL の直接インポートにも対応しています。以下のプラットフォームで数千のルートを探索できます",
+  "sources.rssNote": "RSS フィードやポッドキャストの URL を直接追加できます。さらに多くのフィードを探す：",
   "sources.submitSource": "ソースを投稿",
   "sources.buildSource": "ソースを作成",
   "sources.emptyTitle": "このカテゴリにはまだソースがありません",

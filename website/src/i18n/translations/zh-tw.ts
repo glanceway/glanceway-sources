@@ -41,7 +41,8 @@ const zhTw: Record<TranslationKey, string> = {
   "features.aiReading.chatStatus": "Used Glanceway integration, used a tool",
   "features.aiReading.chatResponse": "Here's a summary of your unread Hacker News feed, grouped by theme:<br/><br/><b>Top Stories (by points)</b><br/>The biggest discussion today is a Mastodon post asking whether to walk or drive 50 meters to a car wash — a humorous AI overthinking scenario that racked up 968 points and 621 comments...",
   "features.rss.title": "支援 RSS",
-  "features.rss.description": "原生 RSS/Atom 支援。貼上任意訂閱連結，或使用 RSSHub / rss.app 取得數千種訂閱源。",
+  "features.rss.description": "原生支援 RSS/Atom 訂閱與 RSS Podcast。貼上訂閱連結，追蹤文章與 Podcast 最新集數；也可透過 RSSHub / rss.app 探索更多訂閱源。",
+  "features.rss.linkPodcasts": "探索 {name}",
   "features.rss.linkRsshub": "探索 RSSHub",
   "features.rss.linkRssApp": "探索 rss.app",
 
@@ -54,7 +55,7 @@ const zhTw: Record<TranslationKey, string> = {
   "sources.subtitle": "社群建置的資料來源，一鍵安裝。",
   "sources.pageTitle": "資料來源",
   "sources.pageSubtitle": "瀏覽並安裝社群建置的 Glanceway 資料來源——Hacker News、GitHub Trending、Reddit、Product Hunt、股票行情、加密貨幣、RSS 等。",
-  "sources.rssNote": "也支援直接匯入 RSS 訂閱連結。在以下平台探索數千種路由",
+  "sources.rssNote": "也支援直接新增 RSS 訂閱與 Podcast 連結。在以下平台探索更多訂閱源",
   "sources.submitSource": "提交資料來源",
   "sources.buildSource": "開發資料來源",
   "sources.emptyTitle": "此分類尚無資料來源",

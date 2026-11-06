@@ -40,7 +40,8 @@ const ko: Record<TranslationKey, string> = {
   "features.aiReading.chatStatus": "Used Glanceway integration, used a tool",
   "features.aiReading.chatResponse": "Here's a summary of your unread Hacker News feed, grouped by theme:<br/><br/><b>Top Stories (by points)</b><br/>The biggest discussion today is a Mastodon post asking whether to walk or drive 50 meters to a car wash — a humorous AI overthinking scenario that racked up 968 points and 621 comments...",
   "features.rss.title": "RSS 지원",
-  "features.rss.description": "네이티브 RSS/Atom 지원. 피드 URL을 붙여넣거나 RSSHub / rss.app을 사용해 수천 개의 피드에 접근하세요.",
+  "features.rss.description": "RSS/Atom 피드와 RSS 팟캐스트를 기본 지원합니다. 피드 URL을 붙여넣어 새 글과 에피소드를 확인하고, RSSHub / rss.app에서 더 많은 피드를 찾아보세요.",
+  "features.rss.linkPodcasts": "{name} 탐색",
   "features.rss.linkRsshub": "RSSHub 탐색",
   "features.rss.linkRssApp": "rss.app 탐색",
 
@@ -53,7 +54,7 @@ const ko: Record<TranslationKey, string> = {
   "sources.subtitle": "커뮤니티가 만든 소스를 클릭 한 번으로 설치하세요.",
   "sources.pageTitle": "소스",
   "sources.pageSubtitle": "커뮤니티가 만든 Glanceway 소스를 탐색하고 설치하세요 — Hacker News, GitHub Trending, Reddit, Product Hunt, 주식 시세, 암호화폐, RSS 등.",
-  "sources.rssNote": "RSS 피드 URL을 직접 가져올 수도 있습니다. 다양한 라우트를 확인해 보세요:",
+  "sources.rssNote": "RSS 피드와 팟캐스트 URL을 직접 추가할 수 있습니다. 더 많은 피드 찾기:",
   "sources.submitSource": "소스 제출하기",
   "sources.buildSource": "소스 만들기",
   "sources.emptyTitle": "이 카테고리에는 아직 소스가 없습니다",

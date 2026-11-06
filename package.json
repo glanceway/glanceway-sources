@@ -4,6 +4,9 @@
   "description": "Community sources for Glanceway",
   "type": "module",
   "scripts": {
+    "dev": "npm --prefix website run dev --",
+    "build:website": "npm --prefix website run build",
+    "preview:website": "npm --prefix website run preview",
     "build-sources": "npx tsx scripts/build-sources.ts",
     "generate-sources-json": "npx tsx scripts/generate-sources-json.ts",
     "generate-readme": "npx tsx scripts/generate-readme.ts",

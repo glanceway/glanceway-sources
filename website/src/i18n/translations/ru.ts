@@ -40,7 +40,8 @@ const ru: Record<TranslationKey, string> = {
   "features.aiReading.chatStatus": "Used Glanceway integration, used a tool",
   "features.aiReading.chatResponse": "Here's a summary of your unread Hacker News feed, grouped by theme:<br/><br/><b>Top Stories (by points)</b><br/>The biggest discussion today is a Mastodon post asking whether to walk or drive 50 meters to a car wash — a humorous AI overthinking scenario that racked up 968 points and 621 comments...",
   "features.rss.title": "Поддержка RSS",
-  "features.rss.description": "Нативная поддержка RSS/Atom. Вставьте URL фида или используйте RSSHub / rss.app для доступа к тысячам фидов.",
+  "features.rss.description": "Встроенная поддержка RSS/Atom и RSS-подкастов. Вставьте URL ленты, чтобы следить за статьями и новыми выпусками, или найдите больше лент с RSSHub / rss.app.",
+  "features.rss.linkPodcasts": "Исследовать {name}",
   "features.rss.linkRsshub": "Исследовать RSSHub",
   "features.rss.linkRssApp": "Исследовать rss.app",
 
@@ -53,7 +54,7 @@ const ru: Record<TranslationKey, string> = {
   "sources.subtitle": "Источники от сообщества. Установка в один клик.",
   "sources.pageTitle": "Источники",
   "sources.pageSubtitle": "Просматривайте и устанавливайте источники от сообщества для Glanceway — Hacker News, GitHub Trending, Reddit, Product Hunt, котировки акций, криптовалюты, RSS и многое другое.",
-  "sources.rssNote": "Также поддерживает прямой импорт URL-адресов RSS-лент. Исследуйте тысячи маршрутов на",
+  "sources.rssNote": "Также можно напрямую добавлять RSS-ленты и подкасты. Больше лент на",
   "sources.submitSource": "Предложить источник",
   "sources.buildSource": "Создать источник",
   "sources.emptyTitle": "В этой категории пока нет источников",

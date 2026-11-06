@@ -1,4 +1,5 @@
 ---
+import PodcastDirectories from "./PodcastDirectories.astro";
 import { Download, ArrowRight } from "@lucide/astro";
 import { useTranslations, getLocalePath } from "../i18n/index";
 
@@ -19,7 +20,7 @@ const sourceBadges = [
   "Stock Quotes",
   "Crypto",
   "StackOverflow",
-  "RSS Feeds",
+  "RSS / Atom",
   "Earthquake Alerts",
   "Spaceflight",
   "npm Packages",
@@ -28,65 +29,26 @@ const sourceBadges = [
 ---
 
 <!-- Hero -->
-<div class="mx-auto max-w-6xl px-6 pt-24 pb-12 sm:pt-32 sm:pb-16 text-center">
-  <!-- Tagline pill -->
-  <div
-    class="mb-8 inline-flex items-center rounded-full border border-gray-200/60 dark:border-gray-700/60 bg-white/60 dark:bg-white/5 px-4 py-1.5 text-xs font-medium text-gray-500 dark:text-gray-400"
-    style="backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);"
-  >
-    {t("hero.tagline")}
-  </div>
-
-  <!-- Title -->
-  <h1
-    class="mx-auto max-w-3xl text-5xl font-extrabold tracking-tight leading-[1.1] sm:text-7xl gradient-text"
-  >
-    {t("hero.title")}
-  </h1>
-
-  <!-- Description -->
-  <p
-    class="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-gray-500 dark:text-gray-400"
-  >
-    {t("hero.description")}
-  </p>
-
-  <!-- CTA buttons -->
-  <div
-    class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4"
-  >
-    <a
-      href="https://apps.apple.com/app/6758926117"
-      target="_blank"
-      class="btn-primary w-full sm:w-auto"
-    >
-      <Download class="h-4 w-4" />
-      {t("hero.download")}
-    </a>
-    <a
-      href={sourcesPath}
-      class="inline-flex w-full sm:w-auto items-center justify-center rounded-xl border border-gray-200 dark:border-gray-700 px-6 py-3 text-sm font-semibold text-gray-700 dark:text-gray-300 no-underline hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
-    >
-      {t("hero.browseSources")}
-    </a>
-  </div>
-</div>
-
-<!-- App screenshot with glow -->
-<div class="mx-auto max-w-6xl px-6 pb-24 sm:pb-32">
-  <div class="relative mx-auto max-w-md">
-    <div
-      class="absolute -inset-2 rounded-3xl bg-gradient-to-br from-sky-400/15 via-blue-500/8 to-cyan-400/15 dark:from-sky-400/20 dark:via-blue-500/10 dark:to-cyan-400/20 blur-xl"
-      aria-hidden="true"
-    >
+<section class="home-hero mx-auto grid max-w-6xl items-center gap-14 px-6 pb-20 pt-16 lg:grid-cols-2 lg:gap-16 lg:pb-28 lg:pt-24">
+  <div class="min-w-0 text-center lg:text-start">
+    <p class="mb-6 text-sm tracking-wide text-gray-500 dark:text-gray-400">{t("hero.tagline")}</p>
+    <h1 class="text-5xl font-extrabold leading-[1.08] tracking-tight sm:text-6xl lg:text-7xl gradient-text">{t("hero.title")}</h1>
+    <p class="mx-auto mt-6 max-w-xl text-base leading-relaxed text-gray-600 dark:text-gray-400 sm:text-lg">{t("hero.description")}</p>
+    <div class="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row lg:justify-start">
+      <a href="https://apps.apple.com/app/6758926117" target="_blank" class="btn-primary w-full sm:w-auto">
+        <Download class="h-4 w-4" />{t("hero.download")}
+      </a>
+      <a href={sourcesPath} class="inline-flex w-full items-center justify-center gap-2 px-4 py-3 text-sm font-medium text-gray-600 no-underline transition-colors hover:text-gray-950 dark:text-gray-400 dark:hover:text-white sm:w-auto">
+        {t("hero.browseSources")}<ArrowRight class="h-4 w-4" />
+      </a>
     </div>
-    <img
-      src="/app-screenshot.webp"
-      alt="Glanceway app screenshot"
-      class="relative w-full rounded-2xl shadow-2xl ring-1 ring-gray-900/5 dark:ring-white/10 aspect-square object-cover"
-    />
+
   </div>
-</div>
+  <figure class="relative mx-auto w-full max-w-lg min-w-0">
+    <img src="/app-screenshot.webp" alt={t("appPreview.subtitle")} width="1280" height="800" fetchpriority="high" class="relative w-full rounded-xl shadow-2xl shadow-slate-900/10 dark:shadow-black/30" />
+    <figcaption class="mt-5 text-center text-xs leading-relaxed text-gray-400 dark:text-gray-500">{t("appPreview.subtitle")}</figcaption>
+  </figure>
+</section>
 
 <!-- Features -->
 <div class="mx-auto max-w-5xl px-6 pb-28">
@@ -105,7 +67,7 @@ const sourceBadges = [
 
   <!-- Feature 1: Community Sources (text left, visual right) -->
   <div
-    class="mt-24 flex flex-col sm:flex-row gap-8 sm:gap-14 items-center animate-on-scroll"
+    class="mt-20 sm:mt-24 flex flex-col sm:flex-row gap-8 sm:gap-14 items-center animate-on-scroll"
   >
     <div class="flex-1 min-w-0">
       <h3 class="text-2xl font-bold text-gray-900 dark:text-white">
@@ -125,10 +87,10 @@ const sourceBadges = [
       </a>
     </div>
     <div class="flex-1 min-w-0 -order-1 sm:order-none">
-      <div class="flex flex-wrap gap-2 justify-center sm:justify-start">
+      <div class="grid grid-cols-2 gap-x-8 gap-y-3">
         {
           sourceBadges.map((name) => (
-            <span class="inline-flex items-center rounded-full bg-white/80 dark:bg-gray-800/80 px-3.5 py-1.5 text-sm font-medium text-gray-700 dark:text-gray-300 ring-1 ring-gray-200/60 dark:ring-gray-700/60">
+            <span class="py-1 text-sm text-gray-500 dark:text-gray-400">
               {name}
             </span>
           ))
@@ -137,9 +99,10 @@ const sourceBadges = [
     </div>
   </div>
 
-  <!-- Feature 2: RSS Support (visual left, text right) -->
+  <!-- RSS feeds and podcasts -->
+  <span id="rss" class="block scroll-mt-24"></span>
   <div
-    class="flex flex-col sm:flex-row-reverse gap-8 sm:gap-14 items-start mt-28 animate-on-scroll"
+    class="flex flex-col sm:flex-row-reverse gap-8 sm:gap-14 items-start mt-24 sm:mt-32 animate-on-scroll"
   >
     <div class="flex-1 min-w-0">
       <h3 class="text-2xl font-bold text-gray-900 dark:text-white">
@@ -150,7 +113,7 @@ const sourceBadges = [
       >
         {t("features.rss.description")}
       </p>
-      <div class="mt-4 flex items-center gap-4">
+      <div class="mt-4 flex flex-wrap items-center gap-x-4 gap-y-3">
         <a
           href="https://rsshub.netlify.app/routes"
           target="_blank"
@@ -167,6 +130,7 @@ const sourceBadges = [
           {t("features.rss.linkRssApp")}
           <ArrowRight class="h-3.5 w-3.5" />
         </a>
+        <PodcastDirectories locale={locale} />
       </div>
     </div>
     <div class="flex-1 min-w-0 w-full -order-1 sm:order-none">
@@ -177,8 +141,8 @@ const sourceBadges = [
             "https://www.reddit.com/r/programming/.rss",
             "https://feeds.arstechnica.com/arstechnica/technology-lab",
           ].map((url) => (
-            <div class="flex items-center gap-3 rounded-xl bg-white/80 dark:bg-gray-800/60 px-4 py-3">
-              <span class="shrink-0 text-orange-500 dark:text-orange-400">
+            <div class="flex items-center gap-3 py-3">
+              <span class="shrink-0 text-gray-400 dark:text-gray-500">
                 <svg
                   class="h-4 w-4"
                   viewBox="0 0 24 24"
@@ -207,7 +171,7 @@ const sourceBadges = [
 
   <!-- Feature 3: Create Sources with AI (text left, visual right) -->
   <div
-    class="flex flex-col sm:flex-row gap-8 sm:gap-14 items-start mt-28 animate-on-scroll"
+    class="flex flex-col sm:flex-row gap-8 sm:gap-14 items-start mt-24 sm:mt-32 animate-on-scroll"
   >
     <div class="flex-1 min-w-0">
       <h3 class="text-2xl font-bold text-gray-900 dark:text-white">
@@ -285,7 +249,7 @@ const sourceBadges = [
             t("features.aiCreate.prompt2"),
             t("features.aiCreate.prompt3"),
           ].map((prompt) => (
-            <div class="rounded-xl bg-white/80 dark:bg-gray-800/60 px-4 py-3 text-sm text-gray-700 dark:text-gray-300 italic">
+            <div class="border-s border-gray-200 py-2 ps-4 text-sm text-gray-600 dark:border-gray-700 dark:text-gray-400">
               &ldquo;{prompt}&rdquo;
             </div>
           ))
@@ -319,7 +283,7 @@ const sourceBadges = [
 
   <!-- Feature 4: AI Reading & Summarization (visual left, text right) -->
   <div
-    class="flex flex-col sm:flex-row-reverse gap-8 sm:gap-14 items-start mt-28 animate-on-scroll"
+    class="flex flex-col sm:flex-row-reverse gap-8 sm:gap-14 items-start mt-24 sm:mt-32 animate-on-scroll"
   >
     <div class="flex-1 min-w-0">
       <h3 class="text-2xl font-bold text-gray-900 dark:text-white">
@@ -421,26 +385,21 @@ const sourceBadges = [
 
 <!-- CTA -->
 <div class="mx-auto max-w-5xl px-6 pb-28">
-  <div class="relative overflow-hidden rounded-3xl">
-    <div
-      class="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-800 to-sky-900 dark:from-gray-800 dark:via-gray-900 dark:to-sky-950"
-      aria-hidden="true"
-    >
-    </div>
+  <div class="relative">
     <div class="relative px-6 py-20 text-center sm:px-16">
       <h2
-        class="text-3xl font-bold tracking-tight text-white sm:text-4xl"
+        class="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl"
       >
         {t("cta.title")}
       </h2>
-      <p class="mx-auto mt-4 max-w-lg text-base text-gray-300">
+      <p class="mx-auto mt-4 max-w-lg text-base text-gray-500 dark:text-gray-400">
         {t("cta.description")}
       </p>
       <div class="mt-10">
         <a
           href="https://apps.apple.com/app/6758926117"
           target="_blank"
-          class="inline-flex items-center gap-2 rounded-xl bg-white px-6 py-3 text-sm font-semibold text-gray-900 no-underline hover:bg-gray-100 transition-colors shadow-lg"
+          class="btn-primary"
         >
           <Download class="h-4 w-4" />
           {t("hero.download")}
@@ -468,20 +427,24 @@ const sourceBadges = [
     });
   });
 
-  // Scroll-triggered animations
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("is-visible");
-          observer.unobserve(entry.target);
-        }
-      });
-    },
-    { threshold: 0.1, rootMargin: "0px 0px -40px 0px" },
-  );
+  // Enable reveal effects only when motion is welcome.
+  if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    // Scroll-triggered animations
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: "0px 0px -40px 0px" },
+    );
 
-  document.querySelectorAll(".animate-on-scroll").forEach((el) => {
-    observer.observe(el);
-  });
+    document.querySelectorAll(".animate-on-scroll").forEach((el) => {
+      el.classList.add("will-animate");
+      observer.observe(el);
+    });
+  }
 </script>

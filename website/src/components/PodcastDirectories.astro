@@ -1,0 +1,24 @@
+---
+import { ArrowRight } from "@lucide/astro";
+import { useTranslations } from "../i18n/index";
+
+interface Props {
+  locale: string;
+}
+
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+const isChinese = locale === "zh" || locale === "zh-tw";
+const name = isChinese ? (locale === "zh-tw" ? "聲鏈" : "声链") : "Podcast Index";
+const href = isChinese ? "https://shenglianfm.com/" : "https://podcastindex.org/";
+---
+
+<a
+  href={href}
+  target="_blank"
+  rel="noopener noreferrer"
+  class="inline-flex items-center gap-1.5 text-sm font-medium text-gray-600 no-underline hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition-colors"
+>
+  {t("features.rss.linkPodcasts", { name })}
+  <ArrowRight class="h-3.5 w-3.5" />
+</a>

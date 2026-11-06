@@ -40,7 +40,8 @@ const ar: Record<TranslationKey, string> = {
   "features.aiReading.chatStatus": "Used Glanceway integration, used a tool",
   "features.aiReading.chatResponse": "Here's a summary of your unread Hacker News feed, grouped by theme:<br/><br/><b>Top Stories (by points)</b><br/>The biggest discussion today is a Mastodon post asking whether to walk or drive 50 meters to a car wash — a humorous AI overthinking scenario that racked up 968 points and 621 comments...",
   "features.rss.title": "دعم RSS",
-  "features.rss.description": "دعم أصلي لـ RSS/Atom. الصق أي رابط تغذية أو استخدم RSSHub / rss.app للوصول إلى آلاف التغذيات.",
+  "features.rss.description": "دعم أصلي لتغذيات RSS/Atom وبودكاست RSS. الصق رابط التغذية لمتابعة المقالات والحلقات الجديدة، أو اكتشف المزيد عبر RSSHub / rss.app.",
+  "features.rss.linkPodcasts": "استكشاف {name}",
   "features.rss.linkRsshub": "استكشاف RSSHub",
   "features.rss.linkRssApp": "استكشاف rss.app",
 
@@ -53,7 +54,7 @@ const ar: Record<TranslationKey, string> = {
   "sources.subtitle": "مصادر بناها المجتمع. تثبيت بنقرة واحدة.",
   "sources.pageTitle": "المصادر",
   "sources.pageSubtitle": "تصفّح وثبّت مصادر بناها المجتمع لـ Glanceway — Hacker News وGitHub Trending وReddit وProduct Hunt وأسعار الأسهم والعملات الرقمية وRSS والمزيد.",
-  "sources.rssNote": "يدعم أيضًا استيراد روابط RSS مباشرةً. استكشف آلاف المسارات على",
+  "sources.rssNote": "يمكنك أيضًا إضافة روابط RSS والبودكاست مباشرةً. اكتشف المزيد عبر",
   "sources.submitSource": "أضف مصدرًا",
   "sources.buildSource": "إنشاء مصدر",
   "sources.emptyTitle": "لا توجد مصادر في هذا التصنيف بعد",
