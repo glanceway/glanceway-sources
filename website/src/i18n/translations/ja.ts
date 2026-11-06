@@ -98,6 +98,8 @@ const ja: Record<TranslationKey, string> = {
   "language.label": "言語",
 
   // SEO
+  "seo.sourceTitle": "Mac メニューバーの {name} ソース — Glanceway",
+  "seo.sourceDescription": "{description} Glanceway に {name} を追加して、macOS メニューバーから更新を確認できます。",
   "seo.homeTitle": "macOS メニューバー情報ハブ — RSS・ニュース・カスタムフィード | Glanceway",
   "seo.sourcesTitle": "macOS メニューバーソース — Hacker News、GitHub、RSS など | Glanceway",
   "seo.keywords": "macOS メニューバー,RSS リーダー,ニュース,株価,仮想通貨,GitHub,開発者,ダッシュボード,通知,Qiita,情報収集,テック,ニュースアプリ",

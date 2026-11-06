@@ -96,16 +96,14 @@ const en = {
   "language.label": "Language",
 
   // SEO
+  "seo.sourceTitle": "{name} menu bar source for Mac — Glanceway",
+  "seo.sourceDescription": "{description} Install {name} in Glanceway to follow updates from your macOS menu bar.",
   "seo.homeTitle": "Mac menu bar app for RSS, news, GitHub & crypto — Glanceway",
   "seo.sourcesTitle": "Mac menu bar sources — Hacker News, GitHub, RSS & more — Glanceway",
   "seo.keywords": "mac menu bar app,macOS menu bar,RSS reader,menu bar news reader,Hacker News menu bar,GitHub notifications menu bar,Reddit menu bar,stock ticker menu bar,crypto price menu bar,developer tools,custom feeds,information dashboard",
 
   // Related sources
   "related.title": "Related Sources",
-
-  // Landing pages (shared strings)
-  "landing.faqTitle": "Frequently asked questions",
-  "landing.browseCategory": "Browse more in this category",
 
   // Category landing pages
   "categoryPage.Developer.title": "Developer menu bar sources for Mac — Glanceway",

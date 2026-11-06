@@ -1,0 +1,83 @@
+---
+import type { SourceDetail } from "../lib/sources";
+
+interface Props { source: SourceDetail; locale: string; }
+const { source, locale } = Astro.props;
+const language = locale === "zh" || locale === "zh-tw" ? locale : "en";
+const copy = {
+  en: {
+    title: "Install and configure this source", fields: "Configuration checklist", example: "Example settings", issues: "If items are missing",
+    steps: ["Install Glanceway and open it on your Mac before using the install link above.", "Choose Install in Glanceway. If the browser cannot open the app, download the .gwsrc file and import it through source management.", "Complete the required fields below, save, and choose a refresh interval. Check the source after its first successful fetch."],
+    none: "This version does not require configuration fields. Install it and allow the initial fetch to complete.",
+    required: "Required", optional: "Optional", secret: "Use your own credential; do not share it in screenshots or public files.", list: "Add each value as a separate list item.",
+    errors: ["Verify the field names, list entries, and credentials against the current version’s configuration table. Sample values below are examples, not active credentials.", "Check network access and upstream service availability. Authentication failures and rate limits can prevent a refresh; use a slower interval when the provider limits requests.", "An empty result can also mean there are no matching items. Fetched content and update timing depend on the provider and source implementation."],
+  },
+  zh: {
+    title: "安装与配置方法", fields: "配置检查", example: "配置示例", issues: "没有显示内容时如何排查",
+    steps: ["先在 Mac 上安装并打开 Glanceway，再使用上方的安装链接。", "点击“安装到 Glanceway”。如果浏览器无法唤起应用，下载 .gwsrc 文件并在信息源管理中导入。", "填写下列必填字段并保存，设置刷新间隔，等待首次成功获取。"],
+    none: "当前版本没有必填配置字段，安装后等待首次获取即可。", required: "必填", optional: "可选", secret: "填写自己的访问凭据，不要在截图或公开文件中分享。", list: "每个值分别作为一条列表项添加。",
+    errors: ["对照当前版本配置表核对字段、列表项和凭据。下方示例不包含可用的真实凭据。", "检查网络与上游服务状态。认证失败或速率限制可能导致刷新失败，应根据上游限制调整间隔。", "空列表也可能表示没有符合条件的条目。内容和更新时间取决于数据提供方及信息源实现。"],
+  },
+  "zh-tw": {
+    title: "安裝與設定方式", fields: "設定檢查", example: "設定範例", issues: "沒有顯示內容時如何排查",
+    steps: ["先在 Mac 上安裝並開啟 Glanceway，再使用上方的安裝連結。", "點選「安裝到 Glanceway」。若瀏覽器無法開啟應用程式，下載 .gwsrc 檔案並在資訊源管理中匯入。", "填寫以下必填欄位並儲存，設定更新間隔，等待首次成功取得內容。"],
+    none: "目前版本沒有必填設定欄位，安裝後等待首次取得內容即可。", required: "必填", optional: "選填", secret: "填寫自己的存取憑證，請勿在截圖或公開檔案中分享。", list: "每個值分別作為一個清單項目新增。",
+    errors: ["對照目前版本設定表檢查欄位、清單項目與憑證。下方範例不包含可用的真實憑證。", "檢查網路及上游服務狀態。認證失敗或速率限制可能使更新失敗，請依上游限制調整間隔。", "空清單也可能代表沒有符合條件的條目。內容與更新時間取決於資料提供方及資訊源實作。"],
+  },
+}[language];
+
+const examples: Record<string, string> = {
+  "codytseng/github-notifications": "GITHUB_TOKEN: <your GitHub classic token>\nREPOSITORY: glanceway/glanceway-sources",
+  "codytseng/stock-price": "FINNHUB_TOKEN: <your Finnhub token>\nSYMBOLS (list items):\n  AAPL\n  MSFT",
+  "codytseng/cn-stock-price": "STOCK_CODES (list items):\n  600519\n  000001\n  300750",
+  "codytseng/reddit": "SUBREDDIT (list items):\n  programming\n  selfhosted\nSORT: hot",
+  "codytseng/coingecko-crypto": "CURRENCY: usd\nORDER: market_cap_desc",
+};
+const notes: Record<string, Record<string, string>> = {
+  "codytseng/github-notifications": {
+    en: "Use a personal access token (classic) with notifications access. The GitHub notifications endpoint does not support fine-grained tokens. REPOSITORY accepts one owner/repo value. An empty list may mean there are no unread notifications.",
+    zh: "使用具有通知访问权限的经典个人访问令牌。GitHub 通知端点不支持细粒度令牌。REPOSITORY 接受单个 owner/repo 值；空列表可能表示没有未读通知。",
+    "zh-tw": "使用具有通知存取權限的傳統個人存取權杖。GitHub 通知端點不支援細緻權杖。REPOSITORY 接受單一 owner/repo 值；空清單可能代表沒有未讀通知。",
+  },
+  "codytseng/stock-price": {
+    en: "The source requests each symbol from Finnhub and skips failed or zero-price responses. Coverage and quote latency depend on your provider access. Enter symbols separately; the source does not place trades.",
+    zh: "信息源逐个向 Finnhub 请求股票代码，并跳过失败或价格为零的响应。覆盖范围与延迟取决于服务权限。股票代码逐项添加；此信息源不执行交易。",
+    "zh-tw": "資訊源逐項向 Finnhub 請求股票代碼，並略過失敗或價格為零的回應。涵蓋範圍與延遲取決於服務權限。股票代碼逐項新增；此資訊源不執行交易。",
+  },
+  "codytseng/cn-stock-price": {
+    en: "Use six-digit Shanghai or Shenzhen stock codes and retain leading zeroes. Codes starting with 6 map to Shanghai; others map to Shenzhen. The current source does not implement Hong Kong symbol mapping.",
+    zh: "填写六位沪深股票代码并保留开头的零。以 6 开头的代码映射到上海，其余映射到深圳。当前信息源没有实现港股代码映射。",
+    "zh-tw": "填寫六位滬深股票代碼並保留開頭的零。以 6 開頭的代碼映射至上海，其餘映射至深圳。目前資訊源未實作港股代碼映射。",
+  },
+  "codytseng/reddit": {
+    en: "Enter subreddit names without r/, one per list item. Public endpoint availability depends on Reddit’s access rules. The current source supports hot, new, top, and rising sorting.",
+    zh: "版块名不带 r/，每个版块作为独立列表项添加。公开端点是否可用取决于 Reddit 的访问规则。当前支持 hot、new、top、rising 排序。",
+    "zh-tw": "看板名稱不含 r/，每個看板作為獨立清單項目新增。公開端點是否可用取決於 Reddit 的存取規則。目前支援 hot、new、top、rising 排序。",
+  },
+  "codytseng/coingecko-crypto": {
+    en: "The current source retrieves up to 250 market assets and offers currency and sorting settings. It has no individual coin-ID selector or API-key field. Provider access rules and rate limits still apply.",
+    zh: "当前信息源最多获取 250 个市场资产，支持选择显示币种和排序，没有单独的币种 ID 选择器或 API 密钥字段。仍受上游访问规则及速率限制约束。",
+    "zh-tw": "目前資訊源最多取得 250 個市場資產，可選擇報價幣別及排序，沒有個別幣種 ID 選擇器或 API 金鑰欄位。仍受上游存取規則與速率限制約束。",
+  },
+};
+---
+
+<section class="space-y-6">
+  <h2 class="text-lg font-semibold text-gray-900 dark:text-white">{copy.title}</h2>
+  <ol class="list-decimal space-y-3 ps-5 text-sm leading-relaxed text-gray-600 dark:text-gray-400">
+    {copy.steps.map((step) => <li>{step}</li>)}
+  </ol>
+  {source.config.length ? <div>
+    <h3 class="font-medium text-gray-900 dark:text-white">{copy.fields}</h3>
+    <ul class="mt-3 space-y-3 text-sm leading-relaxed text-gray-600 dark:text-gray-400">
+      {source.config.map((field) => <li><code>{field.key}</code> — {field.required ? copy.required : copy.optional}. {field.description} {field.type === "secret" && copy.secret} {field.type === "list" && copy.list}</li>)}
+    </ul>
+  </div> : <p class="text-sm text-gray-600 dark:text-gray-400">{copy.none}</p>}
+  {notes[source.id] && <p class="text-sm leading-relaxed text-gray-600 dark:text-gray-400">{notes[source.id][language]}</p>}
+  {examples[source.id] && <div>
+    <h3 class="font-medium text-gray-900 dark:text-white">{copy.example}</h3>
+    <pre class="mt-3 overflow-x-auto rounded-xl bg-gray-100 p-4 text-xs text-gray-700 dark:bg-gray-900 dark:text-gray-300"><code>{examples[source.id]}</code></pre>
+  </div>}
+  <h3 class="font-medium text-gray-900 dark:text-white">{copy.issues}</h3>
+  <ul class="list-disc space-y-2 ps-5 text-sm leading-relaxed text-gray-600 dark:text-gray-400">{copy.errors.map((item) => <li>{item}</li>)}</ul>
+</section>

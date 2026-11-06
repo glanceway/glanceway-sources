@@ -29,5 +29,9 @@ Build and preview the production website from the root:
 
 ```bash
 npm run build:website
+npm run check:website
 npm run preview:website
 ```
+
+Website release settings, hostname redirects, and Search Console verification are
+documented in [website/DEPLOYMENT.md](website/DEPLOYMENT.md).

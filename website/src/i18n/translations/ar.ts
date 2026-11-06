@@ -98,6 +98,8 @@ const ar: Record<TranslationKey, string> = {
   "language.label": "اللغة",
 
   // SEO
+  "seo.sourceTitle": "{name} في شريط قوائم Mac — Glanceway",
+  "seo.sourceDescription": "{description} أضف {name} إلى Glanceway لمتابعة التحديثات من شريط قوائم macOS.",
   "seo.homeTitle": "مركز المعلومات في شريط القوائم macOS — RSS والأخبار والمصادر المخصصة | Glanceway",
   "seo.sourcesTitle": "مصادر شريط القوائم macOS — Hacker News وGitHub وRSS والمزيد | Glanceway",
   "seo.keywords": "macOS شريط القوائم,قارئ RSS,أخبار,أسهم,عملات رقمية,GitHub,مطور,لوحة معلومات,مجمع,تقنية",

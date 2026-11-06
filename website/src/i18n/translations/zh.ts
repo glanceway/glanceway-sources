@@ -99,6 +99,8 @@ const zh: Record<TranslationKey, string> = {
   "language.label": "语言",
 
   // SEO
+  "seo.sourceTitle": "{name} Mac 菜单栏信息源 — Glanceway",
+  "seo.sourceDescription": "{description} 在 Glanceway 中安装 {name}，从 macOS 菜单栏关注最新动态。",
   "seo.homeTitle": "macOS 菜单栏信息中心 — RSS、新闻和自定义信息源 | Glanceway",
   "seo.sourcesTitle": "macOS 菜单栏信息源 — Hacker News、GitHub、RSS 等 | Glanceway",
   "seo.keywords": "macOS 菜单栏,RSS 阅读器,新闻聚合,股票行情,加密货币,GitHub,开发者工具,仪表盘,信息流,V2EX,效率工具,科技资讯,信息源",
@@ -107,8 +109,6 @@ const zh: Record<TranslationKey, string> = {
   "related.title": "相关信息源",
 
   // Landing pages
-  "landing.faqTitle": "常见问题",
-  "landing.browseCategory": "浏览更多同类信息源",
 
 };
 

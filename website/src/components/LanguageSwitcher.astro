@@ -38,7 +38,7 @@ const basePath = getBasePath(currentPath, locale);
   </button>
   <div
     id="lang-dropdown"
-    class="absolute right-0 top-full z-50 mt-2 hidden max-h-80 w-44 overflow-y-auto rounded-xl border border-gray-200/60 bg-white/95 py-1 shadow-xl dark:border-gray-700/60 dark:bg-gray-900/95"
+    class="language-menu absolute right-0 top-full z-50 mt-2 hidden max-h-80 w-44 overflow-y-auto rounded-xl border border-gray-200/60 bg-white/95 py-1 shadow-xl dark:border-gray-700/60 dark:bg-gray-900/95"
     style="backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);"
   >
     {Object.entries(locales).map(([code, config]) => (
@@ -58,6 +58,41 @@ const basePath = getBasePath(currentPath, locale);
   </div>
 </div>
 
+<style>
+  .language-menu {
+    --scrollbar-thumb: rgb(100 116 139 / 0.35);
+    --scrollbar-thumb-hover: rgb(100 116 139 / 0.55);
+    color-scheme: light;
+    scrollbar-width: thin;
+    scrollbar-color: var(--scrollbar-thumb) transparent;
+    overscroll-behavior: contain;
+  }
+
+  :global(.dark) .language-menu {
+    --scrollbar-thumb: rgb(148 163 184 / 0.35);
+    --scrollbar-thumb-hover: rgb(148 163 184 / 0.55);
+    color-scheme: dark;
+  }
+
+  .language-menu::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .language-menu::-webkit-scrollbar-track {
+    background: transparent;
+    margin-block: 8px;
+  }
+
+  .language-menu::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-thumb);
+    border-radius: 999px;
+  }
+
+  .language-menu::-webkit-scrollbar-thumb:hover {
+    background: var(--scrollbar-thumb-hover);
+  }
+</style>
+
 <script>
   const toggle = document.getElementById("lang-toggle")!;
   const dropdown = document.getElementById("lang-dropdown")!;
@@ -71,10 +106,4 @@ const basePath = getBasePath(currentPath, locale);
     dropdown.classList.add("hidden");
   });
 
-  // Remember manual language selection so auto-redirect won't override it
-  dropdown.querySelectorAll("a[data-lang]").forEach((link) => {
-    link.addEventListener("click", () => {
-      localStorage.setItem("locale-preference", (link as HTMLAnchorElement).dataset.lang!);
-    });
-  });
 </script>

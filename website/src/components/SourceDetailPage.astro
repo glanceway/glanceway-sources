@@ -1,4 +1,5 @@
 ---
+import SourceSetup from "./SourceSetup.astro";
 import { Code } from "astro:components";
 import { getSources, getSourceDetail } from "../lib/sources";
 import type { ConfigField, SourceFile, VersionFiles } from "../lib/sources";
@@ -185,6 +186,7 @@ const breadcrumbJsonLd = JSON.stringify({
 </div>
 
 <div class="mx-auto max-w-6xl px-6 py-8 space-y-10">
+  <SourceSetup source={source} locale={locale} />
   {
     source.config.length > 0 && (
       <section>
@@ -241,7 +243,7 @@ const breadcrumbJsonLd = JSON.stringify({
   <section>
     <h2 class="mb-4 text-lg font-semibold text-gray-900 dark:text-white">{t("detail.sourceCode")}</h2>
     {source.versionFiles.map((vf: VersionFiles) => (
-      <div class="version-group overflow-hidden rounded-2xl bg-white/70 dark:bg-gray-900/70 ring-1 ring-gray-200/60 dark:ring-gray-700/40" style="backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);" data-version={vf.version}>
+      <div data-nosnippet class="version-group overflow-hidden rounded-2xl bg-white/70 dark:bg-gray-900/70 ring-1 ring-gray-200/60 dark:ring-gray-700/40" style="backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);" data-version={vf.version}>
         <!-- File tabs -->
         <div class="flex border-b border-gray-200 bg-gray-50 dark:border-gray-700 dark:bg-gray-800">
           {vf.files.map((f: SourceFile, i: number) => (

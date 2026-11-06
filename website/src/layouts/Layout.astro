@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+import { getCanonicalPath } from "../lib/seo";
 import { Sun, Moon, Monitor } from "@lucide/astro";
 import LanguageSwitcher from "../components/LanguageSwitcher.astro";
 import {
@@ -8,11 +9,11 @@ import {
   defaultLocale,
   locales,
   localeKeys,
-  nonDefaultLocales,
 } from "../i18n/index";
 
 interface Props {
   title: string;
+  noindex?: boolean;
   description?: string;
   keywords?: string;
   locale?: string;
@@ -20,7 +21,7 @@ interface Props {
   ogImage?: string;
   /**
    * If true, the page exists only in its own locale (no sibling locale variants).
-   * Suppresses hreflang alternates for other locales and the auto-redirect script
+   * Suppresses hreflang alternates for other locales
    * so browsers in other languages don't get sent to 404s.
    */
   singleLocale?: boolean;
@@ -28,7 +29,7 @@ interface Props {
   canonicalOverride?: string;
 }
 
-const { title, locale = defaultLocale, hideLanguageSwitcher = false, ogImage, keywords: keywordsProp, singleLocale = false, canonicalOverride } = Astro.props;
+const { title, noindex = false, locale = defaultLocale, hideLanguageSwitcher = false, ogImage, keywords: keywordsProp, singleLocale = false, canonicalOverride } = Astro.props;
 const t = useTranslations(locale);
 const dir = locales[locale]?.dir ?? "ltr";
 const currentPath = Astro.url.pathname;
@@ -46,10 +47,11 @@ function getBasePath(path: string, loc: string): string {
   return path;
 }
 const basePath = getBasePath(currentPath, locale);
+const alternateLocaleKeys = singleLocale ? [] : localeKeys;
 
 const canonicalUrl = canonicalOverride
   ? new URL(canonicalOverride, siteUrl).href
-  : new URL(currentPath, siteUrl).href;
+  : new URL(getCanonicalPath(currentPath), siteUrl).href;
 
 // OG image
 const ogImageUrl = ogImage ? new URL(ogImage, siteUrl).href : new URL("/og-image.png", siteUrl).href;
@@ -81,6 +83,8 @@ const jsonLd = isHomePage ? JSON.stringify({
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex, follow" />}
+    {import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION && <meta name="google-site-verification" content={import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION} />}
     <meta name="keywords" content={keywords} />
     <link rel="canonical" href={canonicalUrl} />
 
@@ -106,14 +110,14 @@ const jsonLd = isHomePage ? JSON.stringify({
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <meta name="apple-mobile-web-app-title" content="Glanceway" />
     <link rel="manifest" href="/site.webmanifest" />
-    {!singleLocale && localeKeys.map((loc) => (
+    {alternateLocaleKeys.map((loc) => (
       <link
         rel="alternate"
         hreflang={loc === defaultLocale ? "x-default" : loc}
         href={new URL(getLocalePath(loc, basePath), siteUrl).href}
       />
     ))}
-    {!singleLocale && (
+    {alternateLocaleKeys.includes(defaultLocale) && (
       <link
         rel="alternate"
         hreflang="en"
@@ -121,28 +125,6 @@ const jsonLd = isHomePage ? JSON.stringify({
       />
     )}
     {jsonLd && <script type="application/ld+json" set:html={jsonLd} />}
-    {locale === defaultLocale && !singleLocale && (
-      <script is:inline define:vars={{ nonDefaultLocales, basePath, defaultLocale }}>
-        (function () {
-          var pref = localStorage.getItem("locale-preference");
-          var match;
-          if (pref && pref !== defaultLocale) {
-            match = pref;
-          } else if (!pref) {
-            var lang = (navigator.language || "").toLowerCase();
-            var supported = nonDefaultLocales;
-            match =
-              supported.find(function (l) { return lang === l; }) ||
-              supported.find(function (l) { return lang.startsWith(l + "-"); }) ||
-              supported.find(function (l) { return l === lang.split("-")[0]; });
-          }
-          if (match) {
-            var path = basePath === "/" || basePath === "" ? "/" : basePath;
-            window.location.replace("/" + match + path);
-          }
-        })();
-      </script>
-    )}
     <script is:inline>
       (function () {
         var theme = localStorage.getItem("theme") || "system";

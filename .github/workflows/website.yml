@@ -1,0 +1,41 @@
+name: Website SEO checks
+
+on:
+  push:
+    branches: [master, main]
+    paths:
+      - 'website/**'
+      - 'sources/**'
+      - 'sources.json'
+      - 'scripts/check-website-seo.mjs'
+      - 'package.json'
+      - '.github/workflows/website.yml'
+  pull_request:
+    paths:
+      - 'website/**'
+      - 'sources/**'
+      - 'sources.json'
+      - 'scripts/check-website-seo.mjs'
+      - 'package.json'
+      - '.github/workflows/website.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: website/package-lock.json
+      - name: Install website dependencies
+        run: npm ci --prefix website
+      - name: Build static pages
+        run: npm run build:website
+      - name: Check SEO invariants
+        run: npm run check:website

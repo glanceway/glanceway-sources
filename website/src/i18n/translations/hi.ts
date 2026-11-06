@@ -98,6 +98,8 @@ const hi: Record<TranslationKey, string> = {
   "language.label": "भाषा",
 
   // SEO
+  "seo.sourceTitle": "Mac मेन्यू बार में {name} — Glanceway",
+  "seo.sourceDescription": "{description} Glanceway में {name} इंस्टॉल करें और macOS मेन्यू बार से अपडेट देखें।",
   "seo.homeTitle": "macOS मेन्यू बार सूचना केंद्र — RSS, समाचार और कस्टम फ़ीड | Glanceway",
   "seo.sourcesTitle": "macOS मेन्यू बार स्रोत — Hacker News, GitHub, RSS और अधिक | Glanceway",
   "seo.keywords": "macOS मेन्यू बार,RSS रीडर,समाचार,शेयर,क्रिप्टो,GitHub,डेवलपर,डैशबोर्ड,एग्रीगेटर,टेक्नोलॉजी",

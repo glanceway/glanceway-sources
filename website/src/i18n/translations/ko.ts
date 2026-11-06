@@ -98,6 +98,8 @@ const ko: Record<TranslationKey, string> = {
   "language.label": "언어",
 
   // SEO
+  "seo.sourceTitle": "Mac 메뉴 막대용 {name} 소스 — Glanceway",
+  "seo.sourceDescription": "{description} Glanceway에 {name} 소스를 설치하고 macOS 메뉴 막대에서 새 소식을 확인하세요.",
   "seo.homeTitle": "macOS 메뉴 바 정보 허브 — RSS, 뉴스 및 맞춤 피드 | Glanceway",
   "seo.sourcesTitle": "macOS 메뉴 바 소스 — Hacker News, GitHub, RSS 등 | Glanceway",
   "seo.keywords": "macOS 메뉴 바,RSS 리더,뉴스,주식,암호화폐,GitHub,개발자,대시보드,알림,정보수집,테크,뉴스 앱",

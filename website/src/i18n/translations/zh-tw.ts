@@ -99,6 +99,8 @@ const zhTw: Record<TranslationKey, string> = {
   "language.label": "語言",
 
   // SEO
+  "seo.sourceTitle": "{name} Mac 選單列資訊源 — Glanceway",
+  "seo.sourceDescription": "{description} 在 Glanceway 中安裝 {name}，從 macOS 選單列追蹤最新動態。",
   "seo.homeTitle": "macOS 選單列資訊中心 — RSS、新聞與自訂資料源 | Glanceway",
   "seo.sourcesTitle": "macOS 選單列資料來源 — Hacker News、GitHub、RSS 等 | Glanceway",
   "seo.keywords": "macOS 選單列,RSS 閱讀器,新聞聚合,股票行情,加密貨幣,GitHub,開發者工具,儀表板,資訊流,PTT,效率工具,科技資訊,資料來源",
@@ -107,8 +109,6 @@ const zhTw: Record<TranslationKey, string> = {
   "related.title": "相關資料來源",
 
   // Landing pages
-  "landing.faqTitle": "常見問題",
-  "landing.browseCategory": "瀏覽更多同類資料來源",
 
 };
 

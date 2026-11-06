@@ -1,13 +1,19 @@
 import { defineConfig } from "astro/config";
 import tailwind from "@astrojs/tailwind";
 import sitemap from "@astrojs/sitemap";
+import { getCanonicalPath } from "./src/lib/seo";
 
 export default defineConfig({
   site: "https://glanceway.app",
   trailingSlash: "always",
   integrations: [
     tailwind({ applyBaseStyles: false }),
-    sitemap(),
+    sitemap({
+      filter: (page) => {
+        const path = new URL(page).pathname;
+        return !/^\/404\/?$/.test(path) && getCanonicalPath(path) === path;
+      },
+    }),
   ],
   i18n: {
     defaultLocale: "en",

@@ -11,7 +11,8 @@
     "generate-sources-json": "npx tsx scripts/generate-sources-json.ts",
     "generate-readme": "npx tsx scripts/generate-readme.ts",
     "test-source": "npx tsx scripts/test-source.ts",
-    "prepare": "husky"
+    "prepare": "husky",
+    "check:website": "node scripts/check-website-seo.mjs"
   },
   "devDependencies": {
     "@types/archiver": "^7.0.0",

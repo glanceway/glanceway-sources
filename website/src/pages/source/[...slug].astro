@@ -1,4 +1,5 @@
 ---
+import { useTranslations } from "../../i18n/index";
 import Layout from "../../layouts/Layout.astro";
 import SourceDetailPage from "../../components/SourceDetailPage.astro";
 import { getSources, getSourceDetail } from "../../lib/sources";
@@ -13,11 +14,12 @@ export function getStaticPaths() {
 
 const { id } = Astro.props as { id: string };
 const source = getSourceDetail(id)!;
+const t = useTranslations("en");
 ---
 
 <Layout
-  title={`${source.name} menu bar source for Mac — Glanceway`}
-  description={`${source.description.replace(/\.?\s*$/, '.')} Install ${source.name} in Glanceway and get ${source.category.toLowerCase()} updates in your macOS menu bar, one click away.`}
+  title={t("seo.sourceTitle", { name: source.name })}
+  description={t("seo.sourceDescription", { name: source.name, description: source.description })}
 >
   <SourceDetailPage id={id} locale="en" />
 </Layout>
